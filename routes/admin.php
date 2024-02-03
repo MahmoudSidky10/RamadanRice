@@ -10,6 +10,9 @@ Route::get('/dash', [IndexController::class, 'index']);
 Route::get('/edit', [IndexController::class, 'edit']);
 Route::put('/updateAdmin', [IndexController::class, 'update']);
 
+// Setting
+Route::get('/settings', [IndexController::class, 'settings']);
+Route::put('/updateSettings', [IndexController::class, 'updateSettings']);
 
 // logic
 Route::resource('employees', EmployeesController::class);

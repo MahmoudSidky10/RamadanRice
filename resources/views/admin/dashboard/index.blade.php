@@ -11,7 +11,6 @@
 
                         <div class="col-md-12">
                             <div class="row">
-
                                 <!-- card start -->
                                 <div style="margin: 10px 10px ; height: 250px !important;"
                                      class="col-md-3 card h-lg-300">
@@ -81,10 +80,9 @@
                                     </a>
                                 </div>
                                 <!-- ../ card end -->
-
                             </div>
                         </div>
-
+                        
                     </div>
                     <!--end::Container-->
                 </div>

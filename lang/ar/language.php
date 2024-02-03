@@ -1900,4 +1900,6 @@ return [
     'homeCategories_image_en' => 'صورة الفئه للغة الانجليزية',
     'id_number' => 'رقم الهوية',
     'register_number' => 'رقم التسجيل العشوائي',
+    'disable' => 'تعطيل',
+    'enable_creating_new_orders' => 'أمكانيه اضافه طلبات جديده ؟',
 ];

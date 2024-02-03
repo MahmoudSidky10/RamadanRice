@@ -22,40 +22,31 @@ class IndexController extends Controller
 
     public function settings()
     {
-        $result['item'] = Setting::first();
+        $item = Setting::first();
+
+        if (!$item) {
+            $item = Setting::create([
+                'enable_creating_new_orders' => 1
+            ]);
+        }
+
+        $result['item'] = $item;
         return view('admin.dashboard.settings')->with($result);
     }
 
     public function updateSettings(Request $request)
     {
-        //        $this->authorize("settings_edit");
         $data = $request->all();
         $item = Setting::latest()->first();
 
-        if ($request->logo) {
-            $data['logo'] = $this->storeImage($request->logo, "settings");
+        if (!$item) {
+            Setting::create([
+                'enable_creating_new_orders' => $request->enable_creating_new_orders
+            ]);
         }
-
-        if ($request->event_cover_image) {
-            $data["event_cover_image"] = $this->storeImage($request->event_cover_image, "events");
-        }
-
-        if ($request->event_cover_image) {
-            $data["event_cover_image"] = $this->storeImage($request->event_cover_image, "events");
-        }
-
-        $item->updatePackageDefaultValues(
-            ($item->package_default_exclusion_ar != $request->package_default_exclusion_ar) ? $request->package_default_exclusion_ar : null,
-            ($item->package_default_exclusion_en != $request->package_default_exclusion_en) ? $request->package_default_exclusion_en : null,
-            ($item->package_default_full_terms_ar != $request->package_default_full_terms_ar) ? $request->package_default_full_terms_ar : null,
-            ($item->package_default_full_terms_en != $request->package_default_full_terms_en) ? $request->package_default_full_terms_en : null,
-            ($item->package_default_contact_mobile != $request->package_default_contact_mobile) ? $request->package_default_contact_mobile : null,
-        );
 
         $item->update($data);
-        $item->updateSocialIcons($request->social_icons);
-
-        return back();
+        return redirect()->back()->with('success', __('admin.done'));
     }
 
     public function update(Request $request)
@@ -70,7 +61,7 @@ class IndexController extends Controller
         if ($request->password) {
             $data["password"] = Hash::make($request->password);
         }
-        
+
         $item->update($data);
         Auth::login($item);
         return back();
