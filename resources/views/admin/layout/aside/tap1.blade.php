@@ -122,6 +122,7 @@
 <li class="menu-item menu-item-submenu
 
  @if(strpos(url()->current(), "settings" )) menu-item-open @endif
+ @if(strpos(url()->current(), "socialSituations" )) menu-item-open @endif
 
  " aria-haspopup="true" data-menu-toggle="hover"><a href="javascript:;" class="menu-link menu-toggle">
                <span class="svg-icon menu-icon"><!--begin::Svg Icon | path:/keen-v2/theme/demo1/dist/assets/media/svg/icons/Design/Layers.svg--><svg
@@ -141,6 +142,7 @@
         <span class="menu-text">{{trans('language.settings')}}</span><i class="menu-arrow"></i></a>
     <div class="menu-submenu "
          @if(strpos(url()->current(), "settings" ))  style="display: block;" @endif
+         @if(strpos(url()->current(), "socialSituations" ))  style="display: block;" @endif
 
          kt-hidden-height="200"><i class="menu-arrow"></i>
         <ul class="menu-subnav">
@@ -150,6 +152,12 @@
                 aria-haspopup="true"
                 data-menu-toggle="hover">
                 @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/settings" , "title" => trans('language.settings') , "icon" => "menu-icon flaticon-layers" ])
+            </li>
+
+            <li class="menu-item @if(strpos(url()->current(), "socialSituations" )) menu-item-active @endif"
+                aria-haspopup="true"
+                data-menu-toggle="hover">
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/socialSituations" , "title" => trans('language.socialSituations') , "icon" => "menu-icon flaticon-layers" ])
             </li>
 
         </ul>
