@@ -14,6 +14,8 @@ class IndexController extends Controller
     public function index()
     {
         $result = [];
+        $result['employeesCount'] = User::employee()->count();
+        $result['usersCount'] = User::user()->count();
 
         return view('admin.dashboard.index')->with($result);
     }
@@ -58,11 +60,17 @@ class IndexController extends Controller
 
     public function update(Request $request)
     {
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
         $item = User::find(Auth::id());
-        $data = $request->all();
+
         if ($request->password) {
             $data["password"] = Hash::make($request->password);
         }
+        
         $item->update($data);
         Auth::login($item);
         return back();

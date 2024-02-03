@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8"/>
-    <title>Ecommerce | Dashboard Page </title>
+    <title>{{__("language.appName")}}</title>
     <meta name="description" content="Page with empty content"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <!--begin::Fonts-->

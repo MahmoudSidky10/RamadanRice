@@ -25,8 +25,9 @@ class LoginController extends Controller
             "email" => "required",
             "password" => "required"
         ]);
+
         if (Auth::attempt([
-            'email' => $data['email'], 'password' => $data['password'], "user_type_id" => 1
+            'email' => $data['email'], 'password' => $data['password']
         ])) {
             return redirect('/admin/dash');
         } else {

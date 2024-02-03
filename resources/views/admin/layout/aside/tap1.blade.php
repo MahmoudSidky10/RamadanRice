@@ -1,3 +1,5 @@
+<!-- ADMIN DASHBOARD -->
+
 <li class="menu-item menu-item-submenu
  @if(strpos(url()->current(), "dash" )) menu-item-open @endif
  @if(strpos(url()->current(), "reports" )) menu-item-open @endif

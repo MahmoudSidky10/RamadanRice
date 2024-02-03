@@ -3,7 +3,7 @@
 @section('nav')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{url("admin/dash")}}">  {{trans('language.home')}}</a></li>
-        <li class="breadcrumb-item"><a href="{{url("admin/users")}}">  {{trans('language.hotels')}}</a>
+        <li class="breadcrumb-item"><a href="{{url("admin/users")}}">  {{trans('language.users')}}</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">{{trans('language.edit')}}</li>
     </ol>

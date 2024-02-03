@@ -172,7 +172,11 @@
                              data-menu-scroll="1">
                             <!--begin::Menu Nav-->
                             <ul class="menu-nav">
-                                @include("admin.layout.aside.tap1")
+                                @if(auth()->user()->user_type_id == 1 )
+                                    @include("admin.layout.aside.tap1")
+                                @elseif(auth()->user()->user_type_id == 3 )
+                                    @include("admin.layout.aside.tap2")
+                                @endif
                             </ul>
                             <!--end::Menu Nav-->
                         </div>
