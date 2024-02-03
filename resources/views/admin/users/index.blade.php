@@ -17,7 +17,9 @@
         <th>#</th>
         <th>{{trans('language.id_number')}}</th>
         <th>{{trans('language.register_number')}}</th>
-        <th>{{trans('language.created_by')}}</th>
+        @if(Auth::user()->isAdmin())
+            <th>{{trans('language.created_by')}}</th>
+        @endif
         <th>{{trans('language.created_at')}}</th>
         <th>{{trans('language.settings')}}</th>
     </tr>
@@ -28,7 +30,9 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{$item->id_number}}</td>
             <td>{{$item->register_number}}</td>
-            <td>{{@$item->createdBy->name ?? @$item->createdBy->user_name }}</td>
+            @if(Auth::user()->isAdmin())
+                <td>{{@$item->createdBy->name ?? @$item->createdBy->user_name }}</td>
+            @endif
             <td>{{($item->created_at) ? $item->created_at->format("d-m-Y") : null}}</td>
             <td>
                 @includeIf("admin.components.buttons.edit" , ["href" => "users/$item->id/edit"])

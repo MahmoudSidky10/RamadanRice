@@ -26,9 +26,17 @@ class LoginController extends Controller
             "password" => "required"
         ]);
 
-        if (Auth::attempt([
-            'email' => $data['email'], 'password' => $data['password']
-        ])) {
+        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            $checkAuth = Auth::attempt([
+                'email' => $data['email'], 'password' => $data['password']
+            ]);
+        } else {
+            $checkAuth = Auth::attempt([
+                'user_name' => $data['email'], 'password' => $data['password']
+            ]);
+        }
+
+        if ($checkAuth) {
             return redirect('/admin/dash');
         } else {
             session()->flash('danger', trans('language.loginError'));

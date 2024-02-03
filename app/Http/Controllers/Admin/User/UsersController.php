@@ -5,12 +5,19 @@ namespace App\Http\Controllers\Admin\User;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
     public function index(Request $request)
     {
         $items = User::query()->where("user_type_id", 2);
+
+        // check if auth not admin so return his registered users ...
+        if (!Auth::user()->isAdmin()) {
+            $items = $items->where("created_by", Auth::id());
+        }
+
         $result['items'] = $this->filter($request, $items);
         return view('admin.users.index')->with($result);
     }
