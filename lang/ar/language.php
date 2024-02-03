@@ -1901,5 +1901,6 @@ return [
     'id_number' => 'رقم الهوية',
     'register_number' => 'رقم التسجيل العشوائي',
     'disable' => 'تعطيل',
+    'num_of_employee_creators' => 'عدد العملاء المضافه',
     'enable_creating_new_orders' => 'أمكانيه اضافه طلبات جديده ؟',
 ];

@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->string('password')->nullable();
 
             // user info
+            $table->string("created_by")->nullable(); // id for creator
             $table->string("id_number")->nullable();
             $table->string("register_number", 6)->default(rand(111111, 999999));
             $table->rememberToken();
