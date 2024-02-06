@@ -9,7 +9,7 @@ class Admin
 {
     public function handle($request, Closure $next, $guard = null)
     {
-        if (auth()->check() and in_array(auth()->user()->user_type_id, [1, 3])) {
+        if (auth()->check() and in_array(auth()->user()->user_type_id, [1, 2, 3])) {
             return $next($request);
         }
 

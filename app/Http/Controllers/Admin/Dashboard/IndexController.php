@@ -13,11 +13,15 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $result = [];
-        $result['employeesCount'] = User::employee()->count();
-        $result['usersCount'] = User::user()->count();
 
-        return view('admin.dashboard.index')->with($result);
+        $result = [];
+        if (Auth::user()->user_type_id == 2) {
+            return view('client.dashboard.index')->with($result);
+        } else {
+            $result['employeesCount'] = User::employee()->count();
+            $result['usersCount'] = User::user()->count();
+            return view('admin.dashboard.index')->with($result);
+        }
     }
 
     public function settings()
