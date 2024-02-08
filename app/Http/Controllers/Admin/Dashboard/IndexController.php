@@ -16,7 +16,7 @@ class IndexController extends Controller
 
         $result = [];
         if (Auth::user()->user_type_id == 2) {
-            return view('client.dashboard.index')->with($result);
+            return redirect()->route("home");
         } else {
             $result['employeesCount'] = User::employee()->count();
             $result['usersCount'] = User::user()->count();

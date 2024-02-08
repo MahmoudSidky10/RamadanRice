@@ -7,7 +7,7 @@ use Closure;
 class Lang
 {
     private $defaultLang = "ar";
-    private $appLanguages = ["en", "ar"];
+    private $appLanguages = ["ar", "ar"];
 
     public function handle($request, Closure $next)
     {
@@ -34,7 +34,7 @@ class Lang
 
     public function setLocaleLang($lang)
     {
-        session()->put('lang', $lang);
+        session()->put('lang', 'ar');
         app()->setLocale($lang);
     }
 }

@@ -12,7 +12,7 @@ class Order extends Model
     protected $fillable = [
         'status',
         'user_id',
-        'created_by',
+        'created_by', // employee id
         'status_updated_at',
         "first_name",
         "parent_name",
@@ -32,6 +32,7 @@ class Order extends Model
         "children_number",
         "is_special_case",
         "special_case_type", // TODO :: Add Special Case Type Table
+
         "id_number_image",
         "divorce_deed",
         "husband_death_image",

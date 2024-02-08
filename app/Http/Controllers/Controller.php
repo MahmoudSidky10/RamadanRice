@@ -20,4 +20,20 @@ class Controller extends BaseController
         }
         return $rand;
     }
+
+    public function storeFiles($file, $file_name = "files")
+    {
+        $file->store($file_name, 'public');
+        $path = "storage/" . $file_name . "/" . $file->hashName();
+        return url("/") . "/" . $path;
+    }
+
+    protected function storeImage($file, $file_name = "images")
+    {
+        $file->store($file_name, 'public');
+        $path = "storage/" . $file_name . "/" . $file->hashName();
+        return url("/") . "/" . $path;
+    }
+
+
 }

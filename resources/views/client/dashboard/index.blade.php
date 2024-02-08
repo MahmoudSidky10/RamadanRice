@@ -16,14 +16,14 @@
                             <div class="card-body">
 
                                 <!--begin::Form-->
-                                <form action="" class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework"
+                                <form action="{{route("client.order.store")}}" enctype="multipart/form-data" class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework"
                                       method="post" id="kt_careers_form">
                                     @csrf
                                     <!--begin::Description-->
                                     <div class="mb-7">
                                         <!--begin::Title-->
                                         <h4 class="fs-1 text-gray-800 w-bolder mb-6">
-                                            Apply Now
+                                           قدم طلبك .
                                         </h4>
                                         <!--end::Title-->
 
@@ -45,7 +45,7 @@
                                             <!--end::Label-->
 
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control " placeholder=""
+                                            <input type="text" class="form-control " placeholder="" value="{{old("first_name")}}"
                                                    name="first_name">
                                             <!--end::Input-->
                                             <div
@@ -57,7 +57,7 @@
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input type="text" class="form-control " placeholder=""
+                                            <input type="text" class="form-control " placeholder="" value="{{old("parent_name")}}"
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
@@ -69,7 +69,7 @@
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input type="text" class="form-control " placeholder=""
+                                            <input type="text" class="form-control " placeholder="" value="{{old("grandfather_name")}}"
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
@@ -81,7 +81,7 @@
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input type="text" class="form-control " placeholder=""
+                                            <input type="text" class="form-control " placeholder="" value="{{old("family_name")}}"
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
@@ -92,12 +92,12 @@
                                             <div class="">
                                                 <select style="height: 40px !important;" id="social_situation_id"
                                                         required class="form-control" name="social_situation_id">
-                                                    <option value="1" selected> رب أسرة</option>
-                                                    <option value="2">أرملة</option>
-                                                    <option value="3">مطلقة</option>
-                                                    <option value="4">مهجورة</option>
-                                                    <option value="5">أسرة سجين</option>
-                                                    <option value="6">آنسه</option>
+                                                    <option @if(old("social_situation_id") == 1) selected @endif value="1" > رب أسرة</option>
+                                                    <option @if(old("social_situation_id") == 2) selected @endif value="2">أرملة</option>
+                                                    <option @if(old("social_situation_id") == 3) selected @endif value="3">مطلقة</option>
+                                                    <option @if(old("social_situation_id") == 4) selected @endif value="4">مهجورة</option>
+                                                    <option @if(old("social_situation_id") == 5) selected @endif value="5">أسرة سجين</option>
+                                                    <option @if(old("social_situation_id") == 6) selected @endif value="6">آنسه</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -193,7 +193,7 @@
 
                                     <!--begin::Submit-->
                                     <button type="submit" class="btn btn-primary" id="kt_careers_submit_button">
-                                        Apply
+                                        تسجيل البيانات
                                     </button>
                                     <!--end::Submit-->
                                 </form>
