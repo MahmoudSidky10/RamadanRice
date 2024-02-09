@@ -35,7 +35,7 @@
                         class="menu-text">{{trans('language.dashboard')}}</span></span></li>
             <li class="menu-item @if(strpos(url()->current(), "dash" )) menu-item-active @endif  " aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/dash" , "title" => trans('language.home') , "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/dash" , "title" => trans('language.order_details') , "icon" => "menu-icon flaticon-layers" ])
             </li>
         </ul>
     </div>

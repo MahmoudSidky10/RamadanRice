@@ -1904,4 +1904,7 @@ return [
     'num_of_employee_creators' => 'عدد العملاء المضافه',
     'enable_creating_new_orders' => 'أمكانيه اضافه طلبات جديده ؟',
     'socialSituations' => 'الحالات الاجتماعيه',
+    'relative_relation' => 'صلة القرابة',
+    'salary' => 'الراتب الشهري',
+    'is_orphan' => 'هل الفرد يتيم ؟',
 ];

@@ -12,10 +12,25 @@
                     <!--begin::Careers main-->
                     <div class="d-flex flex-column flex-xl-row">
                         <!--begin::Content-->
-                        <div class="card bg-body me-xl-12 mb-9 mb-xl-0">
-                            <div class="card-body">
 
-                                <!--begin::Form-->
+
+                        <div class="col-md-12 pt-2">
+                            <div class="card card-custom gutter-b example example-compact">
+                                <div class="card-header">
+                                    <h3 class="card-title">تفاصيل الطلب </h3>
+                                    <a style="padding-top:25px" class="" data-toggle="collapse"
+                                       href="#collapseExample3"
+                                       role="button" aria-expanded="false" aria-controls="collapseExample3">
+                                        <i class="fa fa-plus colOpenClick3  "></i>
+                                        <i class="fa fa-minus colCloseClick3 hide"></i>
+                                    </a>
+
+
+                                </div>
+                            </div>
+                            <!--begin::Form-->
+                            <section class="collapse " id="collapseExample3"
+                                     style="background-color: #ffffff; padding: 10px 30px">
                                 <form action="#" enctype="multipart/form-data"
                                       class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework"
                                       id="kt_careers_form">
@@ -76,7 +91,8 @@
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("الحالة الإجتماعية")}}</label>
                                             <div class="">
-                                                <select style="height: 40px !important;" id="social_situation_id"
+                                                <select style="height: 40px !important;"
+                                                        id="social_situation_id"
                                                         disabled
                                                         class="form-control" name="social_situation_id">
                                                     <option @if($item->social_situation_id == 1) selected
@@ -103,7 +119,8 @@
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("الجنسية")}}</label>
                                             <div class="">
-                                                <select style="height: 40px !important;" id="nationality_id" disabled
+                                                <select style="height: 40px !important;" id="nationality_id"
+                                                        disabled
                                                         class="form-control" name="nationality_id">
                                                     <option value="1" selected>مصر</option>
                                                     <option value="2">السعوديه</option>
@@ -147,12 +164,19 @@
 
 
                                         <div class="col-md-6 pt-4">
-                                            <label class="required">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
+                                            <label
+                                                    class="required">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="is_special_case"
                                                         disabled class="form-control" name="is_special_case">
-                                                    <option @if($item->is_special_case == 0) selected @endif  value="0"> لا</option>
-                                                    <option @if($item->is_special_case == 1) selected @endif  value="1"> نعم</option>
+                                                    <option @if($item->is_special_case == 0) selected
+                                                            @endif  value="0">
+                                                        لا
+                                                    </option>
+                                                    <option @if($item->is_special_case == 1) selected
+                                                            @endif  value="1">
+                                                        نعم
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -162,10 +186,18 @@
                                                 <select style="height: 40px !important;" id="special_case_type"
                                                         required class="form-control" name="special_case_type">
                                                     <option>أختر نوع الإعاقة</option>
-                                                    <option @if($item->special_case_type == 1) selected @endif value="1"> إعاقة حركية</option>
-                                                    <option @if($item->special_case_type == 2) selected @endif value="2"> إعاقة سمعية</option>
-                                                    <option @if($item->special_case_type == 3) selected @endif value="3">إعاقة ذهنية</option>
-                                                    <option @if($item->special_case_type == 4) selected @endif value="4">إعاقة أخرى</option>
+                                                    <option @if($item->special_case_type == 1) selected
+                                                            @endif value="1"> إعاقة حركية
+                                                    </option>
+                                                    <option @if($item->special_case_type == 2) selected
+                                                            @endif value="2"> إعاقة سمعية
+                                                    </option>
+                                                    <option @if($item->special_case_type == 3) selected
+                                                            @endif value="3">إعاقة ذهنية
+                                                    </option>
+                                                    <option @if($item->special_case_type == 4) selected
+                                                            @endif value="4">إعاقة أخرى
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -190,18 +222,76 @@
                                     <!--end::Separator-->
 
                                 </form>
-                                <!--end::Form-->
-                            </div>
-                        </div>
-                        <!--end::Content-->
+                            </section>
+                            <!--end::Form-->
+                            <br>
+                            <!-- show children table -->
+                            <div class="card card-custom gutter-b example example-compact">
+                                <div class="card-header">
+                                    <h3 class="card-title"> قائمه الابناء </h3>
 
+                                    <a style="padding-top:25px" class="" data-toggle="collapse"
+                                       href="#collapseExample2"
+                                       role="button" aria-expanded="false" aria-controls="collapseExample2">
+                                        <i class="fa fa-plus colOpenClick2  "></i>
+                                        <i class="fa fa-minus colCloseClick2 hide"></i>
+                                    </a>
+
+
+                                </div>
+                            </div>
+                            <section class="collapse " id="collapseExample2">
+                                <div class="row">
+                                    <div class="col-lg-12 col-xl-12 stretch-card mb-8 ">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <a href="{{route("client.order.child.create")}}" class="btn btn-info ">
+                                                    أضافه فرد للعائلة</a>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hove">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>{{trans('language.name')}}</th>
+                                                            <th>{{trans('language.relative_relation')}}</th>
+                                                            <th>{{trans('language.id_number')}}</th>
+                                                            <th>{{trans('language.birthday')}}</th>
+                                                            <th>{{trans('language.salary')}}</th>
+                                                            <th>{{trans('language.is_orphan')}}</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @foreach($item->childreen as $child)
+                                                            <tr>
+                                                                <td>{{$loop->iteration }}</td>
+                                                                <td>{{$child->name}}</td>
+                                                                <td>{{$child->relative_relation}}</td>
+                                                                <td>{{$child->id_number}}</td>
+                                                                <td>{{$child->birth_date}}</td>
+                                                                <td>{{$child->salary}}</td>
+                                                                <td>{{$child->salary ? 1 : 'نعم' ,'لا'}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- end ../ children table -->
+
+
+                            <!--end::Content-->
+
+                        </div>
+                        <!--end::Careers main-->
                     </div>
-                    <!--end::Careers main-->
+                    <!--end::Content container-->
                 </div>
-                <!--end::Content container-->
             </div>
         </div>
-    </div>
 
 @endsection
 @section("js")

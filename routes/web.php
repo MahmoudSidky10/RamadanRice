@@ -12,6 +12,8 @@ Route::get('/client/login', [ClientController::class, 'index'])->name('client.lo
 Route::post('/client/login', [ClientController::class, 'login'])->name('client-login');
 Route::post('/client/order/store', [ClientController::class, 'orderStore'])->name('client.order.store');
 Route::get('/client/order/store/details', [ClientController::class, 'orderDetails'])->name('client.order.details');
+Route::get('/client/order/child/create', [ClientController::class, 'orderChildCreate'])->name('client.order.child.create');
+Route::post('/client/order/child/store', [ClientController::class, 'orderChildStore'])->name('client.order.child.store');
 
 
 // Admin Routes :-

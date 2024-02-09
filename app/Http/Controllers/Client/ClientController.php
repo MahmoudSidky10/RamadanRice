@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderChildreen;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,24 @@ class ClientController extends Controller
         } else {
             return view('client.login');
         }
+    }
+
+    public function orderChildCreate()
+    {
+        $order = Order::where("user_id", Auth::id())->first();
+        return view('client.dashboard.child-create', ["item" => $order]);
+    }
+
+    public function orderChildStore(Request $request)
+    {
+        $order = Order::where("user_id", Auth::id())->first();
+        $data = $request->all();
+        $data["order_id"] = $order->id;
+        $data["user_id"] = Auth::id();
+
+        OrderChildreen::create($data);
+
+        return redirect()->route("client.order.details");
     }
 
     public function login(Request $request)

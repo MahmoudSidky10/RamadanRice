@@ -45,4 +45,9 @@ class Order extends Model
         'status_updated_at' => 'timestamp',
     ];
 
+    public function childreen()
+    {
+        return $this->hasMany(OrderChildreen::class, 'order_id', 'id');
+    }
+
 }
