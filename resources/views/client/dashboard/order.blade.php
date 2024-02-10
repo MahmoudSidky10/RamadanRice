@@ -151,8 +151,7 @@
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("المدينه")}}</label>
                                             <div class="">
-                                                <select style="height: 40px !important;" id="city" disabled
-                                                        class="form-control select2 " name="city">
+                                                <select style="height: 40px !important;" id="city" disabled required class="form-control " name="city">
                                                     @foreach(\App\Models\City::all() as $city)
                                                         <option @if($item->city == $city->id) selected
                                                                 @endif value="{{$city->id}}">{{$city->name}}</option>

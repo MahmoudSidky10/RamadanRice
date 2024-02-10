@@ -6,9 +6,9 @@
 
             <!-- Logo -->
             <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-5 py-lg-12">
-                {{--            <a href="{{url("/admin/dash")}}">--}}
-                {{--                <img alt="Logo" src="{{asset("assets/com-soon/K-B-LOGO.png")}}" class="max-h-30px"/>--}}
-                {{--            </a>--}}
+                <a href="{{url("/admin/dash")}}">
+                    <img alt="Logo" src="{{asset("assets/images/logo.png")}}" class="max-h-30px"/>
+                </a>
             </div>
 
             <!-- Sections Taps  -->
@@ -88,7 +88,7 @@
                    data-boundary="window" title="User Profile">
                     <div class="symbol symbol-30 bg-gray-100">
                         <div class="symbol-label">
-                            <img alt="Logo" src="{{asset("assets/com-soon/K-B-LOGO.png")}}"
+                            <img alt="Logo" src="{{asset("assets/images/logo.png")}}"
                                  class="h-75 align-self-end"/>
                         </div>
                         <i class="symbol-badge bg-success"></i>
@@ -110,7 +110,7 @@
                     <div class="d-flex align-items-center mt-5">
                         <div class="symbol symbol-100 mr-5">
                             <div class="symbol-label"
-                                 style="background-image:url({{asset("assets/com-soon/K-B-LOGO.png")}}); background-size: cover"></div>
+                                 style="background-image:url({{asset("assets/images/logo.png")}}); background-size: cover"></div>
                             <i class="symbol-badge bg-success"></i>
                         </div>
                         <div class="d-flex flex-column">
