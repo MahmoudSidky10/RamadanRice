@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,14 @@ class UsersController extends Controller
         }
         if ($request->email) {
             $items = $items->where("email", 'LIKE', '%' . $request->email . '%');
+        }
+
+        if ($request->id_number){
+            $items = $items->where("id_number", $request->id_number);
+        }
+
+        if ($request->register_number){
+            $items = $items->where("register_number", $request->register_number);
         }
 
         $items = $items->orderBy("id", "desc")->paginate(15);
@@ -87,6 +96,24 @@ class UsersController extends Controller
         $user->update($data);
 
         return redirect(url("/admin/users"));
+    }
+
+    public function orders()
+    {
+        $items = Order::query();
+        if (Auth::user()->user_type_id == 3) {
+            $items = $items->where("created_by", Auth::id());
+        }
+
+        $result['items'] = $items->orderBy("id", "desc")->paginate(15);
+
+        return view('admin.users.orders')->with($result);
+    }
+
+    public function orderDetails($orderId)
+    {
+        $order = Order::find($orderId);
+        return view('client.dashboard.order', ["item" => $order]);
     }
 
 }

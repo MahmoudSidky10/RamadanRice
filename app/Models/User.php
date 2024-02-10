@@ -65,4 +65,14 @@ class User extends Authenticatable
         return User::where("created_by", $this->id)->get();
     }
 
+    public function orderData()
+    {
+        return Order::where("user_id", $this->id)->first();
+    }
+
+    public function employeeeOrdersCount($orderStatus)
+    {
+        return Order::where("created_by", $this->id)->where("status", $orderStatus)->count();
+    }
+
 }

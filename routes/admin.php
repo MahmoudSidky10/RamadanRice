@@ -17,5 +17,9 @@ Route::put('/updateSettings', [IndexController::class, 'updateSettings']);
 
 // logic
 Route::resource('employees', EmployeesController::class);
+
 Route::resource('users', UsersController::class);
+Route::get('/orders', [UsersController::class, 'orders']);
+Route::get('/orders/details/{id}', [UsersController::class, 'orderDetails'])->name('admin.order.details');
+
 Route::resource('socialSituations', SocialSituationController::class);

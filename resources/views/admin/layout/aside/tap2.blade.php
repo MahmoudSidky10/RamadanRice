@@ -72,6 +72,12 @@
                 data-menu-toggle="hover">
                 @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/users" , "title" => trans('language.users') , "icon" => "menu-icon flaticon-layers" ])
             </li>
+
+            <li class="menu-item @if(strpos(url()->current(), "orders" )) menu-item-active @endif  " aria-haspopup="true"
+                data-menu-toggle="hover">
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders" , "title" => trans('language.orders') , "icon" => "menu-icon flaticon-layers" ])
+            </li>
+
         </ul>
     </div>
 </li>

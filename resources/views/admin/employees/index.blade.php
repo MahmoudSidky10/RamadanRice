@@ -18,6 +18,12 @@
         <th>{{trans('language.name')}}</th>
         <th>{{trans('language.username')}}</th>
         <th>{{trans('language.num_of_employee_creators')}}</th>
+
+        <th>{{trans('طلبات تحت المراجعة')}}</th>
+        <th>{{trans('طلبات مقبولة')}}</th>
+        <th>{{trans('طلبات غير مكتلمة')}}</th>
+        <th>{{trans('طلبات مرفوضة')}}</th>
+
         <th>{{trans('language.created_at')}}</th>
         <th>{{trans('language.settings')}}</th>
     </tr>
@@ -29,6 +35,12 @@
             <td>{{$item->name}}</td>
             <td>{{$item->user_name}}</td>
             <td>{{count($item->creators())}}</td>
+
+            <td>{{($item->employeeeOrdersCount(\App\Models\Order::PENDING))}}</td>
+            <td>{{($item->employeeeOrdersCount(\App\Models\Order::ACCEPTED))}}</td>
+            <td>{{($item->employeeeOrdersCount(\App\Models\Order::MISSING))}}</td>
+            <td>{{($item->employeeeOrdersCount(\App\Models\Order::REJECTED))}}</td>
+
             <td>{{($item->created_at) ? $item->created_at->format("d-m-Y") : null}}</td>
             <td>
                 @includeIf("admin.components.buttons.edit" , ["href" => "employees/$item->id/edit"])

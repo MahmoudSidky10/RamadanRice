@@ -9,8 +9,14 @@ class Order extends Model
 {
     use SoftDeletes;
 
+    const PENDING = 1;
+    const ACCEPTED = 2;
+    const MISSING = 3;
+
+    const REJECTED = 4;
+
     protected $fillable = [
-        'status',
+        'status', // 1- pending , 2- accepted , 3- missing 4- rejected
         'user_id',
         'created_by', // employee id
         'status_updated_at',

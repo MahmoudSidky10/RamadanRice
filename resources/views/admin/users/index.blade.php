@@ -21,6 +21,8 @@
             <th>{{trans('language.created_by')}}</th>
         @endif
         <th>{{trans('language.created_at')}}</th>
+        <th>{{trans('language.order_details')}}</th>
+        <th>{{trans('تحديث الحالة')}}</th>
         <th>{{trans('language.settings')}}</th>
     </tr>
 @endsection
@@ -34,6 +36,17 @@
                 <td>{{@$item->createdBy->name ?? @$item->createdBy->user_name }}</td>
             @endif
             <td>{{($item->created_at) ? $item->created_at->format("d-m-Y") : null}}</td>
+            <td>
+                @if($item->orderData())
+                    <a href="{{route("admin.order.details",@$item->orderData()->id)}}"
+                       class="btn btn-success"> {{trans('language.details')}} </a>
+                @else
+                    <p>{{trans('language.no_data')}}</p>
+                @endif
+            </td>
+            <td>
+                ---
+            </td>
             <td>
                 @includeIf("admin.components.buttons.edit" , ["href" => "users/$item->id/edit"])
             </td>

@@ -14,13 +14,16 @@ class ClientController extends Controller
 
     public function index()
     {
-        $order = Order::where("user_id", Auth::id())->first();
-        if ($order) {
-            return view('client.dashboard.order', ["item" => $order]);
+        if (Auth::check()) {
+            $order = Order::where("user_id", Auth::id())->first();
+            if ($order) {
+                return view('client.dashboard.order', ["item" => $order]);
+            } else {
+                return view('client.dashboard.index');
+            }
         } else {
             return view('client.login');
         }
-
     }
 
     public function orderDetails()

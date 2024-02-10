@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class IndexController extends Controller
         } else {
             $result['employeesCount'] = User::employee()->count();
             $result['usersCount'] = User::user()->count();
+            $result['ordersCount'] = Order::count();
             return view('admin.dashboard.index')->with($result);
         }
     }

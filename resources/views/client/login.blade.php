@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <div class="  justify-content-between mt-n5">
                                     <label
-                                            class="font-size-h6 font-weight-bolder text-dark pt-5">{{__("كلمة الدخول العشوائي")}}</label>
+                                            class="font-size-h6 font-weight-bolder text-dark pt-5">{{__("رمز الدخول")}}</label>
                                 </div>
                                 <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
                                        name="register_number" autocomplete="off"/>
@@ -87,7 +87,7 @@
                             <div class="pb-lg-0 pb-5">
                                 <button type="submit" id="kt_login_signin_submit"
                                         class="btn btn-primary font-weight-bolder font-size-h6 px-8 col-md-12 py-4 my-3 mr-">
-                                    تسجيل الدخول
+                                  تسجيل طلب
                                 </button>
                             </div>
                         </form>
