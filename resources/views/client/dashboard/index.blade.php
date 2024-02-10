@@ -16,14 +16,15 @@
                             <div class="card-body">
 
                                 <!--begin::Form-->
-                                <form action="{{route("client.order.store")}}" enctype="multipart/form-data" class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework"
+                                <form action="{{route("client.order.store")}}" enctype="multipart/form-data"
+                                      class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework"
                                       method="post" id="kt_careers_form">
                                     @csrf
                                     <!--begin::Description-->
                                     <div class="mb-7">
                                         <!--begin::Title-->
                                         <h4 class="fs-1 text-gray-800 w-bolder mb-6">
-                                           قدم طلبك .
+                                            قدم طلبك .
                                         </h4>
                                         <!--end::Title-->
 
@@ -45,7 +46,8 @@
                                             <!--end::Label-->
 
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control " placeholder="" value="{{old("first_name")}}"
+                                            <input type="text" class="form-control " placeholder=""
+                                                   value="{{old("first_name")}}"
                                                    name="first_name">
                                             <!--end::Input-->
                                             <div
@@ -57,7 +59,8 @@
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input type="text" class="form-control " placeholder="" value="{{old("parent_name")}}"
+                                            <input type="text" class="form-control " placeholder=""
+                                                   value="{{old("parent_name")}}"
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
@@ -69,7 +72,8 @@
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input type="text" class="form-control " placeholder="" value="{{old("grandfather_name")}}"
+                                            <input type="text" class="form-control " placeholder=""
+                                                   value="{{old("grandfather_name")}}"
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
@@ -81,7 +85,8 @@
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input type="text" class="form-control " placeholder="" value="{{old("family_name")}}"
+                                            <input type="text" class="form-control " placeholder=""
+                                                   value="{{old("family_name")}}"
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
@@ -92,12 +97,24 @@
                                             <div class="">
                                                 <select style="height: 40px !important;" id="social_situation_id"
                                                         required class="form-control" name="social_situation_id">
-                                                    <option @if(old("social_situation_id") == 1) selected @endif value="1" > رب أسرة</option>
-                                                    <option @if(old("social_situation_id") == 2) selected @endif value="2">أرملة</option>
-                                                    <option @if(old("social_situation_id") == 3) selected @endif value="3">مطلقة</option>
-                                                    <option @if(old("social_situation_id") == 4) selected @endif value="4">مهجورة</option>
-                                                    <option @if(old("social_situation_id") == 5) selected @endif value="5">أسرة سجين</option>
-                                                    <option @if(old("social_situation_id") == 6) selected @endif value="6">آنسه</option>
+                                                    <option @if(old("social_situation_id") == 1) selected
+                                                            @endif value="1"> رب أسرة
+                                                    </option>
+                                                    <option @if(old("social_situation_id") == 2) selected
+                                                            @endif value="2">أرملة
+                                                    </option>
+                                                    <option @if(old("social_situation_id") == 3) selected
+                                                            @endif value="3">مطلقة
+                                                    </option>
+                                                    <option @if(old("social_situation_id") == 4) selected
+                                                            @endif value="4">مهجورة
+                                                    </option>
+                                                    <option @if(old("social_situation_id") == 5) selected
+                                                            @endif value="5">أسرة سجين
+                                                    </option>
+                                                    <option @if(old("social_situation_id") == 6) selected
+                                                            @endif value="6">آنسه
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -105,12 +122,11 @@
                                             <label class="required">{{__("الجنسية")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="nationality_id" required
-                                                        class="form-control" name="nationality_id">
-                                                    <option value="1" selected>مصر</option>
-                                                    <option value="2">السعوديه</option>
-                                                    <option value="3">المانيا</option>
-                                                    <option value="4">سويسرا</option>
-                                                    <option value="5">اليونان</option>
+                                                        class="form-control select2 " name="nationality_id">
+                                                    @foreach(\App\Models\Nationality::all() as $nationality)
+                                                        <option @if(old("nationality_id") == $nationality->id) selected
+                                                                @endif value="{{$nationality->id}}">{{$nationality->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -118,15 +134,37 @@
                                         <div class="col-md-4 pt-4">
                                             @includeIf('admin.components.form.add.text', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('إجمالي الدخل الشهري'),'name'=>'salary', 'placeholder'=>trans('إجمالي الدخل الشهري' ),'valid'=>trans('language.vaildation')])
                                         </div>
-                                        <div class="col-md-4 pt-4">
-                                            @includeIf('admin.components.form.add.text', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('رقم الهوية'),'name'=>'id_number', 'placeholder'=>trans('رقم الهوية' ),'valid'=>trans('language.vaildation')])
-                                        </div>
-                                        <div class="col-md-4 pt-4">
-                                            @includeIf('admin.components.form.add.text', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('تاريخ انتهاء الهوية'),'name'=>'id_number_expiration_date', 'placeholder'=>trans('تاريخ انتهاء الهوية' ),'valid'=>trans('language.vaildation')])
+
+                                        <div class="col-md-4 fv-row fv-plugins-icon-container pt-4">
+                                            <!--end::Label-->
+                                            <label class=" fs-5 fw-semibold mb-2">رقم الهوية</label>
+                                            <!--end::Label-->
+
+                                            <!--end::Input-->
+                                            <input type="text" class="form-control " placeholder="" disabled
+                                                   value="{{auth()->user()->id_number}}"
+                                                   name="id_number">
+                                            <!--end::Input-->
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
+                                        <div class="col-md-4 fv-row fv-plugins-icon-container pt-4">
+                                            <!--end::Label-->
+                                            <label class="required fs-5 fw-semibold mb-2">تاريخ انتهاء الهوية</label>
+                                            <!--end::Label-->
+
+                                            <!--end::Input-->
+                                            <input id="txtHijriDate" name="id_number_expiration_date" type="text" value=""
+                                                   class="form-control"/>
+                                            <!--end::Input-->
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                        </div>
+
+
                                         <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.add.text', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('تاريخ الميلاد'),'name'=>'birth_date', 'placeholder'=>trans('تاريخ الميلاد' ),'valid'=>trans('language.vaildation')])
+                                            @includeIf('admin.components.form.add.date', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('تاريخ الميلاد'),'name'=>'birth_date', 'placeholder'=>trans('تاريخ الميلاد' ),'valid'=>trans('language.vaildation')])
                                         </div>
 
                                         <div class="col-md-6 pt-4">
@@ -135,8 +173,19 @@
 
 
                                         <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.add.text', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('المدينة'),'name'=>'city', 'placeholder'=>trans('المدينة' ),'valid'=>trans('language.vaildation')])
+                                            <label class="required">{{__("المدينه")}}</label>
+                                            <div class="">
+                                                <select style="height: 40px !important;" id="city" required
+                                                        class="form-control select2 " name="city">
+                                                    @foreach(\App\Models\City::all() as $city)
+                                                        <option @if(old("city") == $city->id) selected
+                                                                @endif value="{{$city->id}}">{{$city->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
+
+
                                         <div class="col-md-6 pt-4">
                                             @includeIf('admin.components.form.add.text', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('الحي'),'name'=>'district', 'placeholder'=>trans('الحي' ),'valid'=>trans('language.vaildation')])
                                         </div>
@@ -181,7 +230,7 @@
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6"])
-                                             </div>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -212,6 +261,24 @@
 
 @endsection
 @section("js")
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment-hijri@2.1.0/moment-hijri.js"></script>
+    <script src="{{asset("/assets/admin/js/bootstrap-hijri-datetimepicker.js")}}"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            var date = new Date();
+            date.setDate(date.getDate() + 1);
+            $('#txtHijriDate').hijriDatePicker({
+                minDate: date,
+                showClear: true
+            });
+
+        });
+    </script>
 @endsection
 
 

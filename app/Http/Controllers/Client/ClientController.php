@@ -74,6 +74,7 @@ class ClientController extends Controller
 
     public function orderStore(Request $request)
     {
+
         $data = $request->validate([
             "first_name" => "required",
             "parent_name" => "required",
@@ -82,7 +83,6 @@ class ClientController extends Controller
             "social_situation_id" => "required",
             "nationality_id" => "required",
             "salary" => "required",
-            "id_number" => "required",
             "id_number_expiration_date" => "required",
             "birth_date" => "required",
             "age" => "required",
@@ -127,6 +127,7 @@ class ClientController extends Controller
         }
 
 
+        $data['is_number'] = Auth::user()->id_number;
         $data['user_id'] = Auth::id();
         $data['created_by'] = Auth::user()->created_by;
         $data['status'] = 1;

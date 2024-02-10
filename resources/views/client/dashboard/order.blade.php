@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <!--begin::Form-->
-                            <section class="collapse " id="collapseExample3"
+                            <section class="collapse show " id="collapseExample3"
                                      style="background-color: #ffffff; padding: 10px 30px">
                                 <form action="#" enctype="multipart/form-data"
                                       class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework"
@@ -47,7 +47,7 @@
                                                    name="first_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -60,7 +60,7 @@
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -73,7 +73,7 @@
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -86,7 +86,7 @@
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("الحالة الإجتماعية")}}</label>
@@ -122,11 +122,10 @@
                                                 <select style="height: 40px !important;" id="nationality_id"
                                                         disabled
                                                         class="form-control" name="nationality_id">
-                                                    <option value="1" selected>مصر</option>
-                                                    <option value="2">السعوديه</option>
-                                                    <option value="3">المانيا</option>
-                                                    <option value="4">سويسرا</option>
-                                                    <option value="5">اليونان</option>
+                                                    @foreach(\App\Models\Nationality::all() as $nationality)
+                                                        <option @if($item->nationality_id == $nationality->id) selected
+                                                                @endif value="{{$nationality->id}}">{{$nationality->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -142,7 +141,7 @@
                                         </div>
 
                                         <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('تاريخ الميلاد'),'name'=>'birth_date', 'placeholder'=>trans('تاريخ الميلاد' ),'valid'=>trans('language.vaildation')])
+                                            @includeIf('admin.components.form.edit.date', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('تاريخ الميلاد'),'name'=>'birth_date', 'placeholder'=>trans('تاريخ الميلاد' ),'valid'=>trans('language.vaildation')])
                                         </div>
 
                                         <div class="col-md-6 pt-4">
@@ -150,8 +149,18 @@
                                         </div>
 
                                         <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('المدينة'),'name'=>'city', 'placeholder'=>trans('المدينة' ),'valid'=>trans('language.vaildation')])
+                                            <label class="required">{{__("المدينه")}}</label>
+                                            <div class="">
+                                                <select style="height: 40px !important;" id="city" disabled
+                                                        class="form-control select2 " name="city">
+                                                    @foreach(\App\Models\City::all() as $city)
+                                                        <option @if($item->city == $city->id) selected
+                                                                @endif value="{{$city->id}}">{{$city->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
+
                                         <div class="col-md-6 pt-4">
                                             @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('الحي'),'name'=>'district', 'placeholder'=>trans('الحي' ),'valid'=>trans('language.vaildation')])
                                         </div>
@@ -165,7 +174,7 @@
 
                                         <div class="col-md-6 pt-4">
                                             <label
-                                                class="required">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
+                                                    class="required">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="is_special_case"
                                                         disabled class="form-control" name="is_special_case">
@@ -183,7 +192,7 @@
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("نوع الإعاقة")}}</label>
                                             <div class="">
-                                                <select style="height: 40px !important;" id="special_case_type"
+                                                <select style="height: 40px !important;" id="special_case_type" disabled
                                                         required class="form-control" name="special_case_type">
                                                     <option>أختر نوع الإعاقة</option>
                                                     <option @if($item->special_case_type == 1) selected

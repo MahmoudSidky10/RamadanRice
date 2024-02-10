@@ -56,4 +56,14 @@ class Order extends Model
         return $this->hasMany(OrderChildreen::class, 'order_id', 'id');
     }
 
+    public function nationality()
+    {
+        return $this->belongsTo(Nationality::class, 'nationality_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city');
+    }
+
 }
