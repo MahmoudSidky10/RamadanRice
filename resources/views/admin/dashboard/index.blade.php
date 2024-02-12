@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 @section('content')
-    @include("admin.layout.nav",["title" => trans('language.dashboard')])
+    @include("admin.layout.nav",["title" => trans('')])
 
     <div class="d-flex flex-column-fluid">
         <div class="container">
@@ -117,6 +117,91 @@
                                     </div>
                                     <!-- ../ card end -->
 
+                                </div>
+                            @endif
+
+                            @if(auth()->user()->isEmployee())
+                                <div class="row">
+                                    <div class="col-xl-6">
+
+                                        <!--begin::Engage widget 1-->
+                                        <div class="card h-md-100" dir="ltr">
+                                            <!--begin::Body-->
+                                            <div class="card-body d-flex flex-column flex-center">
+                                                <!--begin::Heading-->
+                                                <div class="mb-2">
+                                                    <!--begin::Title-->
+                                                    <h1 class="fw-semibold text-gray-800 text-center lh-lg">
+                                                        <span class="fw-bolder" style="font-weight: bolder"> أضافه مستفيد جديد ؟ </span>
+                                                    </h1>
+                                                    <!--end::Title-->
+
+                                                    <!--begin::Illustration-->
+                                                    <div class="py-10 text-center">
+                                                        <img
+                                                            src="{{asset("assets/admin/media/svg/illustrations/easy/2.svg")}}"
+                                                            class="theme-light-show w-200px" alt="">
+                                                    </div>
+                                                    <!--end::Illustration-->
+                                                </div>
+                                                <!--end::Heading-->
+
+                                                <!--begin::Links-->
+                                                <br>
+                                                <div class="text-center mb-1">
+                                                    <!--begin::Link-->
+                                                    <a style="font-weight: bolder" class="btn btn-sm btn-light"
+                                                       href="{{route("users.index")}}">
+                                                        عرض المستفيدين</a>
+                                                    <!--end::Link-->
+
+                                                    <!--begin::Link-->
+                                                    <a style="font-weight: bolder" href="{{route("users.create")}}"
+                                                       class="btn btn-sm btn-primary me-2"> أضافه مستفيد</a>
+                                                    <!--end::Link-->
+                                                </div>
+                                                <!--end::Links-->
+                                            </div>
+                                            <!--end::Body-->
+                                        </div>
+                                        <!--end::Engage widget 1-->
+
+                                    </div>
+                                    <div class="col-xl-6">
+
+                                        <!--begin::Engage widget 1-->
+                                        <div class="card h-xl-100" dir="ltr">
+                                            <!--begin::Body-->
+                                            <div class="card-body d-flex flex-column flex-center">
+                                                <!--begin::Heading-->
+                                                <div class="mb-2">
+                                                    <!--begin::Title-->
+                                                    <h1 class="fw-semibold text-gray-800 text-center lh-lg pt-15">
+                                                        <span style="font-weight: bolder" class="fw-bolder">بحث عن طلب مستفيد ؟</span>
+                                                    </h1>
+                                                    <!--end::Title-->
+
+                                                    <!--begin::Illustration-->
+                                                    <div class="py-5 text-center">
+                                                        <img
+                                                            src="{{asset("assets/admin/media/svg/illustrations/easy/3.png")}}"
+                                                            class="theme-light-show w-200px" alt="">
+
+                                                        <form method="get" action="{{url("/admin/orders")}}">
+                                                            <input style="font-weight: bolder ; text-align: right" type="text"   class="form-control mobile_input mt-6" name="id_number" value="" placeholder="ادخل رقم هويه المستفيد ...">
+                                                            <input style="font-weight: bolder ; width: 100%"  type="submit" class="btn btn-success mt-3" value="{{trans('language.filter')}}">
+                                                        </form>
+
+                                                    </div>
+                                                    <!--end::Illustration-->
+                                                </div>
+                                            </div>
+
+                                            <!--end::Body-->
+                                        </div>
+                                        <!--end::Engage widget 1-->
+
+                                    </div>
                                 </div>
                             @endif
                         </div>

@@ -12,7 +12,9 @@
 @section('form-groups')
 
     @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('language.name'),'name'=>'name', 'placeholder'=>trans('language.name' ),'valid'=>trans('language.vaildation')])
-    @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('language.email'),'name'=>'email', 'placeholder'=>trans('language.email' ),'valid'=>trans('language.vaildation')])
+    @if(auth()->user()->isAdmin())
+        @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('language.email'),'name'=>'email', 'placeholder'=>trans('language.email' ),'valid'=>trans('language.vaildation')])
+    @endif
     @includeIf('admin.components.form.edit.password', ['icon' => 'fa fa-user','label' => trans('language.password'),'name'=>'password', 'placeholder'=>trans('language.password' ),'valid'=>trans('language.vaildation')])
 
 @endsection

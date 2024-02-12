@@ -36,11 +36,11 @@ class UsersController extends Controller
             $items = $items->where("email", 'LIKE', '%' . $request->email . '%');
         }
 
-        if ($request->id_number){
+        if ($request->id_number) {
             $items = $items->where("id_number", $request->id_number);
         }
 
-        if ($request->register_number){
+        if ($request->register_number) {
             $items = $items->where("register_number", $request->register_number);
         }
 
@@ -98,11 +98,15 @@ class UsersController extends Controller
         return redirect(url("/admin/users"));
     }
 
-    public function orders()
+    public function orders(Request $request)
     {
         $items = Order::query();
         if (Auth::user()->user_type_id == 3) {
             $items = $items->where("created_by", Auth::id());
+        }
+
+        if ($request->id_number) {
+            $items = $items->where("id_number", $request->id_number);
         }
 
         $result['items'] = $items->orderBy("id", "desc")->paginate(15);

@@ -8,9 +8,21 @@ use App\Models\OrderChildreen;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use TaqnyatSms;
 
 class ClientController extends Controller
 {
+
+    public function sms()
+    {
+        $bearer = env("SMS_BEARER_TOKEN");
+        $taqnyt = new TaqnyatSms($bearer);
+        $sender = env("SMS_SENDER");
+        $body = "this is test message";
+        $recipients = ['966551783558'];
+        $balance = $taqnyt->sendMsg($body, $recipients, $sender);
+        dd($balance);
+    }
 
     public function index()
     {

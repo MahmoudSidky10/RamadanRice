@@ -59,7 +59,6 @@ class IndexController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'email' => 'required',
         ]);
 
         $item = User::find(Auth::id());

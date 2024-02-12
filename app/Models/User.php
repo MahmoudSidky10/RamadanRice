@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->user_type_id == 1;
     }
 
+    public function isEmployee()
+    {
+        return $this->user_type_id == 3;
+    }
+
     public function ScopeAdmin($query)
     {
         return $query->where('user_type_id', 1);
