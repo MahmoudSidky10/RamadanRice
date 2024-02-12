@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\User;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -118,6 +119,21 @@ class UsersController extends Controller
     {
         $order = Order::find($orderId);
         return view('client.dashboard.order', ["item" => $order]);
+    }
+
+    public function updateStatus($orderId, Request $request)
+    {
+        $order = Order::find($orderId);
+        $order->status = $request->status;
+        $order->status_updated_at = Carbon::now();
+        $order->save();
+
+        // Send sms to user
+        $msg = $order->orderStatusSmsMessage();
+        $this->sendSms($msg, [$order->mobile]);
+
+        session()->flash("success", 'تم تحديث حالة الطلب بنجاح');
+        return back();
     }
 
 }

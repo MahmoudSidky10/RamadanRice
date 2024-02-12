@@ -21,5 +21,6 @@ Route::resource('employees', EmployeesController::class);
 Route::resource('users', UsersController::class);
 Route::get('/orders', [UsersController::class, 'orders']);
 Route::get('/orders/details/{id}', [UsersController::class, 'orderDetails'])->name('admin.order.details');
+Route::post('/orders/{id}/updateStatus', [UsersController::class, 'updateStatus'])->name('admin.order.updateStatus');
 
 Route::resource('socialSituations', SocialSituationController::class);

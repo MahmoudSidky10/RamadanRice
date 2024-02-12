@@ -104,5 +104,15 @@
 <script>
     $('.select2').select2();
 </script>
+<script>
+    $(document).on('click', '.updateStatusBtn', function () {
+        id = $(this).data('id');
+        action = $(this).data('action');
+        message = $(this).data('message');
+        $(".updateMessage").text(message);
+        $(".updateId").val(id);
+        $(".updateForm").attr('action', action);
+    });
 
+</script>
 @yield("js")

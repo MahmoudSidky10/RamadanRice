@@ -13,6 +13,7 @@
         <th>{{trans('language.name')}}</th>
         <th>{{trans('language.id_number')}}</th>
         <th>{{trans('language.children_count')}}</th>
+        <th>{{trans('language.status')}}</th>
         <th>{{trans('language.details')}}</th>
     </tr>
 @endsection
@@ -24,11 +25,28 @@
             <td>{{$item->id_number}}</td>
             <td>{{count($item->childreen)}}</td>
             <td>
+                <span style="font-weight: bolder">{{$item->orderStatusName()}} </span>
+                <hr width="70%">
+                <a href="javascript:void(0)"
+                   class="btn btn-dark updateStatusBtn"
+                   data-original-title="تحديث الحالة"
+                   data-message="{{"تحديث حاله الطلب "}}"
+                   data-action="{{url("admin/orders/$item->id/updateStatus")}}"
+                   data-toggle="modal"
+                   data-id="{{$item->id}}"
+                   data-target=".updateStatusModal"
+                   title="{{trans('تحديث الحالة')}}">
+                    تحديث الحالة
+                </a>
+
+            </td>
+            <td>
                 <a href="{{route("admin.order.details",$item->id)}}"
                    class="btn btn-success"> {{trans('language.details')}}</a>
             </td>
         </tr>
     @endforeach
+
 @endsection
 
 @section("filters")

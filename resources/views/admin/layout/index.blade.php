@@ -13,6 +13,7 @@
 @includeIf("admin.layout.footer")
 {{--@include('sweetalert::alert')--}}
 @includeIf("admin.components.modals.delete-modal")
+@includeIf("admin.components.modals.update-modal")
 @includeIf("admin.layout.scripts")
 
 </body>

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Client Routes :-
-Route::get('/sms', [ClientController::class, 'sms'])->name("sms");
+Route::get('/sms', [ClientController::class, 'sendSms'])->name("sms");
 Route::get('/', [ClientController::class, 'index'])->name("home");
 Route::get('/client/login', [ClientController::class, 'index'])->name('client.login');
 Route::post('/client/login', [ClientController::class, 'login'])->name('client-login');

@@ -66,4 +66,42 @@ class Order extends Model
         return $this->belongsTo(City::class, 'city');
     }
 
+    public function orderStatusName()
+    {
+        if ($this->status == 1) {
+            return " الطلب قيد المراجعة";
+        }
+
+        if ($this->status == 2) {
+            return " الطلب مكتمل الشروط";
+        }
+
+        if ($this->status == 3) {
+            return " الطلب غير كامل البيانات";
+        }
+
+        if ($this->status == 4) {
+            return " الطلب غير مكتمل الشروط";
+        }
+    }
+
+    public function orderStatusSmsMessage()
+    {
+        if ($this->status == 1) {
+            return " الطلب قيد المراجعة";
+        }
+
+        if ($this->status == 2) {
+            return "تم قبول الطلب من قبل ارزاق رمضان يرجي التوجه لاقرف فرع لاستلام طلبك";
+        }
+
+        if ($this->status == 3) {
+            return "تم تحديث حاله الطلب الخاص بك حيث ان البيانات غير مكتملة من فضلك قم بمراجعة الطلب";
+        }
+
+        if ($this->status == 4) {
+            return "تم تحديث حاله الطلب الخاص بك حيث ان البيانات غير مكتملة الشروط";
+        }
+    }
+
 }

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use TaqnyatSms;
 
 class Controller extends BaseController
 {
@@ -33,6 +34,17 @@ class Controller extends BaseController
         $file->store($file_name, 'public');
         $path = "storage/" . $file_name . "/" . $file->hashName();
         return url("/") . "/" . $path;
+    }
+
+    public function sendSms($body, $recipients)
+    {
+        $bearer = env("SMS_BEARER_TOKEN");
+        $taqnyt = new TaqnyatSms($bearer);
+        $sender = env("SMS_SENDER");
+        if ($body && $recipients) {
+            $taqnyt->sendMsg($body, $recipients, $sender);
+        }
+        return true;
     }
 
 
