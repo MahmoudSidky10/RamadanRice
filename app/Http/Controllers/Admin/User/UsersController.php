@@ -136,4 +136,10 @@ class UsersController extends Controller
         return back();
     }
 
+    public function print($userId)
+    {
+        $user = User::find($userId);
+        return view('admin.users.print', ["user" => $user]);
+    }
+
 }

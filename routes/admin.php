@@ -19,6 +19,8 @@ Route::put('/updateSettings', [IndexController::class, 'updateSettings']);
 Route::resource('employees', EmployeesController::class);
 
 Route::resource('users', UsersController::class);
+Route::get('users/{id}/print', [UsersController::class, 'print'])->name('admin.users.print');
+
 Route::get('/orders', [UsersController::class, 'orders']);
 Route::get('/orders/details/{id}', [UsersController::class, 'orderDetails'])->name('admin.order.details');
 Route::post('/orders/{id}/updateStatus', [UsersController::class, 'updateStatus'])->name('admin.order.updateStatus');

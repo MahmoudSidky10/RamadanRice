@@ -22,7 +22,7 @@
         @endif
         <th>{{trans('language.created_at')}}</th>
         <th>{{trans('language.order_details')}}</th>
-        <th>{{trans('تحديث الحالة')}}</th>
+        <th>{{trans('طباعه ملف المستفيد')}}</th>
         <th>{{trans('language.settings')}}</th>
     </tr>
 @endsection
@@ -45,7 +45,8 @@
                 @endif
             </td>
             <td>
-                ---
+                <a href="{{route("admin.users.print",$item->id)}}"
+                   class="btn btn-success"> {{trans('طباعة')}} </a>
             </td>
             <td>
                 @includeIf("admin.components.buttons.edit" , ["href" => "users/$item->id/edit"])
