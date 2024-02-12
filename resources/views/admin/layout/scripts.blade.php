@@ -3,10 +3,12 @@
 <script src="{{asset('assets/admin/')}}/js/scripts.bundle.js"></script>
 <script src="{{asset("assets/admin/")}}/js/dropify.min.js"></script>
 <script src="{{asset('assets/admin/')}}/js/pages/widgets.js"></script>
+<script src="{{asset('assets/admin/')}}/js/lightbox.js"></script>
 <script src="{{asset('assets/admin/')}}/js/open-delete-modal.js"></script>
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwxAJHAPhgfrxa6vZHBkvqPbIMqxJCvVw&libraries=places"></script>
 <script src="{{asset("assets/admin/")}}/js/dropify.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('.dropify').dropify();

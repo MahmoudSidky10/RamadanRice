@@ -306,6 +306,12 @@
 
 @endsection
 @section("js")
+            <script>
+                lightbox.option({
+                    'resizeDuration': 200,
+                    'wrapAround': true
+                })
+            </script>
 @endsection
 
 

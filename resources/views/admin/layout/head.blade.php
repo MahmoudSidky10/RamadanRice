@@ -12,6 +12,8 @@
     <link href="{{url('assets/admin/plugins/global/plugins.bundle.css')}}" rel="stylesheet">
     <link href="{{url('assets/admin/plugins/custom/prismjs/prismjs.bundle.css')}}" rel="stylesheet">
 
+    <link href="{{asset("assets/admin/css/lightbox.css")}}" rel="stylesheet" />
+
     @if(App::isLocale('ar'))
         <link href="{{url('assets/admin/css/style.bundle.rtl.css')}}" rel="stylesheet">
     @else
