@@ -24,17 +24,10 @@
                                     <div class="mb-7">
                                         <!--begin::Title-->
                                         <h4 class="fs-1 text-gray-800 w-bolder mb-6">
-                                            قدم طلبك .
+                                            قم بأدخال بيانات الطلب بشكل صحيح .
                                         </h4>
                                         <!--end::Title-->
 
-                                        <!--begin::Text-->
-                                        <p class="fw-semibold fs-4 text-gray-600 mb-2">
-                                            First, a disclaimer – the entire process of writing a blog post often takes
-                                            more than a couple of hours,
-                                            even if you can type eighty words as per minute.
-                                        </p>
-                                        <!--end::Text-->
                                     </div>
                                     <!--end::Description-->
 
@@ -68,7 +61,7 @@
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
-                                            <label class="required fs-5 fw-semibold mb-2">اسم الجد</label>
+                                            <label class=" fs-5 fw-semibold mb-2">اسم الجد</label>
                                             <!--end::Label-->
 
                                             <!--end::Input-->
@@ -131,11 +124,21 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4 pt-4">
-                                            @includeIf('admin.components.form.add.text', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('إجمالي الدخل الشهري'),'name'=>'salary', 'placeholder'=>trans('إجمالي الدخل الشهري' ),'valid'=>trans('language.vaildation')])
+                                        <div class="col-md-10 fv-row fv-plugins-icon-container pt-4">
+                                            <!--end::Label-->
+                                            <label class=" fs-5 fw-semibold mb-2">إجمالي الدخل الشهري</label>
+                                            <!--end::Label-->
+
+                                            <!--end::Input-->
+                                            <input type="text" class="form-control "
+                                                   placeholder=" الراتب أو حساب المواطن أو الضمان الإجتماعي أو التأهيل الشامل أو غيرها من مصادر الدخل"
+                                                   value="" name="salary">
+                                            <!--end::Input-->
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
-                                        <div class="col-md-4 fv-row fv-plugins-icon-container pt-4">
+                                        <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
                                             <label class=" fs-5 fw-semibold mb-2">رقم الهوية</label>
                                             <!--end::Label-->
@@ -149,26 +152,48 @@
                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
-                                        <div class="col-md-4 fv-row fv-plugins-icon-container pt-4">
+                                        <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
                                             <label class="required fs-5 fw-semibold mb-2">تاريخ انتهاء الهوية</label>
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input id="txtHijriDate" name="id_number_expiration_date" type="text" value=""
+                                            <input id="txtHijriDate" name="id_number_expiration_date" type="text"
+                                                   value=""
                                                    class="form-control"/>
                                             <!--end::Input-->
                                             <div
                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
+                                        <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
+                                            <!--end::Label-->
+                                            <label class=" fs-5 fw-semibold mb-2">تاريخ الميلاد ( ميلادي )</label>
+                                            <!--end::Label-->
 
-                                        <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.add.date', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('تاريخ الميلاد'),'name'=>'birth_date', 'placeholder'=>trans('تاريخ الميلاد' ),'valid'=>trans('language.vaildation')])
+                                            <!--end::Input-->
+                                            <input type="date" onchange="updateAgeValue()" class="form-control "
+                                                   placeholder="" value="" id="birthDayValue"
+                                                   name="birth_date">
+                                            <!--end::Input-->
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
-                                        <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.add.text', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('العمر'),'name'=>'age', 'placeholder'=>trans('العمر' ),'valid'=>trans('language.vaildation')])
+
+                                        <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
+                                            <!--end::Label-->
+                                            <label class=" fs-5 fw-semibold mb-2">العمر</label>
+                                            <!--end::Label-->
+
+                                            <!--end::Input-->
+                                            <input id="age" type="text" class="form-control ageValue " placeholder=""
+                                                   disabled value="">
+                                            <input id="age" type="text" name="age" class="form-control hide ageValue "
+                                                   placeholder="" value="">
+                                            <!--end::Input-->
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
 
@@ -207,11 +232,11 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 pt-4">
-                                            <label class="required">{{__("نوع الإعاقة")}}</label>
+                                        <div id="special_case_type_section" class="col-md-6 pt-4">
+                                            <label class="">{{__("نوع الإعاقة")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="special_case_type"
-                                                        required class="form-control" name="special_case_type">
+                                                        class="form-control" name="special_case_type">
                                                     <option>أختر نوع الإعاقة</option>
                                                     <option value="1"> إعاقة حركية</option>
                                                     <option value="2"> إعاقة سمعية</option>
@@ -270,6 +295,8 @@
     <script type="text/javascript">
         $(function () {
 
+            $("#special_case_type_section").hide()
+
             var date = new Date();
             date.setDate(date.getDate() + 1);
             $('#txtHijriDate').hijriDatePicker({
@@ -277,6 +304,38 @@
                 showClear: true
             });
 
+        });
+    </script>
+
+    <script>
+        function updateAgeValue() {
+            let days = daysdifference($("#birthDayValue").val())
+
+            $(".ageValue").val(days)
+
+        }
+
+        function daysdifference(date) {
+            var startDay = new Date();
+            var endDay = new Date(date);
+
+            // Determine the time difference between two dates
+            var millisBetween = startDay.getTime() - endDay.getTime();
+
+            // Determine the number of days between two dates
+            var days = millisBetween / (1000 * 3600 * 24);
+
+            days = days / 365;
+
+            // Show the final number of days between dates
+            return Math.round(Math.abs(days));
+        }
+    </script>
+
+    <script>
+
+        $("#is_special_case").on('change', function () {
+            $("#special_case_type_section").toggle()
         });
     </script>
 @endsection

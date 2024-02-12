@@ -56,9 +56,19 @@ class Order extends Model
         return $this->hasMany(OrderChildreen::class, 'order_id', 'id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function nationality()
     {
         return $this->belongsTo(Nationality::class, 'nationality_id');
+    }
+
+    public function social_situation()
+    {
+        return $this->belongsTo(SocialSituation::class, 'social_situation_id');
     }
 
     public function city()
@@ -102,6 +112,11 @@ class Order extends Model
         if ($this->status == 4) {
             return "تم تحديث حاله الطلب الخاص بك حيث ان البيانات غير مكتملة الشروط";
         }
+    }
+
+    public static function getOdersCount($orderStatus)
+    {
+        return Order::where("status", $orderStatus)->count();
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\User;
 
+use App\Helpers\ExportHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\User;
@@ -140,6 +141,38 @@ class UsersController extends Controller
     {
         $user = User::find($userId);
         return view('admin.users.print', ["user" => $user]);
+    }
+
+    public function export($status)
+    {
+
+        $fields = [
+            'id' => '#',
+            'id_number' => 'رقم الهوية',
+            'id_number_expiration_date' => 'تاريخ انتهاء صلاحية الهوية',
+
+            'first_name' => 'الاسم الاول',
+            'parent_name' => 'اسم الاب',
+            'grandfather_name' => 'اسم الجد',
+            'family_name' => 'اسم العائلة',
+
+            'social_situation.name_ar' => 'الحالة الاجتماعية',
+            'birth_date' => 'تاريخ الميلاد',
+            'age' => 'العمر',
+            'salary' => 'الراتب',
+            'nationality.name_ar' => 'الجنسية',
+            'city.name' => 'المدينة',
+            'district' => 'الحي',
+            'mobile' => 'رقم الجوال',
+            'mobile2' => 'رقم الجوال الاضافي',
+            'created_at' => 'تاريخ الانشاء',
+        ];
+
+        $orders = Order::where('status', $status)->with(['user'])->get();
+
+        $csvExporter = new \Laracsv\Export();
+        $csvExporter->build($orders, $fields);
+        $csvExporter->download(__("orders") . "-" . Carbon::today()->format('y-m-d') . ".csv");
     }
 
 }

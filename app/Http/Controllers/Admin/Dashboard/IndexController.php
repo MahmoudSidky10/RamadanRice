@@ -26,6 +26,14 @@ class IndexController extends Controller
         }
     }
 
+    public function reports()
+    {
+        $result['doneOrdersCount'] = Order::getOdersCount(2);
+        $result['missingOrdersCount'] = Order::getOdersCount(3);
+        $result['rejectedOrdersCount'] = Order::getOdersCount(4);
+        return view('admin.dashboard.reports')->with($result);
+    }
+
     public function settings()
     {
         $item = Setting::first();

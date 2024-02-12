@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dash', [IndexController::class, 'index']);
+Route::get('/reports', [IndexController::class, 'reports']);
 Route::get('/edit', [IndexController::class, 'edit']);
 Route::put('/updateAdmin', [IndexController::class, 'update']);
 
@@ -20,6 +21,7 @@ Route::resource('employees', EmployeesController::class);
 
 Route::resource('users', UsersController::class);
 Route::get('users/{id}/print', [UsersController::class, 'print'])->name('admin.users.print');
+Route::get('orders/export/{status}', [UsersController::class, 'export'])->name('admin.order.export');
 
 Route::get('/orders', [UsersController::class, 'orders']);
 Route::get('/orders/details/{id}', [UsersController::class, 'orderDetails'])->name('admin.order.details');
