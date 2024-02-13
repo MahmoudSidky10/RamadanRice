@@ -12,10 +12,36 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
+    public function otp()
+    {
+        return view("client.otp");
+    }
+
+    public function otpCheck(Request $request)
+    {
+        $code = $request->code;
+        $user = User::find(Auth::id());
+        if ($code == $user->otp) {
+
+            $user->otp = null;
+            $user->save();
+
+            return redirect()->route("home");
+        } else {
+            session()->flash('danger', "كود التفعيل غير صحيح ");
+            return back();
+        }
+    }
+
     public function index()
     {
         if (Auth::check()) {
             $order = Order::where("user_id", Auth::id())->first();
+
+            if (Auth::user()->otp) {
+                return view('client.otp');
+            }
+
             if ($order) {
                 return view('client.dashboard.order', ["item" => $order]);
             } else {
@@ -28,6 +54,10 @@ class ClientController extends Controller
 
     public function orderDetails()
     {
+        if (Auth::user()->otp) {
+            return view('client.otp');
+        }
+
         $order = Order::where("user_id", Auth::id())->first();
         if ($order) {
             return view('client.dashboard.order', ["item" => $order]);
@@ -38,6 +68,10 @@ class ClientController extends Controller
 
     public function orderChildCreate()
     {
+        if (Auth::user()->otp) {
+            return view('client.otp');
+        }
+
         $order = Order::where("user_id", Auth::id())->first();
         return view('client.dashboard.child-create', ["item" => $order]);
     }
@@ -58,12 +92,23 @@ class ClientController extends Controller
     {
         $data = $request->validate([
             "id_number" => "required",
-            "register_number" => "required"
+            "register_number" => "required",
+            "mobile" => "required",
         ]);
 
         $checkAuth = User::where('id_number', $data['id_number'])->where('register_number', $data['register_number'])->first();
         if ($checkAuth) {
             Auth::login($checkAuth, true);
+            // check from otp code
+            if ($checkAuth->otp_code == null) {
+                $randCode = rand(1111, 9999);
+                $msg = "كود التفعيل الخاص بك هو : " . $randCode;
+                User::find(Auth::id())->update([
+                    'otp' => $randCode
+                ]);
+                $this->sendSms($msg, [$request->mobile]);
+                return redirect('/client/otp');
+            }
             return redirect('/admin/dash');
         } else {
             session()->flash('danger', trans('language.loginError'));
