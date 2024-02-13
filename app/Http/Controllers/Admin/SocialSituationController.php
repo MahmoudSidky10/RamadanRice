@@ -40,7 +40,7 @@ class SocialSituationController extends Controller
 
 
         SocialSituation::create($data);
-
+        toast('تم اضافة البيانات بنجاح', 'success');
         return redirect(url("/admin/socialSituations"));
     }
 
@@ -60,7 +60,7 @@ class SocialSituationController extends Controller
         $user = SocialSituation::find($id);
 
         $user->update($data);
-
+        toast('تم تحديث البيانات بنجاح', 'success');
         return redirect(url("/admin/socialSituations"));
     }
 }

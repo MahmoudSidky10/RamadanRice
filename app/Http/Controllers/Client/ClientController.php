@@ -50,7 +50,7 @@ class ClientController extends Controller
         $data["user_id"] = Auth::id();
 
         OrderChildreen::create($data);
-
+        toast('تم اضافة الطفل بنجاح', 'success');
         return redirect()->route("client.order.details");
     }
 
@@ -134,7 +134,7 @@ class ClientController extends Controller
 
 
         Order::create($data);
-
+        toast('تم اضافة الطلب بنجاح', 'success');
         return redirect()->route('home');
     }
 }

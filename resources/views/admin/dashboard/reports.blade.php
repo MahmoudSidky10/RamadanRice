@@ -32,7 +32,7 @@
                                             </div>
 
                                             <div class="pt-6">
-                                                @if(count($doneOrdersCount))
+                                                @if($doneOrdersCount > 0 )
                                                     <a class="btn btn-dark" href="{{route("admin.order.export",2)}}">استخراج التقرير </a>
                                                 @endif
                                             </div>
@@ -64,7 +64,7 @@
                                             </div>
 
                                             <div class="pt-6">
-                                                @if(count($missingOrdersCount))
+                                                @if($missingOrdersCount > 0 )
                                                     <a class="btn btn-dark" href="{{route("admin.order.export",3)}}">استخراج التقرير </a>
                                                 @endif
                                             </div>
@@ -96,7 +96,7 @@
                                             </div>
 
                                             <div class="pt-6">
-                                                @if(count($rejectedOrdersCount))
+                                                @if($rejectedOrdersCount > 0 )
                                                     <a class="btn btn-dark" href="{{route("admin.order.export",4)}}">استخراج التقرير </a>
                                                 @endif
                                             </div>

@@ -37,6 +37,7 @@ class LoginController extends Controller
         }
 
         if ($checkAuth) {
+            toast('تم تسجيل الدخول بنجاح','success');
             return redirect('/admin/dash');
         } else {
             session()->flash('danger', trans('language.loginError'));

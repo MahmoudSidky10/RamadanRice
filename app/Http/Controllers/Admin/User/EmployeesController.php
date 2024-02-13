@@ -48,6 +48,7 @@ class EmployeesController extends Controller
 
         User::create($data);
 
+        toast('تم اضافة الموظف بنجاح','success');
         return redirect(url("/admin/employees"));
     }
 
@@ -67,7 +68,7 @@ class EmployeesController extends Controller
 
         $user = User::find($id);
         $user->update($data);
-
+        toast('تم تحديث الموظف بنجاح','success');
         return redirect(url("/admin/employees"));
     }
 }

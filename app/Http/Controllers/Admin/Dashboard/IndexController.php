@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
+use Session;
 
 class IndexController extends Controller
 {
@@ -60,6 +62,8 @@ class IndexController extends Controller
         }
 
         $item->update($data);
+
+        toast('تم تحديث البيانات بنجاح','success');
         return redirect()->back()->with('success', __('admin.done'));
     }
 
@@ -77,6 +81,7 @@ class IndexController extends Controller
 
         $item->update($data);
         Auth::login($item);
+        toast('تم تحديث البيانات بنجاح','success');
         return back();
     }
 

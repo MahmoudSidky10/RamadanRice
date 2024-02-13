@@ -71,7 +71,7 @@ class UsersController extends Controller
         $data["user_type_id"] = 2; // user type
 
         User::create($data);
-
+        toast('تم اضافة المستخدم بنجاح', 'success');
         return redirect(url("/admin/users"));
     }
 
@@ -96,7 +96,7 @@ class UsersController extends Controller
 
 
         $user->update($data);
-
+        toast('تم تحديث المستخدم بنجاح', 'success');
         return redirect(url("/admin/users"));
     }
 
@@ -133,7 +133,7 @@ class UsersController extends Controller
         $msg = $order->orderStatusSmsMessage();
         $this->sendSms($msg, [$order->mobile]);
 
-        session()->flash("success", 'تم تحديث حالة الطلب بنجاح');
+        toast('تم تحديث حالة الطلب', 'success');
         return back();
     }
 

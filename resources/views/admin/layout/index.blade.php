@@ -11,7 +11,8 @@
     </div>
 </div>
 @includeIf("admin.layout.footer")
-{{--@include('sweetalert::alert')--}}
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+
 @includeIf("admin.components.modals.delete-modal")
 @includeIf("admin.components.modals.update-modal")
 @includeIf("admin.layout.scripts")
