@@ -32,7 +32,9 @@
                                             </div>
 
                                             <div class="pt-6">
-                                                <a class="btn btn-dark" href="{{route("admin.order.export",2)}}">استخراج التقرير </a>
+                                                @if(count($doneOrdersCount))
+                                                    <a class="btn btn-dark" href="{{route("admin.order.export",2)}}">استخراج التقرير </a>
+                                                @endif
                                             </div>
 
                                         </div>
@@ -62,7 +64,9 @@
                                             </div>
 
                                             <div class="pt-6">
-                                                <a class="btn btn-dark" href="{{route("admin.order.export",3)}}">استخراج التقرير </a>
+                                                @if(count($missingOrdersCount))
+                                                    <a class="btn btn-dark" href="{{route("admin.order.export",3)}}">استخراج التقرير </a>
+                                                @endif
                                             </div>
 
                                         </div>
@@ -92,7 +96,9 @@
                                             </div>
 
                                             <div class="pt-6">
-                                                <a class="btn btn-dark" href="{{route("admin.order.export",4)}}">استخراج التقرير </a>
+                                                @if(count($rejectedOrdersCount))
+                                                    <a class="btn btn-dark" href="{{route("admin.order.export",4)}}">استخراج التقرير </a>
+                                                @endif
                                             </div>
 
                                         </div>
