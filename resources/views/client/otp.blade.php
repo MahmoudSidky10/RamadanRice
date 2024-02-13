@@ -20,7 +20,7 @@
         }
     </style>
 
-    <link href="{{asset("assets/admin/media/logos/logo-1.svg")}}" rel="stylesheet">
+    <link href="{{asset("assets/images/logo.png")}}" rel="stylesheet">
 
 </head>
 <body id="kt_body"
@@ -34,7 +34,7 @@
                 class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
 
                 <a href="#" class="flex-column-auto py-5 py-md-0">
-                    <img src="{{asset('assets/admin/media/logos/logo-1.svg')}}" alt="logo" class="h-50px"/>
+                    <img src="{{asset("assets/images/logo.png")}}" alt="logo" class="h-50px"/>
 
                 </a>
 
@@ -48,7 +48,7 @@
             <div class="container row">
                 <div
                     class="col-lg-6 bgi-size-contain bgi-no-repeat bgi-position-y-center bgi-position-x-center min-h-150px mt-10 m-md-0"
-                    style="background-image: url({{asset("assets/admin/media/svg/illustrations/payment.svg")}})"></div>
+                    style="background-image: url({{asset("assets/admin/media/svg/illustrations/process-verify.svg")}})"></div>
                 <div class="col-lg-6 d-flex align-items-center">
                     <div class="login-form login-signin">
                         <form class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate"
@@ -81,6 +81,11 @@
                                     class="font-size-h6 font-weight-bolder text-dark">{{__("كود التفعيل")}}</label>
                                 <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
                                        name="code" autocomplete="off"/>
+
+                                <div class="pt-4">
+                                    <a href="{{route("client-otp-resend")}}">{{__("اعاده ارسال كود التفعيل")}}</a>
+                                </div>
+
                             </div>
 
                             <div class="pb-lg-0 pb-5">
@@ -88,6 +93,7 @@
                                         class="btn btn-primary font-weight-bolder font-size-h6 px-8 col-md-12 py-4 my-3 mr-">
                                     ادخال
                                 </button>
+
                             </div>
                         </form>
                     </div>

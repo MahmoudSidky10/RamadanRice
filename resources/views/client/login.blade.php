@@ -20,21 +20,21 @@
         }
     </style>
 
-    <link href="{{asset("assets/admin/media/logos/logo-1.svg")}}" rel="stylesheet">
+    <link href="{{asset("assets/images/logo.png")}}" rel="stylesheet">
 
 </head>
 <body id="kt_body"
       class="header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-secondary-enabled page-loading">
 <div class="d-flex flex-column flex-root">
     <div
-            class="login login-2 login-signin-on d-flex flex-column flex-column-fluid bg-white position-relative overflow-hidden"
-            id="kt_login">
+        class="login login-2 login-signin-on d-flex flex-column flex-column-fluid bg-white position-relative overflow-hidden"
+        id="kt_login">
         <div class="login-header py-10 flex-column-auto">
             <div
-                    class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
+                class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
 
                 <a href="#" class="flex-column-auto py-5 py-md-0">
-                    <img src="{{asset('assets/admin/media/logos/logo-1.svg')}}" alt="logo" class="h-50px"/>
+                    <img src="{{asset("assets/images/logo.png")}}" alt="logo" class="h-50px"/>
 
                 </a>
 
@@ -47,8 +47,8 @@
         <div class="login-body d-flex flex-column-fluid align-items-stretch justify-content-center">
             <div class="container row">
                 <div
-                        class="col-lg-6 bgi-size-contain bgi-no-repeat bgi-position-y-center bgi-position-x-center min-h-150px mt-10 m-md-0"
-                        style="background-image: url({{asset("assets/admin/media/svg/illustrations/payment.svg")}})"></div>
+                    class="col-lg-6 bgi-size-contain bgi-no-repeat bgi-position-y-center bgi-position-x-center min-h-150px mt-10 m-md-0"
+                    style="background-image: url({{asset("assets/admin/media/svg/illustrations/process-analyse.svg")}})"></div>
                 <div class="col-lg-6 d-flex align-items-center">
                     <div class="login-form login-signin">
                         <form class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate"
@@ -78,20 +78,20 @@
                             </div>
                             <div class="form-group">
                                 <label
-                                        class="font-size-h6 font-weight-bolder text-dark">{{__("رقم الهوية")}}</label>
+                                    class="font-size-h6 font-weight-bolder text-dark">{{__("رقم الهوية")}}</label>
                                 <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
                                        name="id_number" autocomplete="off"/>
                             </div>
                             <div class="form-group">
                                 <label
-                                        class="font-size-h6 font-weight-bolder text-dark">{{__("رقم الجوال")}}</label>
+                                    class="font-size-h6 font-weight-bolder text-dark">{{__("رقم الجوال")}}</label>
                                 <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
                                        name="mobile" autocomplete="off"/>
                             </div>
                             <div class="form-group">
                                 <div class="  justify-content-between mt-n5">
                                     <label
-                                            class="font-size-h6 font-weight-bolder text-dark pt-5">{{__("رمز الدخول")}}</label>
+                                        class="font-size-h6 font-weight-bolder text-dark pt-5">{{__("رمز الدخول")}}</label>
                                 </div>
                                 <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
                                        name="register_number" autocomplete="off"/>

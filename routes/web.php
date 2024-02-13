@@ -11,6 +11,7 @@ Route::get('/sms', [ClientController::class, 'sendSms'])->name("sms");
 Route::get('/', [ClientController::class, 'index'])->name("home");
 
 Route::get('/client/otp', [ClientController::class, 'otp'])->name('client.otp');
+Route::get('/client/client-otp-resend', [ClientController::class, 'resendOtp'])->name('client-otp-resend');
 Route::post('/client/otpCheck', [ClientController::class, 'otpCheck'])->name('client-otp');
 
 Route::get('/client/login', [ClientController::class, 'index'])->name('client.login');

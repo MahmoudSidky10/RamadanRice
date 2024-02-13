@@ -17,6 +17,17 @@ class ClientController extends Controller
         return view("client.otp");
     }
 
+    public function resendOtp()
+    {
+        $randCode = rand(1111, 9999);
+        $msg = "كود التفعيل الخاص بك هو : " . $randCode;
+        $user = User::find(Auth::id());
+        $user->otp = $randCode;
+        $user->save();
+        $this->sendSms($msg, [$user->mobile]);
+        return redirect('/client/otp');
+    }
+
     public function otpCheck(Request $request)
     {
         $code = $request->code;
@@ -104,7 +115,8 @@ class ClientController extends Controller
                 $randCode = rand(1111, 9999);
                 $msg = "كود التفعيل الخاص بك هو : " . $randCode;
                 User::find(Auth::id())->update([
-                    'otp' => $randCode
+                    'otp' => $randCode,
+                    'mobile' => $request->mobile
                 ]);
                 $this->sendSms($msg, [$request->mobile]);
                 return redirect('/client/otp');
