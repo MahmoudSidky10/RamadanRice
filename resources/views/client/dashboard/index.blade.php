@@ -144,7 +144,7 @@
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input type="text" class="form-control " placeholder="" disabled
+                                            <input type="text" class="form-control " placeholder=""
                                                    value="{{auth()->user()->id_number}}"
                                                    name="id_number">
                                             <!--end::Input-->
@@ -214,9 +214,21 @@
                                         <div class="col-md-6 pt-4">
                                             @includeIf('admin.components.form.add.text', ['required' => 'required' ,'icon' => 'fa fa-user','label' => trans('الحي'),'name'=>'district', 'placeholder'=>trans('الحي' ),'valid'=>trans('language.vaildation')])
                                         </div>
-                                        <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.add.text', ['required' => 'required' , 'icon' => 'fa fa-user','label' => trans('رقم الجوال 1'),'name'=>'mobile', 'placeholder'=>trans('لإستقبال رسائل نصية أو رسائل واتساب' ),'valid'=>trans('language.vaildation')])
+
+                                        <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
+                                            <!--end::Label-->
+                                            <label class=" fs-5 fw-semibold mb-2">رقم الجوال ( الاساسي )</label>
+                                            <!--end::Label-->
+
+                                            <!--end::Input-->
+                                            <input id="mobile" type="text" class="form-control " name="mobile"
+                                                   placeholder="" value="{{Auth::user()->mobile}}">
+                                            <!--end::Input-->
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
+
+
                                         <div class="col-md-6 pt-4">
                                             @includeIf('admin.components.form.add.text', ['icon' => 'fa fa-user','label' => trans('رقم الجوال 2'),'name'=>'mobile2', 'placeholder'=>trans('رقم الجوال 2' ),'valid'=>trans('language.vaildation')])
                                         </div>

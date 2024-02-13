@@ -71,6 +71,11 @@ class Order extends Model
         return $this->belongsTo(SocialSituation::class, 'social_situation_id');
     }
 
+    public function employee()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function city()
     {
         return $this->belongsTo(City::class, 'city');
@@ -102,16 +107,17 @@ class Order extends Model
         }
 
         if ($this->status == 2) {
-            return "تم قبول الطلب من قبل ارزاق رمضان يرجي التوجه لاقرف فرع لاستلام طلبك";
+            return "تم قبول طلبك بنجاح, ستصلك رساله بموعد استلام طلبك";
         }
 
         if ($this->status == 3) {
-            return "تم تحديث حاله الطلب الخاص بك حيث ان البيانات غير مكتملة من فضلك قم بمراجعة الطلب";
+            return "تم تعليق طلبك يرجي مراجعة البيانات المدخلة";
         }
 
         if ($this->status == 4) {
-            return "تم تحديث حاله الطلب الخاص بك حيث ان البيانات غير مكتملة الشروط";
+            return "تم رفض الطلب لعدم تحقيق شروط القبول";
         }
+
     }
 
     public static function getOdersCount($orderStatus)

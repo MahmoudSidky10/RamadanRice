@@ -132,31 +132,7 @@ class ClientController extends Controller
     public function orderStore(Request $request)
     {
 
-        $data = $request->validate([
-            "first_name" => "required",
-            "parent_name" => "required",
-            "grandfather_name" => "required",
-            "family_name" => "required",
-            "social_situation_id" => "required",
-            "nationality_id" => "required",
-            "salary" => "required",
-            "id_number_expiration_date" => "required",
-            "birth_date" => "required",
-            "age" => "required",
-            "city" => "required",
-            "district" => "required",
-            "mobile" => "required",
-            "mobile2" => "required",
-            "is_special_case" => "required",
-            "special_case_type" => "required",
-
-            "id_number_image" => "required",
-            "divorce_deed" => "required",
-            "husband_death_image" => "required",
-            "prisoner_family_identification_facility" => "required",
-            "attached_is_the_support_instrument" => "required",
-            "absher_facility" => "required",
-        ]);
+        $data = $request->all();
 
 
         if ($request->id_number_image) {
@@ -190,7 +166,11 @@ class ClientController extends Controller
         $data['status'] = 1;
 
 
-        Order::create($data);
+        $order = Order::create($data);
+
+        $msg = "تم أستلام طلبك بنجاح";
+        $this->sendSms($msg, [$order->user->mobile]);
+
         toast('تم اضافة الطلب بنجاح', 'success');
         return redirect()->route('home');
     }

@@ -156,6 +156,8 @@ class UsersController extends Controller
             'grandfather_name' => 'اسم الجد',
             'family_name' => 'اسم العائلة',
 
+            'employee.name' => 'اسم الموظف',
+
             'social_situation.name_ar' => 'الحالة الاجتماعية',
             'birth_date' => 'تاريخ الميلاد',
             'age' => 'العمر',

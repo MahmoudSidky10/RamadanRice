@@ -5,19 +5,30 @@
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <div id="kt_app_content" class="app-content  flex-column-fluid ">
-
-
                 <!--begin::Content container-->
                 <div id="kt_app_content_container" class="app-container  container-xxl ">
                     <!--begin::Careers main-->
+
+                    @if(Auth::user()->id == $item->user_id)
+                        <div class="fw-semibold fs-6 text-gray-500 mb-8">
+                            <h5 style="font-weight: bold">
+                                <label class="alert alert-success"> تم تسجيل طلبك بنجاح ستصلك رساله بها بيانات
+                                    الطلب </label>
+                            </h5>
+                        </div>
+                    @endif
+
                     <div class="d-flex flex-column flex-xl-row">
                         <!--begin::Content-->
-
-
-                        <div class="col-md-12 pt-2">
+                        <div class="col-md-12">
                             <div class="card card-custom gutter-b example example-compact">
                                 <div class="card-header">
-                                    <h3 class="card-title">تفاصيل الطلب </h3>
+                                    <p class="card-title">تفاصيل الطلب
+                                        (
+                                        <span
+                                                style="font-weight: normal; color: #0a6aa1;margin: 0 5px"> {{$item->orderStatusSmsMessage()}} </span>
+                                        )
+                                    </p>
                                     <a style="padding-top:25px" class="" data-toggle="collapse"
                                        href="#collapseExample3"
                                        role="button" aria-expanded="false" aria-controls="collapseExample3">
@@ -28,6 +39,66 @@
 
                                 </div>
                             </div>
+                            <!-- show children table -->
+                            <div class="card card-custom gutter-b example example-compact">
+                                <div class="card-header">
+                                    <h3 class="card-title"> قائمه الابناء </h3>
+
+                                    <a style="padding-top:25px" class="" data-toggle="collapse"
+                                       href="#collapseExample2"
+                                       role="button" aria-expanded="false" aria-controls="collapseExample2">
+                                        <i class="fa fa-plus colOpenClick2  "></i>
+                                        <i class="fa fa-minus colCloseClick2 hide"></i>
+                                    </a>
+
+
+                                </div>
+                            </div>
+                            <section class="collapse " id="collapseExample2">
+                                <div class="row">
+                                    <div class="col-lg-12 col-xl-12 stretch-card mb-8 ">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                @if(Auth::user()->id == $item->user_id)
+                                                    <a href="{{route("client.order.child.create")}}"
+                                                       class="btn btn-info ">
+                                                        أضافه فرد للعائلة</a>
+                                                @endif
+                                                <div class="table-responsive">
+                                                    <table class="table table-hove">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>{{trans('language.name')}}</th>
+                                                            <th>{{trans('language.relative_relation')}}</th>
+                                                            <th>{{trans('language.id_number')}}</th>
+                                                            <th>{{trans('language.birthday')}}</th>
+                                                            <th>{{trans('language.salary')}}</th>
+                                                            <th>{{trans('language.is_orphan')}}</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @foreach($item->childreen as $child)
+                                                            <tr>
+                                                                <td>{{$loop->iteration }}</td>
+                                                                <td>{{$child->name}}</td>
+                                                                <td>{{$child->relative_relation}}</td>
+                                                                <td>{{$child->id_number}}</td>
+                                                                <td>{{$child->birth_date}}</td>
+                                                                <td>{{$child->salary}}</td>
+                                                                <td>{{$child->salary ? 1 : 'نعم' ,'لا'}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- end ../ children table -->
+                            <br>
                             <!--begin::Form-->
                             <section class="collapse show " id="collapseExample3"
                                      style="background-color: #ffffff; padding: 10px 30px">
@@ -151,7 +222,8 @@
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("المدينه")}}</label>
                                             <div class="">
-                                                <select style="height: 40px !important;" id="city" disabled required class="form-control " name="city">
+                                                <select style="height: 40px !important;" id="city" disabled required
+                                                        class="form-control " name="city">
                                                     @foreach(\App\Models\City::all() as $city)
                                                         <option @if($item->city == $city->id) selected
                                                                 @endif value="{{$city->id}}">{{$city->name}}</option>
@@ -225,6 +297,23 @@
                                     </div>
                                     <!--end::Names inputs-->
 
+
+                                    @if(Auth::user()->isEmployee() == true)
+                                        <a href="javascript:void(0)"
+                                           class="btn btn-dark updateStatusBtn"
+                                           data-original-title="تحديث الحالة"
+                                           data-message="{{"تحديث حاله الطلب "}}"
+                                           data-action="{{url("admin/orders/$item->id/updateStatus")}}"
+                                           data-toggle="modal"
+                                           data-id="{{$item->id}}"
+                                           data-target=".updateStatusModal"
+                                           title="{{trans('تحديث الحالة')}}">
+                                            تحديث الحالة
+                                        </a>
+                                    @endif
+
+
+
                                     <!--begin::Separator-->
                                     <div class="separator mb-8"></div>
                                     <!--end::Separator-->
@@ -232,66 +321,6 @@
                                 </form>
                             </section>
                             <!--end::Form-->
-                            <br>
-                            <!-- show children table -->
-                            <div class="card card-custom gutter-b example example-compact">
-                                <div class="card-header">
-                                    <h3 class="card-title"> قائمه الابناء </h3>
-
-                                    <a style="padding-top:25px" class="" data-toggle="collapse"
-                                       href="#collapseExample2"
-                                       role="button" aria-expanded="false" aria-controls="collapseExample2">
-                                        <i class="fa fa-plus colOpenClick2  "></i>
-                                        <i class="fa fa-minus colCloseClick2 hide"></i>
-                                    </a>
-
-
-                                </div>
-                            </div>
-                            <section class="collapse " id="collapseExample2">
-                                <div class="row">
-                                    <div class="col-lg-12 col-xl-12 stretch-card mb-8 ">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                @if(Auth::user()->id == $item->user_id)
-                                                    <a href="{{route("client.order.child.create")}}"
-                                                       class="btn btn-info ">
-                                                        أضافه فرد للعائلة</a>
-                                                @endif
-                                                <div class="table-responsive">
-                                                    <table class="table table-hove">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>{{trans('language.name')}}</th>
-                                                            <th>{{trans('language.relative_relation')}}</th>
-                                                            <th>{{trans('language.id_number')}}</th>
-                                                            <th>{{trans('language.birthday')}}</th>
-                                                            <th>{{trans('language.salary')}}</th>
-                                                            <th>{{trans('language.is_orphan')}}</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        @foreach($item->childreen as $child)
-                                                            <tr>
-                                                                <td>{{$loop->iteration }}</td>
-                                                                <td>{{$child->name}}</td>
-                                                                <td>{{$child->relative_relation}}</td>
-                                                                <td>{{$child->id_number}}</td>
-                                                                <td>{{$child->birth_date}}</td>
-                                                                <td>{{$child->salary}}</td>
-                                                                <td>{{$child->salary ? 1 : 'نعم' ,'لا'}}</td>
-                                                            </tr>
-                                                        @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                            <!-- end ../ children table -->
 
 
                             <!--end::Content-->
@@ -304,8 +333,8 @@
             </div>
         </div>
 
-@endsection
-@section("js")
+        @endsection
+        @section("js")
             <script>
                 lightbox.option({
                     'resizeDuration': 200,
