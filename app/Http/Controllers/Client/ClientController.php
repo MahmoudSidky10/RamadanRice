@@ -134,6 +134,17 @@ class ClientController extends Controller
 
         $data = $request->all();
 
+        // check if id number exists return error
+        $userExist = User::where("id", "!=", Auth::id())->where("id_number", $request->id_number)->first();
+        if ($userExist) {
+            session()->flash('danger', trans('رقم الهوية موجود مسبقا , يرجي التاكد من البيانات مره اخري'));
+        }
+
+        // check if id number exists return error
+        $userExist = User::where("id", "!=", Auth::id())->where("mobile", $request->mobile)->first();
+        if ($userExist) {
+            session()->flash('danger', trans('رقم الجوال موجود مسبقا , يرجي التاكد من البيانات مره اخري'));
+        }
 
         if ($request->id_number_image) {
             $data['id_number_image'] = $this->storeImage($request->id_number_image, 'images');

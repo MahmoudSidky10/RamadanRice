@@ -44,7 +44,7 @@
                                                    name="first_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -57,7 +57,7 @@
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -70,7 +70,7 @@
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -83,7 +83,7 @@
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("الحالة الإجتماعية")}}</label>
@@ -135,7 +135,7 @@
                                                    value="" name="salary">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
@@ -149,7 +149,7 @@
                                                    name="id_number">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
@@ -163,7 +163,7 @@
                                                    class="form-control"/>
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
@@ -177,7 +177,7 @@
                                                    name="birth_date">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
 
@@ -193,7 +193,7 @@
                                                    placeholder="" value="">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
 
@@ -225,7 +225,7 @@
                                                    placeholder="" value="{{Auth::user()->mobile}}">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
 
@@ -261,7 +261,7 @@
 
                                         <div class="col-md-12 pt-4 ">
                                             <div class="row">
-                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.add.file', ['required' => 'required' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
@@ -299,8 +299,8 @@
 @endsection
 @section("js")
     <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
-        rel="stylesheet"/>
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+            rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment-hijri@2.1.0/moment-hijri.js"></script>
     <script src="{{asset("/assets/admin/js/bootstrap-hijri-datetimepicker.js")}}"></script>
