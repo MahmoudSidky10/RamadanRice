@@ -76,7 +76,7 @@ class Order extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function city()
+    public function cityName()
     {
         return $this->belongsTo(City::class, 'city');
     }

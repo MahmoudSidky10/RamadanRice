@@ -47,19 +47,8 @@
         class="login login-2 login-signin-on d-flex flex-column flex-column-fluid bg-white position-relative overflow-hidden"
         id="kt_login">
         <div class="login-header py-10 flex-column-auto">
-            <div
-                class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
-
-                <a href="#" class="flex-column-auto py-5 py-md-0">
 
 
-                </a>
-
-                <h1 class="flex-right-auto py-5 py-md-0" style="font-size: 30px">
-                    طلبات الارزاق
-                </h1>
-
-            </div>
         </div>
         <div class="login-body d-flex flex-column-fluid align-items-stretch justify-content-center">
             <div class="container row">
@@ -1491,7 +1480,7 @@
                             <div class="form-group">
                                 <div class="  justify-content-between mt-n5">
                                     <label
-                                        class="font-size-h6 font-weight-bolder text-dark pt-5">{{__("الرقم العشوائي")}}</label>
+                                        class="font-size-h6 font-weight-bolder text-dark pt-5">{{__("رمز الدخول")}}</label>
                                 </div>
                                 <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
                                        name="register_number" autocomplete="off"/>

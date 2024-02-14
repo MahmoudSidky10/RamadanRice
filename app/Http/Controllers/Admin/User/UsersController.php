@@ -58,7 +58,11 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'id_number' => 'required'
+            'id_number' => 'required|min:10|max:10',
+        ],[
+            'id_number.required' => 'يجب عليك ادخال رقم الهوية',
+            'id_number.min' => 'يجب عليك ادخال رقم الهوية بشكل صحيح الحد الادني 10 أرقام',
+            'id_number.max' => 'يجب عليك ادخال رقم الهوية بشكل صحيح الحد الاقصي 10 أرقام',
         ]);
 
         // check if id number exists return error
@@ -130,10 +134,11 @@ class UsersController extends Controller
         $order->status_updated_at = Carbon::now();
         $order->save();
 
-        // Send sms to user
-        $msg = $order->orderStatusSmsMessage();
-        $this->sendSms($msg, [$order->mobile]);
-
+        if ($order->status != 2){
+            // Send sms to user
+            $msg = $order->orderStatusSmsMessage();
+            $this->sendSms($msg, [$order->mobile]);
+        }
         toast('تم تحديث حالة الطلب', 'success');
         return back();
     }
@@ -164,7 +169,7 @@ class UsersController extends Controller
             'age' => 'العمر',
             'salary' => 'الراتب',
             'nationality.name_ar' => 'الجنسية',
-            'city.name' => 'المدينة',
+            'cityName.name' => 'المدينة',
             'district' => 'الحي',
             'mobile' => 'رقم الجوال',
             'mobile2' => 'رقم الجوال الاضافي',

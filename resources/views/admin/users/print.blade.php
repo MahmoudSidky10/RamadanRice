@@ -46,20 +46,26 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <p class="Head_section">ـــــــــــــــــــــــ تعليمات للاستفاده من الخدمه ـــــــــــــــــــــــ</p>
+            <p class="Head_section">ـــــــــــــــــــــــ برنامج أرزاق رمضان ـــــــــــــــــــــــ</p>
         </div>
         <div class="col-12 mt-3">
-            <p class="paper_content"> الدخول للموقع الإلكتروني إما بمسح الباركود بواسطة الكاميرا أو زيارةالرابط
-                الإلكتروني </p>
-            <p class="paper_content"> الضغط على أيقونة تقديم طلب جديد لبرنامج أرزاق رمضان </p>
-            <p class="paper_content"> إدخال الرقم العشوائي الموضح في الورقة ورقم الهوية </p>
+
+            <h2 style="font-weight: bolder !important" class="head_content">
+                عزيري المستفيد ,أدناه تعليمات تقديم طلب أرزاق رمضان :
+            </h2>
+            <p class="paper_content"> الدخول للموقع الإلكتروني إما بمسح الباركود بواسطة الكاميرا
+                <br>
+                أو زيارة الرابط
+                الإلكتروني
+            ( www.ihr-ksa.com )
+            </p>
+            <p class="paper_content"> إدخال رمز الدخول الموضح في الورقة ورقم الهوية </p>
             <p class="paper_content"> إكمال تعبئة البيانات والمرفقات بشكل سليم </p>
             <p class="paper_content"> الضغط على كلمة إرسال </p>
             <p class="paper_content"> ستصلكم رسالة نصيه لاحقاً بعد التحقق من الطلب لزيارة أي فرع متجر الدكان واستلام
                 طلبكم </p>
 
-            <p class="Randome_number">الرقم الهوية : {{$user->id_number}} </p>
-            <p class="Randome_number">الرقم العشوائي : {{$user->register_number}} </p>
+            <p class="Randome_number"> رمز الدخول  : {{$user->register_number}} </p>
 
         </div>
         <div class="col-12 Nots">

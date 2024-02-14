@@ -105,6 +105,12 @@
     margin-right: 20px;
 }
 
+.head_content {
+    font-size: 17px;
+    color: #092635;
+    margin-right: 20px;
+}
+
 .Head_section {
     text-align: center;
     font-size: 22px;
@@ -115,6 +121,7 @@
 .Nots {
     text-align: center;
 }
+
 
 .Nots p {
     display: inline-block;

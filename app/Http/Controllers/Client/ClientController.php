@@ -205,8 +205,8 @@ class ClientController extends Controller
 
         $order = Order::create($data);
 
-        $msg = "تم أستلام طلبك بنجاح";
-        $this->sendSms($msg, [$order->user->mobile]);
+        // $msg = "تم أستلام طلبك بنجاح";
+        // $this->sendSms($msg, [$order->user->mobile]);
 
         toast('تم اضافة الطلب بنجاح', 'success');
         return redirect()->route('home');
