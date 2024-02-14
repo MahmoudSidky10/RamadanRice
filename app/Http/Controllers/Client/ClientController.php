@@ -47,6 +47,11 @@ class ClientController extends Controller
     public function index()
     {
         if (Auth::check()) {
+
+            if (Auth::user()->user_type_id == 2) {
+                return redirect('/admin/dash');
+            }
+
             $order = Order::where("user_id", Auth::id())->first();
 
             if (Auth::user()->otp) {
