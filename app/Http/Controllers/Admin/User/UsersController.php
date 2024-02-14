@@ -64,7 +64,8 @@ class UsersController extends Controller
         // check if id number exists return error
         $userExist = User::where("id_number", $request->id_number)->first();
         if ($userExist) {
-            session()->flash('danger', trans('رقم الهوية موجود مسبقا , يرجي التاكد من البيانات مره اخري'));
+            toast('تم اضافة المستخدم بنجاح', 'danger');
+            return back();
         }
 
         $data['register_number'] = self::generateRegisterNumber();
