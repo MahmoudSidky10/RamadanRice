@@ -48,7 +48,7 @@ class ClientController extends Controller
     {
         if (Auth::check()) {
 
-            if (Auth::user()->user_type_id == 2) {
+            if (Auth::user()->user_type_id == 3) {
                 return redirect('/admin/dash');
             }
 
@@ -110,11 +110,32 @@ class ClientController extends Controller
             "id_number" => "required",
             "register_number" => "required",
             "mobile" => "required",
+        ], [
+            'id_number.required' => "رقم الهوية مطلوب",
+            'register_number.required' => "رقم العشوائي مطلوب",
+            'mobile.required' => "رقم الجوال مطلوب"
         ]);
+
 
         $checkAuth = User::where('id_number', $data['id_number'])->where('register_number', $data['register_number'])->first();
         if ($checkAuth) {
+            // check if user using register number ?
+            if ($checkAuth->mobile) {
+                if ($checkAuth->mobile != $request->mobile) {
+                    session()->flash('danger', trans('language.loginError'));
+                    return redirect()->route("client.login");
+                }
+            } else {
+                // check if id number exists return error
+                $userExist = User::where("mobile", $request->mobile)->first();
+                if ($userExist) {
+                    session()->flash('danger', trans('رقم الجوال موجود مسبقا , يرجي التاكد من البيانات مره اخري'));
+                    return redirect()->route("client.login");
+                }
+            }
+
             Auth::login($checkAuth, true);
+
             // check from otp code
             if ($checkAuth->otp_code == null) {
                 $randCode = rand(1111, 9999);

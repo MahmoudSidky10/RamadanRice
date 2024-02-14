@@ -71,9 +71,9 @@ class UsersController extends Controller
         $data['register_number'] = self::generateRegisterNumber();
         $data["user_type_id"] = 2; // user type
 
-        User::create($data);
+        $user = User::create($data);
         toast('تم اضافة المستخدم بنجاح', 'success');
-        return redirect(url("/admin/users"));
+        return redirect(route("admin.users.print",$user->id));
     }
 
     public function edit($id)

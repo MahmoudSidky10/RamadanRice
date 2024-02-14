@@ -15,7 +15,7 @@ class User extends Authenticatable
     protected $fillable = [
         'otp',
         'mobile',
-        'user_type_id',
+        'user_type_id', // 1- admin, 2- user , 3- employee
         'name',
         'email',
         'password',
