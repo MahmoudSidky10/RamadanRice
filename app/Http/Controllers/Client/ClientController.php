@@ -109,11 +109,13 @@ class ClientController extends Controller
         $data = $request->validate([
             "id_number" => "required",
             "register_number" => "required",
-            "mobile" => "required",
+            "mobile" => "required|min:10|max:10",
         ], [
             'id_number.required' => "رقم الهوية مطلوب",
             'register_number.required' => "رقم العشوائي مطلوب",
-            'mobile.required' => "رقم الجوال مطلوب"
+            'mobile.required' => "رقم الجوال مطلوب",
+            'mobile.min' => 'يجب عليك ادخال رقم الجوال بشكل صحيح الحد الادني 10 أرقام',
+            'mobile.max' => 'يجب عليك ادخال رقم الجوال بشكل صحيح الحد الاقصي 10 أرقام',
         ]);
 
 

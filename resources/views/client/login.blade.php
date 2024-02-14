@@ -48,6 +48,18 @@
         id="kt_login">
         <div class="login-header py-10 flex-column-auto">
 
+            <div
+                class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
+
+                <a href="#" class="flex-column-auto py-5 py-md-0">
+                    <!-- <img src="{{asset("assets/images/logo.png")}}" alt="logo" class="h-50px"/> -->
+                </a>
+
+                <h1 class="flex-right-auto py-5 py-md-0" style="font-size: 30px">
+                    طلبات الارزاق
+                </h1>
+
+            </div>
 
         </div>
         <div class="login-body d-flex flex-column-fluid align-items-stretch justify-content-center">
@@ -1490,7 +1502,7 @@
                                 <label
                                     class="font-size-h6 font-weight-bolder text-dark">{{__("رقم الجوال")}}</label>
                                 <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
-                                       name="mobile" autocomplete="off"/>
+                                       name="mobile" placeholder="05XXXXXXXX" autocomplete="off"/>
                             </div>
                             <div class="">
                                 <div class="tacbox" dir="rtl">
