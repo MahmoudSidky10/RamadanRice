@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\LoginOutController;
 use App\Http\Controllers\Client\ClientController;
 use Illuminate\Support\Facades\Route;
 
+dd(bcrypt(12345678));
 
 // Client Routes :-
 Route::get('/sms', [ClientController::class, 'sendSms'])->name("sms");
