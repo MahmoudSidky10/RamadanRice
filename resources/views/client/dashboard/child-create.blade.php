@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 @section('content')
-    @include("admin.layout.nav",["title" => trans('أضافه بيانات الفرد')])
+    @include("admin.layout.nav",["title" => trans('أضافه بيانات المعالين')])
 
     <div class="d-flex flex-column-fluid">
         <div class="container">
@@ -24,7 +24,7 @@
                                     <div class="mb-7">
                                         <!--begin::Title-->
                                         <h4 class="fs-1 text-gray-800 w-bolder mb-6">
-                                            قم بأضافه بيانات الفرد
+                                            قم بأضافه بيانات المعالين
                                         </h4>
                                         <!--end::Title-->
 
@@ -88,7 +88,7 @@
 
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
-                                            <label class="required fs-5 fw-semibold mb-2">الراتب الشهري</label>
+                                            <label class=" fs-5 fw-semibold mb-2">الراتب الشهري</label>
                                             <!--end::Label-->
 
                                             <!--end::Input-->
@@ -102,7 +102,7 @@
 
 
                                         <div class="col-md-6 pt-4">
-                                            <label class="required">{{__("هل الفرد يتيم ؟")}}</label>
+                                            <label class="">{{__("هل الفرد يتيم ؟")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="is_orphan"
                                                         required class="form-control" name="is_orphan">

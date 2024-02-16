@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset("assets/print/assets/PrintStyle.css")}}">
 
     <title>index</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset("assets/print/assets/images/logo.jpg")}}"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset("assets/images/logo.png")}}"/>
 </head>
 <body>
 <!-- GENRALL HEAD FOR PAGE -->
@@ -42,7 +42,7 @@
 <div class="container-fluid ">
     <div class="row">
         <div class="col-6">
-            <img class="Site_logo" src="{{asset("assets/print/assets/images/logo.jpg")}}" alt="logo">
+            <img class="Site_logo" src="{{asset("assets/images/logo.png")}}" alt="logo">
         </div>
         <div class="col-6 text-left">
             <img class="Site_parcode" src="{{asset("assets/print/assets/images/parcode.png")}}" alt="logo">
@@ -68,7 +68,7 @@
             <p class="paper_content"> إدخال رمز الدخول الموضح أدناه ورقم الهوية </p>
             <p class="paper_content"> إكمال تعبئة البيانات والمرفقات بشكل سليم </p>
             <p class="paper_content"> الضغط على كلمة إرسال </p>
-            <p class="paper_content"> في حالة استيفائكم لشروط وبعد التحقق من طلبكم ستصلكم رسالة نصية لزيارة أي فرع من
+            <p class="paper_content"> في حالة استيفائكم للشروط وبعد التحقق من طلبكم ستصلكم رسالة نصية لزيارة أي فرع من
                 فروع متجر الدكان</p>
 
             <p class="Randome_number"> رمز الدخول : {{$user->register_number}} </p>

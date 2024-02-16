@@ -106,11 +106,6 @@
                 <div class="offcanvas-content pr-5 mr-n5">
                     <!--begin::Header-->
                     <div class="d-flex align-items-center mt-5">
-                        <div class="symbol symbol-100 mr-5">
-                            <div class="symbol-label"
-                                 style="background-image:url({{asset("assets/images/logo.png")}}); background-size: cover"></div>
-                            <i class="symbol-badge bg-success"></i>
-                        </div>
                         <div class="d-flex flex-column">
                             <a href="#"
                                class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{Auth::user()->name}}</a>

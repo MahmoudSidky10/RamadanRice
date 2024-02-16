@@ -158,7 +158,7 @@ class ClientController extends Controller
         $data["user_id"] = Auth::id();
 
         OrderChildreen::create($data);
-        toast('تم اضافة الطفل بنجاح', 'success');
+        toast('تم اضافة المعال بنجاح', 'success');
         return redirect()->back();
     }
 
@@ -270,8 +270,6 @@ class ClientController extends Controller
 
         // $msg = "تم أستلام طلبك بنجاح";
         // $this->sendSms($msg, [$order->user->mobile]);
-
-        toast('تم اضافة الطلب بنجاح', 'success');
         return redirect()->route('client.order.child.create');
     }
 }

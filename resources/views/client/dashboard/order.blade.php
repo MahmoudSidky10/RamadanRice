@@ -14,11 +14,13 @@
                     @endif
 
 
+
                     @if(Auth::user()->id == $item->user_id)
                         <div class="fw-semibold fs-6 text-gray-500 mb-8">
                             <h5 style="font-weight: bold">
-                                <label class="alert alert-success"> تم تسجيل طلبك بنجاح ستصلك رساله بها بيانات
-                                    الطلب </label>
+                                <label class="alert alert-success">
+                                    تم استلام طلبكم وسيتم التحقق من استيفائكم لشروط البرنامج والبيانات المقدمة
+                                </label>
                             </h5>
                         </div>
                     @endif
@@ -31,7 +33,7 @@
                                     <p class="card-title">تفاصيل الطلب
                                         (
                                         <span
-                                            style="font-weight: normal; color: #0a6aa1;margin: 0 5px"> {{$item->orderStatusSmsMessage()}} </span>
+                                                style="font-weight: normal; color: #0a6aa1;margin: 0 5px"> {{$item->orderStatusSmsMessage()}} </span>
                                         )
                                     </p>
                                     <a style="padding-top:25px" class="" data-toggle="collapse"
@@ -52,7 +54,7 @@
                                       class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework"
                                       id="kt_careers_form">
 
-                                    @if($item->notes)
+                                    @if($item->notes && $item->status == 3)
                                         <p class="alert alert-danger" style=" font-weight: bolder;font-size: 18px">
                                             <i class="fa fa-info"></i>
                                             - {{$item->notes}})
@@ -78,7 +80,7 @@
                                                    name="first_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -91,7 +93,7 @@
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -104,7 +106,7 @@
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -117,7 +119,7 @@
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 pt-4">
                                             <label class=" ">{{__("الحالة الإجتماعية")}}</label>
@@ -205,7 +207,7 @@
 
                                         <div class="col-md-6 pt-4">
                                             <label
-                                                class=" ">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
+                                                    class=" ">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="is_special_case"
                                                         disabled class="form-control" name="is_special_case">
@@ -288,7 +290,7 @@
                             <!-- show children table -->
                             <div class="card card-custom gutter-b example example-compact">
                                 <div class="card-header">
-                                    <h3 class="card-title"> قائمه الابناء </h3>
+                                    <h3 class="card-title"> قائمه المعالين </h3>
 
                                     <a style="padding-top:25px" class="" data-toggle="collapse"
                                        href="#collapseExample2"
@@ -308,7 +310,7 @@
                                                 @if(Auth::user()->id == $item->user_id)
                                                     <a href="{{route("client.order.child.create")}}"
                                                        class="btn btn-info ">
-                                                        أضافه فرد للعائلة</a>
+                                                        أضافه معال</a>
                                                 @endif
                                                 <div class="table-responsive">
                                                     <table class="table table-hove">
