@@ -51,13 +51,14 @@
             <div
                 class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
 
-                <a href="#" class="flex-column-auto py-5 py-md-0">
-                    <!-- <img src="{{asset("assets/images/logo.png")}}" alt="logo" class="h-50px"/> -->
-                </a>
-
                 <h1 class="flex-right-auto py-5 py-md-0" style="font-size: 30px">
-                    طلبات الارزاق
+
                 </h1>
+
+
+                <a href="#" class="flex-column-auto py-5 py-md-0">
+                    <img src="{{asset('assets/images/logo.png')}}" alt="logo" class="h-100px"/>
+                </a>
 
             </div>
 

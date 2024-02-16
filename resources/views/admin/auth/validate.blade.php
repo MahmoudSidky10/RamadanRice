@@ -33,11 +33,17 @@
             id="kt_login">
         <div class="login-header py-10 flex-column-auto">
             <div
-                    class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
-                <a href="#" class="flex-column-auto py-5 py-md-0">
-                    <img src="{{asset('assets/admin/media/logos/logo-1.svg')}}" alt="logo" class="h-50px"/>
+                class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
 
+                <h1 class="flex-right-auto py-5 py-md-0" style="font-size: 30px">
+
+                </h1>
+
+
+                <a href="#" class="flex-column-auto py-5 py-md-0">
+                    <img src="{{asset('assets/images/logo.png')}}" alt="logo" class="h-100px"/>
                 </a>
+
             </div>
         </div>
         <div class="login-body d-flex flex-column-fluid align-items-stretch justify-content-center">

@@ -20,6 +20,7 @@ class Order extends Model
         'user_id',
         'created_by', // employee id
         'status_updated_at',
+        'notes',
         "first_name",
         "parent_name",
         "grandfather_name",
@@ -104,11 +105,11 @@ class Order extends Model
     public function orderStatusSmsMessage()
     {
         if ($this->status == 1) {
-            return " الطلب قيد المراجعة";
+            return "تم استلام طلبكم وسيتم التحقق من استيفائكم لشروط البرنامج والبيانات المقدمة";
         }
 
         if ($this->status == 2) {
-            return "تم استلام طلبكم وسيتم التحقق من استيفائكم لشروط البرنامج والبيانات المقدمة";
+            return "تم قبول طلبك بنجاح, ستصلك رساله بموعد استلام طلبك";
         }
 
         if ($this->status == 3) {

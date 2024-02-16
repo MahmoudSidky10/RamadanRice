@@ -82,6 +82,64 @@ class ClientController extends Controller
         }
     }
 
+    public function orderUpdate()
+    {
+        if (Auth::user()->otp) {
+            return view('client.otp');
+        }
+
+        $order = Order::where("user_id", Auth::id())->first();
+        if ($order) {
+            return view('client.dashboard.updateOrder', ["item" => $order]);
+        } else {
+            return view('client.login');
+        }
+    }
+
+    public function updateData(Request $request)
+    {
+        if (Auth::user()->otp) {
+            return view('client.otp');
+        }
+
+        $order = Order::where("user_id", Auth::id())->first();
+
+        $data = $request->all();
+
+        if ($request->id_number_image) {
+            $data['id_number_image'] = $this->storeImage($request->id_number_image, 'images');
+        }
+
+        if ($request->divorce_deed) {
+            $data['divorce_deed'] = $this->storeImage($request->divorce_deed, 'images');
+        }
+
+        if ($request->husband_death_image) {
+            $data['husband_death_image'] = $this->storeImage($request->husband_death_image, 'images');
+        }
+
+        if ($request->prisoner_family_identification_facility) {
+            $data['prisoner_family_identification_facility'] = $this->storeImage($request->prisoner_family_identification_facility, 'images');
+        }
+
+        if ($request->attached_is_the_support_instrument) {
+            $data['attached_is_the_support_instrument'] = $this->storeImage($request->attached_is_the_support_instrument, 'images');
+        }
+
+        if ($request->absher_facility) {
+            $data['absher_facility'] = $this->storeImage($request->absher_facility, 'images');
+        }
+
+        if ($request->other_attachments) {
+            $data['other_attachments'] = $this->storeImage($request->other_attachments, 'images');
+        }
+        $order->update($data);
+
+        toast('تم عمل التحديثات بنجاح وجاري مراجعة البيانات', 'success');
+        return redirect()->route('client.order.details');
+
+    }
+
     public function orderChildCreate()
     {
         if (Auth::user()->otp) {
@@ -202,7 +260,7 @@ class ClientController extends Controller
             $data['other_attachments'] = $this->storeImage($request->other_attachments, 'images');
         }
 
-        $data['is_number'] = Auth::user()->id_number;
+        $data['id_number'] = Auth::user()->id_number;
         $data['user_id'] = Auth::id();
         $data['created_by'] = Auth::user()->created_by;
         $data['status'] = 1;

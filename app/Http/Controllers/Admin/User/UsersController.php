@@ -132,6 +132,7 @@ class UsersController extends Controller
     {
         $order = Order::find($orderId);
         $order->status = $request->status;
+        $order->notes = $request->notes;
         $order->status_updated_at = Carbon::now();
         $order->save();
 
@@ -139,6 +140,11 @@ class UsersController extends Controller
             // Send sms to user
             $msg = $order->orderStatusSmsMessage();
             $this->sendSms($msg, [$order->mobile]);
+        }
+
+        if ($order->status == 2) {
+            $order->notes = null;
+            $order->save();
         }
         toast('تم تحديث حالة الطلب', 'success');
         return back();

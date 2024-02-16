@@ -20,6 +20,15 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="col-md-12 pt-3">
+                            @includeIf('admin.components.form.add.textarea', [
+                              'icon' => 'fa fa-user',
+                              'label' => trans('language.notes'),
+                              'name' => 'notes',
+                              'placeholder'=>trans('language.notes')
+                          ])
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

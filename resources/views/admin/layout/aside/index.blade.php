@@ -6,9 +6,7 @@
 
             <!-- Logo -->
             <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-5 py-lg-12">
-                <a href="{{url("/admin/dash")}}">
-                    <img alt="Logo" src="{{asset("assets/images/logo.png")}}" class="max-h-30px"/>
-                </a>
+
             </div>
 
             <!-- Sections Taps  -->

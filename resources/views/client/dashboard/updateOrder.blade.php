@@ -8,18 +8,6 @@
                 <div id="kt_app_content_container" class="app-container  container-xxl ">
                     <!--begin::Careers main-->
 
-                    <a class="col-md-2 btn btn-dark" href="{{url()->previous() }}"> عودة </a>
-                    <br> <br>
-
-
-                    @if(Auth::user()->id == $item->user_id)
-                        <div class="fw-semibold fs-6 text-gray-500 mb-8">
-                            <h5 style="font-weight: bold">
-                                <label class="alert alert-success"> تم تسجيل طلبك بنجاح ستصلك رساله بها بيانات
-                                    الطلب </label>
-                            </h5>
-                        </div>
-                    @endif
 
                     <div class="d-flex flex-column flex-xl-row">
                         <!--begin::Content-->
@@ -105,9 +93,17 @@
                             <!--begin::Form-->
                             <section class="collapse show " id="collapseExample3"
                                      style="background-color: #ffffff; padding: 10px 30px">
-                                <form action="#" enctype="multipart/form-data"
+                                <form action="{{route("client.order.updateData")}}" enctype="multipart/form-data"
                                       class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework"
-                                      id="kt_careers_form">
+                                      method="post" id="kt_careers_form">
+                                    @csrf
+
+
+                                    <p class="alert alert-danger" style=" font-weight: bolder;font-size: 18px">
+                                        <i class="fa fa-info"></i>
+                                        - {{$item->notes}})
+                                    </p>
+
                                     <!--begin:: Names inputs -->
                                     <div class="row mb-5">
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4 ">
@@ -116,7 +112,7 @@
                                             <!--end::Label-->
 
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control " disabled placeholder=""
+                                            <input type="text" class="form-control "  placeholder=""
                                                    value="{{$item->first_name}}"
                                                    name="first_name">
                                             <!--end::Input-->
@@ -130,7 +126,7 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{$item->parent_name}}" disabled
+                                                   value="{{$item->parent_name}}"
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
@@ -143,7 +139,7 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{$item->grandfather_name}}" disabled
+                                                   value="{{$item->grandfather_name}}"
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
@@ -156,7 +152,7 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{$item->family_name}}" disabled
+                                                   value="{{$item->family_name}}"
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
@@ -167,7 +163,7 @@
                                             <div class="">
                                                 <select style="height: 40px !important;"
                                                         id="social_situation_id"
-                                                        disabled
+
                                                         class="form-control" name="social_situation_id">
                                                     <option @if($item->social_situation_id == 1) selected
                                                             @endif value="1"> رب أسرة
@@ -194,7 +190,7 @@
                                             <label class="required">{{__("الجنسية")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="nationality_id"
-                                                        disabled
+
                                                         class="form-control" name="nationality_id">
                                                     @foreach(\App\Models\Nationality::all() as $nationality)
                                                         <option @if($item->nationality_id == $nationality->id) selected
@@ -204,28 +200,26 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('إجمالي الدخل الشهري'),'name'=>'salary', 'placeholder'=>trans('إجمالي الدخل الشهري' ),'valid'=>trans('language.vaildation')])
-                                        </div>
-                                        <div class="col-md-4 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('رقم الهوية'),'name'=>'id_number', 'placeholder'=>trans('رقم الهوية' ),'valid'=>trans('language.vaildation')])
-                                        </div>
-                                        <div class="col-md-4 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('تاريخ انتهاء الهوية'),'name'=>'id_number_expiration_date', 'placeholder'=>trans('تاريخ انتهاء الهوية' ),'valid'=>trans('language.vaildation')])
+                                        <div class="col-md-6 pt-6">
+                                            @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('إجمالي الدخل الشهري'),'name'=>'salary', 'placeholder'=>trans('إجمالي الدخل الشهري' ),'valid'=>trans('language.vaildation')])
                                         </div>
 
                                         <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.date', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('تاريخ الميلاد'),'name'=>'birth_date', 'placeholder'=>trans('تاريخ الميلاد' ),'valid'=>trans('language.vaildation')])
+                                            @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('تاريخ انتهاء الهوية'),'name'=>'id_number_expiration_date', 'placeholder'=>trans('تاريخ انتهاء الهوية' ),'valid'=>trans('language.vaildation')])
                                         </div>
 
                                         <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('العمر'),'name'=>'age', 'placeholder'=>trans('العمر' ),'valid'=>trans('language.vaildation')])
+                                            @includeIf('admin.components.form.edit.date', ['icon' => 'fa fa-user','label' => trans('تاريخ الميلاد'),'name'=>'birth_date', 'placeholder'=>trans('تاريخ الميلاد' ),'valid'=>trans('language.vaildation')])
+                                        </div>
+
+                                        <div class="col-md-6 pt-4">
+                                            @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('العمر'),'name'=>'age', 'placeholder'=>trans('العمر' ),'valid'=>trans('language.vaildation')])
                                         </div>
 
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("المدينه")}}</label>
                                             <div class="">
-                                                <select style="height: 40px !important;" id="city" disabled required
+                                                <select style="height: 40px !important;" id="city"  required
                                                         class="form-control " name="city">
                                                     @foreach(\App\Models\City::all() as $city)
                                                         <option @if($item->city == $city->id) selected
@@ -236,13 +230,11 @@
                                         </div>
 
                                         <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('الحي'),'name'=>'district', 'placeholder'=>trans('الحي' ),'valid'=>trans('language.vaildation')])
+                                            @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('الحي'),'name'=>'district', 'placeholder'=>trans('الحي' ),'valid'=>trans('language.vaildation')])
                                         </div>
+
                                         <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' , 'icon' => 'fa fa-user','label' => trans('رقم الجوال 1'),'name'=>'mobile', 'placeholder'=>trans('لإستقبال رسائل نصية أو رسائل واتساب' ),'valid'=>trans('language.vaildation')])
-                                        </div>
-                                        <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('رقم الجوال 2'),'name'=>'mobile2', 'placeholder'=>trans('رقم الجوال 2' ),'valid'=>trans('language.vaildation')])
+                                            @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('رقم الجوال 2'),'name'=>'mobile2', 'placeholder'=>trans('رقم الجوال 2' ),'valid'=>trans('language.vaildation')])
                                         </div>
 
 
@@ -251,7 +243,7 @@
                                                     class="required">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="is_special_case"
-                                                        disabled class="form-control" name="is_special_case">
+                                                         class="form-control" name="is_special_case">
                                                     <option @if($item->is_special_case == 0) selected
                                                             @endif  value="0">
                                                         لا
@@ -266,7 +258,7 @@
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("نوع الإعاقة")}}</label>
                                             <div class="">
-                                                <select style="height: 40px !important;" id="special_case_type" disabled
+                                                <select style="height: 40px !important;" id="special_case_type"
                                                         required class="form-control" name="special_case_type">
                                                     <option>أختر نوع الإعاقة</option>
                                                     <option @if($item->special_case_type == 1) selected
@@ -288,12 +280,12 @@
 
                                         <div class="col-md-12 pt-4 ">
                                             <div class="row">
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments', 'max'=>'5'  , 'class' => "col-md-6"])
 
                                             </div>
@@ -322,6 +314,12 @@
                                     <!--begin::Separator-->
                                     <div class="separator mb-8"></div>
                                     <!--end::Separator-->
+
+                                    <!--begin::Submit-->
+                                    <button type="submit" class="btn btn-primary" id="kt_careers_submit_button">
+                                        تحديث البيانات
+                                    </button>
+                                    <!--end::Submit-->
 
                                 </form>
                             </section>

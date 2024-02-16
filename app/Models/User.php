@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->user_type_id == 1;
     }
 
+    public function isClient()
+    {
+        return $this->user_type_id == 2;
+    }
+
     public function isEmployee()
     {
         return $this->user_type_id == 3;

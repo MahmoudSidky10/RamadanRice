@@ -31,7 +31,7 @@
                                     <p class="card-title">تفاصيل الطلب
                                         (
                                         <span
-                                                style="font-weight: normal; color: #0a6aa1;margin: 0 5px"> {{$item->orderStatusSmsMessage()}} </span>
+                                            style="font-weight: normal; color: #0a6aa1;margin: 0 5px"> {{$item->orderStatusSmsMessage()}} </span>
                                         )
                                     </p>
                                     <a style="padding-top:25px" class="" data-toggle="collapse"
@@ -51,6 +51,20 @@
                                 <form action="#" enctype="multipart/form-data"
                                       class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework"
                                       id="kt_careers_form">
+
+                                    @if($item->notes)
+                                        <p class="alert alert-danger" style=" font-weight: bolder;font-size: 18px">
+                                            <i class="fa fa-info"></i>
+                                            - {{$item->notes}})
+                                        </p>
+                                    @endif
+
+
+                                    @if($item->status == 3 && Auth::user()->isClient())
+                                        <a class="btn btn-primary" href="{{route('client.order.update')}}"> تحديث
+                                            البيانات </a>
+                                    @endif
+
                                     <!--begin:: Names inputs -->
                                     <div class="row mb-5">
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4 ">
@@ -64,7 +78,7 @@
                                                    name="first_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -77,7 +91,7 @@
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -90,7 +104,7 @@
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -103,7 +117,7 @@
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 pt-4">
                                             <label class=" ">{{__("الحالة الإجتماعية")}}</label>
@@ -191,7 +205,7 @@
 
                                         <div class="col-md-6 pt-4">
                                             <label
-                                                    class=" ">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
+                                                class=" ">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="is_special_case"
                                                         disabled class="form-control" name="is_special_case">
