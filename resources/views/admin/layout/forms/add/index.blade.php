@@ -12,7 +12,12 @@
                 @endif
 
                 @if (Session::has('error'))
-                    <div class="alert danger-info">{{ Session::get('error') }}</div>
+                    <div class="alert alert-danger">{{ Session::get('error') }}</div>
+                @endif
+
+                @if (Session::has('danger'))
+                    <div class="alert alert-danger"
+                         style="font-weight: bold"> {{ Session::get('danger') }}</div>
                 @endif
 
                 @if ($errors->any())

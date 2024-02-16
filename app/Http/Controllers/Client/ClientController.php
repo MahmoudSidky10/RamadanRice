@@ -20,7 +20,7 @@ class ClientController extends Controller
     public function resendOtp()
     {
         $randCode = rand(1111, 9999);
-        $msg = "كود التفعيل الخاص بك هو : " . $randCode . " لدخول لمنصه أقراء ";
+        $msg = "كود التفعيل الخاص بك هو : " . $randCode . " لدخول منصة اقرأ ";
         $user = User::find(Auth::id());
         $user->otp = $randCode;
         $user->save();
@@ -141,7 +141,7 @@ class ClientController extends Controller
             // check from otp code
             if ($checkAuth->otp_code == null) {
                 $randCode = rand(1111, 9999);
-                $msg = "كود التفعيل الخاص بك هو : " . $randCode . " لدخول لمنصه أقراء ";
+                $msg = "كود التفعيل الخاص بك هو : " . $randCode . " لدخول منصة اقرأ ";
                 User::find(Auth::id())->update([
                     'otp' => $randCode,
                     'mobile' => $request->mobile

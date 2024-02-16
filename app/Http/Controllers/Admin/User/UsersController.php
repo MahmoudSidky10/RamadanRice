@@ -17,9 +17,9 @@ class UsersController extends Controller
         $items = User::query()->where("user_type_id", 2);
 
         // check if auth not admin so return his registered users ...
-        if (!Auth::user()->isAdmin()) {
+        /*if (!Auth::user()->isAdmin()) {
             $items = $items->where("created_by", Auth::id());
-        }
+        }*/
 
         $result['items'] = $this->filter($request, $items);
         return view('admin.users.index')->with($result);
@@ -59,7 +59,7 @@ class UsersController extends Controller
     {
         $data = $request->validate([
             'id_number' => 'required|min:10|max:10',
-        ],[
+        ], [
             'id_number.required' => 'يجب عليك ادخال رقم الهوية',
             'id_number.min' => 'يجب عليك ادخال رقم الهوية بشكل صحيح الحد الادني 10 أرقام',
             'id_number.max' => 'يجب عليك ادخال رقم الهوية بشكل صحيح الحد الاقصي 10 أرقام',
@@ -68,7 +68,8 @@ class UsersController extends Controller
         // check if id number exists return error
         $userExist = User::where("id_number", $request->id_number)->first();
         if ($userExist) {
-            toast('تم اضافة المستخدم بنجاح', 'danger');
+            session()->flash("danger", "رقم الهوية موجود مسبقا , يرجي التاكد من البيانات مره اخري");
+            toast('رقم الهوية موجود مسبقا , يرجي التاكد من البيانات مره اخري', 'error');
             return back();
         }
 
@@ -77,7 +78,7 @@ class UsersController extends Controller
 
         $user = User::create($data);
         toast('تم اضافة المستخدم بنجاح', 'success');
-        return redirect(route("admin.users.print",$user->id));
+        return redirect(route("admin.users.print", $user->id));
     }
 
     public function edit($id)
@@ -108,9 +109,9 @@ class UsersController extends Controller
     public function orders(Request $request)
     {
         $items = Order::query();
-        if (Auth::user()->user_type_id == 3) {
+        /*if (Auth::user()->user_type_id == 3) {
             $items = $items->where("created_by", Auth::id());
-        }
+        }*/
 
         if ($request->id_number) {
             $items = $items->where("id_number", $request->id_number);
@@ -134,7 +135,7 @@ class UsersController extends Controller
         $order->status_updated_at = Carbon::now();
         $order->save();
 
-        if ($order->status != 2){
+        if ($order->status != 2) {
             // Send sms to user
             $msg = $order->orderStatusSmsMessage();
             $this->sendSms($msg, [$order->mobile]);
@@ -180,7 +181,7 @@ class UsersController extends Controller
 
         $csvExporter = new \Laracsv\Export();
         $csvExporter->build($orders, $fields);
-        $csvExporter->download(__("orders") . "-" . Carbon::today()->format('y-m-d') . ".xlsx");
+        $csvExporter->download(__("orders") . "-" . Carbon::today()->format('y-m-d') . ".xls");
     }
 
 }

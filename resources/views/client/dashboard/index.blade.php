@@ -39,7 +39,7 @@
                                             <!--end::Label-->
 
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control " placeholder=""
+                                            <input required type="text" class="form-control " placeholder=""
                                                    value="{{old("first_name")}}"
                                                    name="first_name">
                                             <!--end::Input-->
@@ -53,7 +53,7 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{old("parent_name")}}"
+                                                   value="{{old("parent_name")}}" required
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
@@ -66,7 +66,7 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{old("grandfather_name")}}"
+                                                   value="{{old("grandfather_name")}}" required
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
@@ -159,7 +159,7 @@
 
                                             <!--end::Input-->
                                             <input id="txtHijriDate" name="id_number_expiration_date" type="text"
-                                                   value=""
+                                                   value="" required
                                                    class="form-control"/>
                                             <!--end::Input-->
                                             <div
@@ -173,7 +173,7 @@
 
                                             <!--end::Input-->
                                             <input type="date" onchange="updateAgeValue()" class="form-control "
-                                                   placeholder="" value="" id="birthDayValue"
+                                                   placeholder="" value="" id="birthDayValue" required
                                                    name="birth_date">
                                             <!--end::Input-->
                                             <div

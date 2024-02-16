@@ -29,8 +29,8 @@
                                                 <div class="d-flex flex-column " style="margin-top: 30px">
                                                     <!--begin::Number-->
                                                     <span
-                                                        class="fw-semibold fs-3x text-gray-800 "> <h1
-                                                            style="font-weight: 700 !important;font-size: 70px">   {{number_format($employeesCount)}}  </h1></span>
+                                                            class="fw-semibold fs-3x text-gray-800 "> <h1
+                                                                style="font-weight: 700 !important;font-size: 70px">   {{number_format($employeesCount)}}  </h1></span>
                                                     <!--end::Number-->
 
                                                     <!--begin::Follower-->
@@ -64,8 +64,8 @@
                                                 <div class="d-flex flex-column " style="margin-top: 30px">
                                                     <!--begin::Number-->
                                                     <span
-                                                        class="fw-semibold fs-3x text-gray-800 "> <h1
-                                                            style="font-weight: 700 !important;font-size: 70px">   {{number_format($usersCount)}}  </h1></span>
+                                                            class="fw-semibold fs-3x text-gray-800 "> <h1
+                                                                style="font-weight: 700 !important;font-size: 70px">   {{number_format($usersCount)}}  </h1></span>
                                                     <!--end::Number-->
 
                                                     <!--begin::Follower-->
@@ -99,8 +99,8 @@
                                                 <div class="d-flex flex-column " style="margin-top: 30px">
                                                     <!--begin::Number-->
                                                     <span
-                                                        class="fw-semibold fs-3x text-gray-800 "> <h1
-                                                            style="font-weight: 700 !important;font-size: 70px">   {{number_format($ordersCount)}}  </h1></span>
+                                                            class="fw-semibold fs-3x text-gray-800 "> <h1
+                                                                style="font-weight: 700 !important;font-size: 70px">   {{number_format($ordersCount)}}  </h1></span>
                                                     <!--end::Number-->
 
                                                     <!--begin::Follower-->
@@ -139,8 +139,8 @@
                                                     <!--begin::Illustration-->
                                                     <div class="py-10 text-center">
                                                         <img
-                                                            src="{{asset("assets/admin/media/svg/illustrations/easy/2.svg")}}"
-                                                            class="theme-light-show w-200px" alt="">
+                                                                src="{{asset("assets/admin/media/svg/illustrations/easy/2.svg")}}"
+                                                                class="theme-light-show w-200px" alt="">
                                                     </div>
                                                     <!--end::Illustration-->
                                                 </div>
@@ -159,6 +159,14 @@
                                                     <a style="font-weight: bolder" href="{{route("users.create")}}"
                                                        class="btn btn-sm btn-primary me-2"> أضافه مستفيد</a>
                                                     <!--end::Link-->
+                                                    <br>
+                                                    <br>
+
+                                                    <!--begin::Link-->
+                                                    <a style="font-weight: bolder" class="btn btn-sm btn-dark col-md-12"
+                                                       href="{{url("/admin/orders")}}">إستعراض طلبات الأرزاق</a>
+                                                    <!--end::Link-->
+
                                                 </div>
                                                 <!--end::Links-->
                                             </div>
@@ -184,12 +192,17 @@
                                                     <!--begin::Illustration-->
                                                     <div class="py-5 text-center">
                                                         <img
-                                                            src="{{asset("assets/admin/media/svg/illustrations/easy/3.png")}}"
-                                                            class="theme-light-show w-200px" alt="">
+                                                                src="{{asset("assets/admin/media/svg/illustrations/easy/3.png")}}"
+                                                                class="theme-light-show w-200px" alt="">
 
                                                         <form method="get" action="{{url("/admin/orders")}}">
-                                                            <input style="font-weight: bolder ; text-align: right" type="text"   class="form-control mobile_input mt-6" name="id_number" value="" placeholder="ادخل رقم هويه المستفيد ...">
-                                                            <input style="font-weight: bolder ; width: 100%"  type="submit" class="btn btn-success mt-3" value="{{trans('language.filter')}}">
+                                                            <input style="font-weight: bolder ; text-align: right"
+                                                                   type="text" class="form-control mobile_input mt-6"
+                                                                   name="id_number" value=""
+                                                                   placeholder="ادخل رقم هويه المستفيد ...">
+                                                            <input style="font-weight: bolder ; width: 100%"
+                                                                   type="submit" class="btn btn-success mt-3"
+                                                                   value="{{trans('language.filter')}}">
                                                         </form>
 
                                                     </div>
