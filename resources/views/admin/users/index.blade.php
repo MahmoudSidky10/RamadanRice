@@ -8,9 +8,12 @@
     </ol>
 @endsection
 @section("buttons")
-    <a class="btn btn-success col-md-1 " href="{{url("/admin/users/create")}}">
-        {{trans("language.add")}}
-    </a>
+    @if(\App\Models\Setting::first()->enable_creating_new_orders == 1)
+        <a class="btn btn-success col-md-1 " href="{{url("/admin/users/create")}}">
+            {{trans("language.add")}}
+        </a>
+    @endif
+
 @endsection
 @section('thead')
     <tr class="text-center">

@@ -6,6 +6,8 @@
         <li class="breadcrumb-item"><a href="{{url("admin/employees")}}">  {{trans('language.employees')}}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{trans('language.add')}}</li>
     </ol>
+    <a class="col-md-2 btn btn-dark" href="{{url()->previous() }}"> عودة </a>
+    <br> <br>
 @endsection
 @section('root' , "employees")
 @section('page-title',trans('language.employees'))

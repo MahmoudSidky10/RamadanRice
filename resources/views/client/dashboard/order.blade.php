@@ -1,13 +1,16 @@
 @extends('admin.layout.index')
 @section('content')
     @include("admin.layout.nav",["title" => trans('language.dashboard')])
-
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <div id="kt_app_content" class="app-content  flex-column-fluid ">
                 <!--begin::Content container-->
                 <div id="kt_app_content_container" class="app-container  container-xxl ">
                     <!--begin::Careers main-->
+
+                    <a class="col-md-2 btn btn-dark" href="{{url()->previous() }}"> عودة </a>
+                    <br> <br>
+
 
                     @if(Auth::user()->id == $item->user_id)
                         <div class="fw-semibold fs-6 text-gray-500 mb-8">

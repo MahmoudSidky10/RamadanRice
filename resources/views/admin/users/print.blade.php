@@ -28,9 +28,14 @@
                 <button onclick="window.print()"><i class="fa-solid fa-print"></i>طباعه</button>
                 او الضغط علي <span>(CTRL+P)</span> من لوحه المفاتيح
             </p>
+            <a class="print_head btn btn-dark p-md-2" style="padding-bottom: 10px" href="{{url("/admin/users")}}">
+                <i class="fa-solid fa-arrow-left"> عودة لقائمه المستفيدين  </i>
+            </a>
         </div>
     </div>
 </div>
+
+
 
 <!-- PAGE CONTENT -->
 
@@ -46,7 +51,8 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <p class="Head_section">ـــــــــــــــــــــــ برنامج أرزاق رمضان ـــــــــــــــــــــــ</p>
+            <p class="Head_section">ـــــــــــــــــــــــ برنامج أرزاق رمضان (1445هـ - 2024م)
+                ـــــــــــــــــــــــ</p>
         </div>
         <div class="col-12 mt-3">
 
@@ -57,19 +63,19 @@
                 <br>
                 أو زيارة الرابط
                 الإلكتروني
-            ( www.ihr-ksa.com )
+                ( www.ihr-ksa.com )
             </p>
-            <p class="paper_content"> إدخال رمز الدخول الموضح في الورقة ورقم الهوية </p>
+            <p class="paper_content"> إدخال رمز الدخول الموضح أدناه ورقم الهوية </p>
             <p class="paper_content"> إكمال تعبئة البيانات والمرفقات بشكل سليم </p>
             <p class="paper_content"> الضغط على كلمة إرسال </p>
-            <p class="paper_content"> ستصلكم رسالة نصيه لاحقاً بعد التحقق من الطلب لزيارة أي فرع متجر الدكان واستلام
-                طلبكم </p>
+            <p class="paper_content"> في حالة استيفائكم لشروط وبعد التحقق من طلبكم ستصلكم رسالة نصية لزيارة أي فرع من
+                فروع متجر الدكان</p>
 
-            <p class="Randome_number"> رمز الدخول  : {{$user->register_number}} </p>
+            <p class="Randome_number"> رمز الدخول : {{$user->register_number}} </p>
 
         </div>
         <div class="col-12 Nots">
-            <p><i class="fa-solid fa-triangle-exclamation"></i> آخر موعد لتسجيل البيانات 24 فبراير 2024 </p>
+            <p><i class="fa-solid fa-triangle-exclamation"></i> آخر موعد لإكمال تعبئة البيانات يوم 27 فبراير 2024 </p>
         </div>
     </div>
     <div class="row">

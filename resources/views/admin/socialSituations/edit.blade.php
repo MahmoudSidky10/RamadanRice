@@ -7,6 +7,8 @@
                     href="{{url("admin/socialSituations")}}">  {{trans('language.socialSituations')}}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{trans('language.edit')}}</li>
     </ol>
+    <a class="col-md-2 btn btn-dark" href="{{url()->previous() }}"> عودة </a>
+    <br> <br>
 @endsection
 @section('root' , "socialSituations")
 @section('title' , trans('language.edit'))

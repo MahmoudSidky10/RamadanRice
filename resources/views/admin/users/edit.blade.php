@@ -7,6 +7,8 @@
         </li>
         <li class="breadcrumb-item active" aria-current="page">{{trans('language.edit')}}</li>
     </ol>
+    <a class="col-md-2 btn btn-dark" href="{{url()->previous() }}"> عودة </a>
+    <br>
 @endsection
 @section('root' , "users")
 @section('title' , trans('language.edit'))
