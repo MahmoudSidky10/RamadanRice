@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('social_situations', function (Blueprint $table) {
             $table->id();
             $table->string('name_ar')->nullable();
-           //  $table->string('name_en')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

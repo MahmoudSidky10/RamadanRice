@@ -35,7 +35,8 @@ class SocialSituationController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name_ar' => 'required'
+            'name_ar' => 'required',
+            'description' => 'required',
         ]);
 
 
@@ -54,7 +55,8 @@ class SocialSituationController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'name_ar' => 'required'
+            'name_ar' => 'required',
+            'description' => 'required',
         ]);
 
         $user = SocialSituation::find($id);

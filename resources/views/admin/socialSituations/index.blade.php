@@ -16,6 +16,7 @@
     <tr class="text-center">
         <th>#</th>
         <th>{{trans('language.name')}}</th>
+        <th>{{trans('language.description')}}</th>
         <th>{{trans('language.settings')}}</th>
     </tr>
 @endsection
@@ -24,6 +25,7 @@
         <tr class="text-center">
             <td>{{ $loop->iteration }}</td>
             <td>{{$item->name}}</td>
+            <td>{{$item->description}}</td>
             <td>
                 @includeIf("admin.components.buttons.edit" , ["href" => "socialSituations/$item->id/edit"])
                 @includeIf("admin.components.buttons.delete",["message" => "($item->name)" ,  "action" => url("admin/socialSituations/$item->id")])

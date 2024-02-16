@@ -14,5 +14,7 @@
 @section('page-title',trans('language.socialSituations'))
 @section('form-groups')
     @includeIf('admin.components.form.add.text', ['icon' => 'fa fa-user','label' => trans('language.name'),'name'=>'name_ar', 'placeholder'=>trans('language.name_ar' ),'valid'=>trans('language.vaildation')])
- @endsection
+    @includeIf('admin.components.form.add.text', ['icon' => 'fa fa-user','label' => trans('language.description'),'name'=>'description', 'placeholder'=>trans('language.description' ),'valid'=>trans('language.vaildation')])
+
+@endsection
 @section('submit-button-title' , trans('language.add'))

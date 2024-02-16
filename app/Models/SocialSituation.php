@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class SocialSituation extends Model
 {
-    
+
     protected $fillable = [
-        'name_ar'
+        'name_ar', 'description'
     ];
 
     public function getNameAttribute()
