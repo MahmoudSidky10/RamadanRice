@@ -1544,7 +1544,7 @@ return [
     'cancel_request' => 'رفض العملية',
     'countries-sorter' => 'ترتيب الدول السياحية',
     'arrange' => "ترتيب الدول",
-    'user_section' => "جزءالمستفيدين",
+    'user_section' => "المستفيدين",
     'users' => "قائمه المستفيدين",
     'is_tourist_country' => "هل تظهر الدولة في قائمه الدول السياحية ؟",
     'stadium_image' => "صوره ملعب المباراة",
