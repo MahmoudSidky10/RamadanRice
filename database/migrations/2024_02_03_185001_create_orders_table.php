@@ -41,6 +41,7 @@ return new class extends Migration {
             $table->string("prisoner_family_identification_facility")->nullable();
             $table->string("attached_is_the_support_instrument")->nullable();
             $table->string("absher_facility")->nullable();
+            $table->string("other_attachments")->nullable();
 
             $table->softDeletes();
             $table->timestamps();

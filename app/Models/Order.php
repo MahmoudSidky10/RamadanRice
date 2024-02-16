@@ -45,6 +45,7 @@ class Order extends Model
         "prisoner_family_identification_facility",
         "attached_is_the_support_instrument",
         "absher_facility",
+        "other_attachments",
     ];
 
     protected $casts = [

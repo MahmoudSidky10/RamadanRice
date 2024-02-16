@@ -101,7 +101,7 @@ class ClientController extends Controller
 
         OrderChildreen::create($data);
         toast('تم اضافة الطفل بنجاح', 'success');
-        return redirect()->route("client.order.details");
+        return redirect()->back();
     }
 
     public function login(Request $request)
@@ -198,6 +198,9 @@ class ClientController extends Controller
             $data['absher_facility'] = $this->storeImage($request->absher_facility, 'images');
         }
 
+        if ($request->other_attachments) {
+            $data['other_attachments'] = $this->storeImage($request->other_attachments, 'images');
+        }
 
         $data['is_number'] = Auth::user()->id_number;
         $data['user_id'] = Auth::id();
@@ -211,6 +214,6 @@ class ClientController extends Controller
         // $this->sendSms($msg, [$order->user->mobile]);
 
         toast('تم اضافة الطلب بنجاح', 'success');
-        return redirect()->route('home');
+        return redirect()->route('client.order.child.create');
     }
 }

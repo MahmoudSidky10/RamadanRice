@@ -44,7 +44,7 @@
                                                    name="name">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -57,7 +57,7 @@
                                                    name="relative_relation">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -70,7 +70,7 @@
                                                    name="id_number">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -83,7 +83,7 @@
                                                    name="birth_date">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
@@ -97,7 +97,7 @@
                                                    name="salary">
                                             <!--end::Input-->
                                             <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
 
@@ -123,6 +123,12 @@
                                     <button type="submit" class="btn btn-primary" id="kt_careers_submit_button">
                                         أضافة
                                     </button>
+
+                                    <a href="{{route("client.order.details")}}" class="btn btn-success"
+                                       id="kt_careers_submit_button">
+                                        تخطي
+                                    </a>
+
                                     <!--end::Submit-->
                                 </form>
                                 <!--end::Form-->

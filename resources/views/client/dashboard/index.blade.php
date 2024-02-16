@@ -86,32 +86,6 @@
                                                     class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 pt-4">
-                                            <label class="required">{{__("الحالة الإجتماعية")}}</label>
-                                            <div class="">
-                                                <select style="height: 40px !important;" id="social_situation_id"
-                                                        required class="form-control" name="social_situation_id">
-                                                    <option @if(old("social_situation_id") == 1) selected
-                                                            @endif value="1"> رب أسرة
-                                                    </option>
-                                                    <option @if(old("social_situation_id") == 2) selected
-                                                            @endif value="2">أرملة
-                                                    </option>
-                                                    <option @if(old("social_situation_id") == 3) selected
-                                                            @endif value="3">مطلقة
-                                                    </option>
-                                                    <option @if(old("social_situation_id") == 4) selected
-                                                            @endif value="4">مهجورة
-                                                    </option>
-                                                    <option @if(old("social_situation_id") == 5) selected
-                                                            @endif value="5">أسرة سجين
-                                                    </option>
-                                                    <option @if(old("social_situation_id") == 6) selected
-                                                            @endif value="6">آنسه
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 pt-4">
                                             <label class="required">{{__("الجنسية")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="nationality_id" required
@@ -259,6 +233,25 @@
                                         </div>
 
 
+                                        <div class="col-md-12 pt-4">
+                                            <label class="required">{{__("الحالة الإجتماعية")}}</label>
+                                            <span id="social_situation_description" class="pt-3 "
+                                                  style="color: red; font-weight: bolder"></span>
+
+                                            <div class="">
+                                                <select style="height: 40px !important;" id="social_situation_id"
+                                                        required class="form-control" name="social_situation_id">
+                                                    <option value="" > قم بأختيار نوع الحاله الاجتماعية</option>
+                                                    @foreach(\App\Models\SocialSituation::all() as $situation)
+                                                        <option
+                                                                social_situation_desc="{{$situation->description}}"
+                                                                @if(old("social_situation_id") == $situation->id) selected
+                                                                @endif value="{{$situation->id}}">{{$situation->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-12 pt-4 ">
                                             <div class="row">
                                                 @includeIf('admin.components.form.add.file', ['required' => 'required' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6"])
@@ -267,6 +260,7 @@
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments', 'max'=>'5'  , 'class' => "col-md-6"])
                                             </div>
                                         </div>
 
@@ -345,6 +339,12 @@
     </script>
 
     <script>
+
+        $("#social_situation_id").on('change', function () {
+            var attr = document.querySelector("#social_situation_id");
+            var desc = attr.options[attr.selectedIndex].getAttribute('social_situation_desc');
+            $("#social_situation_description").text(desc)
+        });
 
         $("#is_special_case").on('change', function () {
             $("#special_case_type_section").toggle()
