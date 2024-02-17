@@ -57,7 +57,7 @@
                                     @if($item->notes && $item->status == 3)
                                         <p class="alert alert-danger" style=" font-weight: bolder;font-size: 18px">
                                             <i class="fa fa-info"></i>
-                                            - {{$item->notes}})
+                                            - ( {{$item->notes}} )
                                         </p>
                                     @endif
 
