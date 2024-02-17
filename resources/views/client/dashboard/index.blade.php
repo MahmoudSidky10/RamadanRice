@@ -44,11 +44,11 @@
                                                    name="first_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
-                                            <label class="required fs-5 fw-semibold mb-2">اسم الاب</label>
+                                            <label class=" fs-5 fw-semibold mb-2">اسم الاب</label>
                                             <!--end::Label-->
 
                                             <!--end::Input-->
@@ -57,7 +57,7 @@
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -70,7 +70,7 @@
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -83,7 +83,7 @@
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("الجنسية")}}</label>
@@ -109,7 +109,7 @@
                                                    value="" name="salary">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
@@ -123,7 +123,7 @@
                                                    name="id_number">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
@@ -137,7 +137,7 @@
                                                    class="form-control"/>
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
@@ -151,7 +151,7 @@
                                                    name="birth_date">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
 
@@ -167,7 +167,7 @@
                                                    placeholder="" value="">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
 
@@ -199,7 +199,7 @@
                                                    placeholder="" value="{{Auth::user()->mobile}}">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
 
@@ -241,12 +241,12 @@
                                             <div class="">
                                                 <select style="height: 40px !important;" id="social_situation_id"
                                                         required class="form-control" name="social_situation_id">
-                                                    <option value="" > قم بأختيار نوع الحاله الاجتماعية</option>
+                                                    <option value=""> قم بأختيار نوع الحاله الاجتماعية</option>
                                                     @foreach(\App\Models\SocialSituation::all() as $situation)
                                                         <option
-                                                                social_situation_desc="{{$situation->description}}"
-                                                                @if(old("social_situation_id") == $situation->id) selected
-                                                                @endif value="{{$situation->id}}">{{$situation->name}}</option>
+                                                            social_situation_desc="{{$situation->description}}"
+                                                            @if(old("social_situation_id") == $situation->id) selected
+                                                            @endif value="{{$situation->id}}">{{$situation->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -259,8 +259,15 @@
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6 absherFile"])
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 pt-4 ">
+                                            <div class="row">
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments', 'max'=>'5'  , 'class' => "col-md-4"])
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments1', 'max'=>'5'  , 'class' => "col-md-4"])
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments2', 'max'=>'5'  , 'class' => "col-md-4"])
                                             </div>
                                         </div>
 
@@ -293,8 +300,8 @@
 @endsection
 @section("js")
     <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
-            rel="stylesheet"/>
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment-hijri@2.1.0/moment-hijri.js"></script>
     <script src="{{asset("/assets/admin/js/bootstrap-hijri-datetimepicker.js")}}"></script>
@@ -339,6 +346,19 @@
     </script>
 
     <script>
+
+        //  hide absher file ...
+        $('.absherFile').addClass("hide");
+        $("#nationality_id").on('change', function () {
+            var item = $("#nationality_id").val();
+            if (item != 1) {
+                $('.absherFile').removeClass("hide");
+            } else {
+                $('.absherFile').addClass("hide");
+            }
+        });
+        // end ...  defaulter hide absher file ..
+
 
         $("#social_situation_id").on('change', function () {
             var attr = document.querySelector("#social_situation_id");

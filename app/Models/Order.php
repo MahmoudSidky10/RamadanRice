@@ -47,6 +47,8 @@ class Order extends Model
         "attached_is_the_support_instrument",
         "absher_facility",
         "other_attachments",
+        "other_attachments1",
+        "other_attachments2",
     ];
 
     protected $casts = [

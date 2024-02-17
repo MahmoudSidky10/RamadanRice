@@ -130,9 +130,9 @@ class ClientController extends Controller
             $data['absher_facility'] = $this->storeImage($request->absher_facility, 'images');
         }
 
-        if ($request->other_attachments) {
-            $data['other_attachments'] = $this->storeImage($request->other_attachments, 'images');
-        }
+        if ($request->other_attachments) { $data['other_attachments'] = $this->storeImage($request->other_attachments, 'images'); }
+        if ($request->other_attachments1) { $data['other_attachments1'] = $this->storeImage($request->other_attachments1, 'images'); }
+        if ($request->other_attachments2) { $data['other_attachments2'] = $this->storeImage($request->other_attachments2, 'images'); }
         $order->update($data);
 
         toast('تم عمل التحديثات بنجاح وجاري مراجعة البيانات', 'success');
