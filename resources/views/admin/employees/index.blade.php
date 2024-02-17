@@ -69,18 +69,6 @@
                                placeholder="{{trans('language.username')}}">
                     </div>
 
-                    <div class="col-md-3">
-                        <span> {{trans('language.start_at')}} </span>
-                        <input type="date" class="form-control start_at" name="start_at" value="{{request()->start_at}}"
-                               placeholder="{{trans('language.start_at')}}">
-                    </div>
-
-                    <div class="col-md-3">
-                        <span> {{trans('language.end_at')}} </span>
-                        <input type="date" class="form-control end_at " name="end_at" value="{{request()->end_at}}"
-                               placeholder="{{trans('language.end_at')}}">
-                    </div>
-
                 </div>
                 <div class="row pt-4">
                     <div class="col-md-3">
