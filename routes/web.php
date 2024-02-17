@@ -23,6 +23,7 @@ Route::get('/client/order/store/update', [ClientController::class, 'orderUpdate'
 Route::any('/client/order/store/updateData', [ClientController::class, 'updateData'])->name('client.order.updateData');
 
 Route::get('/client/order/child/create', [ClientController::class, 'orderChildCreate'])->name('client.order.child.create');
+Route::get('/client/order/child/create/newRecord', [ClientController::class, 'orderChildCreateRecord'])->name('client.order.child.newRecord');
 Route::post('/client/order/child/store', [ClientController::class, 'orderChildStore'])->name('client.order.child.store');
 
 

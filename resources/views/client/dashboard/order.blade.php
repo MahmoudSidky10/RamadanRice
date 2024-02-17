@@ -33,7 +33,7 @@
                                     <p class="card-title">تفاصيل الطلب
                                         (
                                         <span
-                                                style="font-weight: normal; color: #0a6aa1;margin: 0 5px"> {{$item->orderStatusSmsMessage()}} </span>
+                                            style="font-weight: normal; color: #0a6aa1;margin: 0 5px"> {{$item->orderStatusSmsMessage()}} </span>
                                         )
                                     </p>
                                     <a style="padding-top:25px" class="" data-toggle="collapse"
@@ -80,7 +80,7 @@
                                                    name="first_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -93,7 +93,7 @@
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -106,7 +106,7 @@
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -119,7 +119,7 @@
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 pt-4">
                                             <label class=" ">{{__("الحالة الإجتماعية")}}</label>
@@ -207,7 +207,7 @@
 
                                         <div class="col-md-6 pt-4">
                                             <label
-                                                    class=" ">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
+                                                class=" ">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="is_special_case"
                                                         disabled class="form-control" name="is_special_case">
@@ -341,7 +341,7 @@
                                                                 <td>{{$child->id_number}}</td>
                                                                 <td>{{$child->birth_date}}</td>
                                                                 <td>{{$child->salary}}</td>
-                                                                <td>{{$child->salary ? 1 : 'نعم' ,'لا'}}</td>
+                                                                <td>{{$child->is_orphan == 1 ? 'نعم' : 'لا'}}</td>
                                                             </tr>
                                                         @endforeach
                                                         </tbody>

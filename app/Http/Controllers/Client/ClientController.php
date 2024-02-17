@@ -160,16 +160,30 @@ class ClientController extends Controller
         return view('client.dashboard.child-create', ["item" => $order]);
     }
 
+    public function orderChildCreateRecord()
+    {
+        $rand = rand(11111, 99999);
+        $html = view("client.dashboard.child-create-record", compact('rand'))->render();
+        return response()->json($html);
+    }
+
     public function orderChildStore(Request $request)
     {
         $order = Order::where("user_id", Auth::id())->first();
         $data = $request->all();
-        $data["order_id"] = $order->id;
-        $data["user_id"] = Auth::id();
-
-        OrderChildreen::create($data);
+        for ($i = 0; $i < count($data['name']); $i++) {
+            $child['name'] = $data['name'][$i];
+            $child['relative_relation'] = $data['relative_relation'][$i];
+            $child['id_number'] = $data['id_number'][$i];
+            $child['birth_date'] = $data['birth_date'][$i];
+            $child['salary'] = $data['salary'][$i];
+            $child['is_orphan'] = $data['is_orphan'][$i];
+            $child['order_id'] = $order->id;
+            $child['user_id'] = Auth::id();
+            OrderChildreen::create($child);
+        }
         toast('تم اضافة المعال بنجاح', 'success');
-        return redirect()->back();
+        return redirect()->route("client.order.details");
     }
 
     public function login(Request $request)
