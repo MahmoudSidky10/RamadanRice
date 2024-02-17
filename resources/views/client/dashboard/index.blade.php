@@ -242,23 +242,39 @@
                                                 <select style="height: 40px !important;" id="social_situation_id"
                                                         required class="form-control" name="social_situation_id">
                                                     <option value=""> قم بأختيار نوع الحاله الاجتماعية</option>
-                                                    @foreach(\App\Models\SocialSituation::all() as $situation)
-                                                        <option
-                                                            social_situation_desc="{{$situation->description}}"
-                                                            @if(old("social_situation_id") == $situation->id) selected
-                                                            @endif value="{{$situation->id}}">{{$situation->name}}</option>
-                                                    @endforeach
+                                                    <option social_situation_desc="يرجي أرفاق ( صورة الهوية )"
+                                                            value="1">رب أسره
+                                                    </option>
+                                                    <option
+                                                        social_situation_desc="يرجي أرفاق ( صورة الهوية وشهادة الوفاة )"
+                                                        value="2">أرمله
+                                                    </option>
+                                                    <option
+                                                        social_situation_desc="يرجي أرفاق ( صورة الهوية  صورة صك الطلاق )"
+                                                        value="3">مطلقة
+                                                    </option>
+                                                    <option social_situation_desc="يرجي أرفاق ( صورة الهوية )"
+                                                            value="4">مهجورة
+                                                    </option>
+                                                    <option social_situation_desc="يرجي أرفاق ( صورة الهوية )"
+                                                            value="5">أسره سجين
+                                                    </option>
+                                                    <option
+                                                        social_situation_desc="يرجي أرفاق ( صورة الهوية ورقم الاقامه )"
+                                                        value="6">كبير في السن +٦٥
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12 pt-4 ">
                                             <div class="row">
-                                                @includeIf('admin.components.form.add.file', ['required' => 'required' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.add.file', ['required' => 'required' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6 id_number_image uploadFiles"])
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الهجران'),'name'=>'deed_ofـabandonment', 'max'=>'5'  , 'class' => "col-md-6 deed_ofـabandonment uploadFiles"])
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6 divorce_deed uploadFiles"])
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6 husband_death_image uploadFiles"])
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6 prisoner_family_identification_facility uploadFiles"])
+                                                @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6 attached_is_the_support_instrument uploadFiles"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6 absherFile"])
                                             </div>
                                         </div>
@@ -360,15 +376,59 @@
         // end ...  defaulter hide absher file ..
 
 
+        // hide all files ...
+        $(".uploadFiles").addClass("hide");
         $("#social_situation_id").on('change', function () {
-            var attr = document.querySelector("#social_situation_id");
-            var desc = attr.options[attr.selectedIndex].getAttribute('social_situation_desc');
-            $("#social_situation_description").text(desc)
+            var data = $("#social_situation_id").val();
+            $(".uploadFiles").addClass("hide");
+
+            if (data == 1) {
+                // رب اسره
+                $('.id_number_image').removeClass("hide");
+            }
+
+            if (data == 2) {
+                // أرمله
+                $('.id_number_image').removeClass("hide");
+                $('.husband_death_image').removeClass("hide");
+            }
+
+            if (data == 3) {
+                // مطلقة
+                $('.id_number_image').removeClass("hide");
+                $('.divorce_deed').removeClass("hide");
+            }
+
+            if (data == 4) {
+                // مهجورة
+                $('.id_number_image').removeClass("hide");
+                $('.deed_ofـabandonment').removeClass("hide");
+            }
+
+            if (data == 5) {
+                // اسره سجين
+                $('.id_number_image').removeClass("hide");
+                $('.prisoner_family_identification_facility').removeClass("hide");
+            }
+
+            if (data == 5) {
+                // كبير في السن
+                $('.id_number_image').removeClass("hide");
+            }
+
+
         });
 
         $("#is_special_case").on('change', function () {
             $("#special_case_type_section").toggle()
+            if ($("#is_special_case").val() == 1) {
+                $('.attached_is_the_support_instrument').removeClass("hide");
+            } else {
+                $('.attached_is_the_support_instrument').addClass("hide");
+            }
         });
+
+
     </script>
 @endsection
 

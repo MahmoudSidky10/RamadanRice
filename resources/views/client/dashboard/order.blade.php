@@ -248,6 +248,7 @@
                                         <div class="col-md-12 pt-4 ">
                                             <div class="row">
                                                 @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الهجران'),'name'=>'deed_ofـabandonment', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6"])
                                                 @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
