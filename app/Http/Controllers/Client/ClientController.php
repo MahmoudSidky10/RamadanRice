@@ -48,7 +48,7 @@ class ClientController extends Controller
     {
         if (Auth::check()) {
 
-            if (Auth::user()->user_type_id == 3) {
+            if (Auth::user()->isAdmin() || Auth::user()->isEmployee()) {
                 return redirect('/admin/dash');
             }
 
