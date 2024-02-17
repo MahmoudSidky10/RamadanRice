@@ -159,8 +159,7 @@
         });
 
         function deleteRaw(item) {
-            alert(item)
-            $("#div_" + item).hide();
+            $("#div_" + item).remove();
         }
     </script>
 

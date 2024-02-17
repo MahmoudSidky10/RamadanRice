@@ -160,12 +160,6 @@
                 @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/settings" , "title" => trans('language.settings') , "icon" => "menu-icon flaticon-layers" ])
             </li>
 
-            <li class="menu-item @if(strpos(url()->current(), "socialSituations" )) menu-item-active @endif"
-                aria-haspopup="true"
-                data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/socialSituations" , "title" => trans('language.socialSituations') , "icon" => "menu-icon flaticon-layers" ])
-            </li>
-
         </ul>
     </div>
 </li>
