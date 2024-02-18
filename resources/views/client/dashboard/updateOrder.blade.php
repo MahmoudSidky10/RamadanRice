@@ -175,8 +175,7 @@
                                                             @endif value="5">أسرة سجين
                                                     </option>
                                                     <option @if($item->social_situation_id == 6) selected
-                                                            @endif value="6">آنسه
-                                                    </option>
+                                                            @endif value="6">كبير في السن +٦٥</option>
                                                 </select>
                                             </div>
                                         </div>
