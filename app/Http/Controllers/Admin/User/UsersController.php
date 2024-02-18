@@ -155,7 +155,7 @@ class UsersController extends Controller
             $this->sendSms($msg, [$order->mobile]);
         }
 
-        if ($order->status == 2) {
+        if ($request->status == 2) {
             $order->notes = null;
             $order->save();
         }
