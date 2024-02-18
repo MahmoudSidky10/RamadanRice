@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -121,7 +122,7 @@ class Order extends Model
         }
 
         if ($this->status == 3) {
-            return "تم تعليق طلبك، يرجى مراجعة البيانات المدخلة في برنامج أرزاق رمضان على منصة اقرأ" . " " . time();
+            return "تم تعليق طلبك، يرجى مراجعة البيانات المدخلة في برنامج أرزاق رمضان على منصة اقرأ" . ' ( ' . Carbon::now()->format('Y-m-d H:i') . " )";
         }
 
         if ($this->status == 4) {
