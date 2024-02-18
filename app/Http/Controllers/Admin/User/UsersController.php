@@ -28,14 +28,12 @@ class UsersController extends Controller
     public function filter($request, $items)
     {
 
-        if ($request->name) {
-            $items = $items->where("name", 'LIKE', '%' . $request->name . '%');
+        if (request()->start_at) {
+            $items = $items->whereDate('created_at', '>=', Carbon::parse(request()->start_at));
         }
-        if ($request->mobile) {
-            $items = $items->where("mobile", $request->mobile);
-        }
-        if ($request->email) {
-            $items = $items->where("email", 'LIKE', '%' . $request->email . '%');
+
+        if (request()->end_at) {
+            $items = $items->whereDate('created_at', '<=', Carbon::parse(request()->end_at));
         }
 
         if ($request->id_number) {
