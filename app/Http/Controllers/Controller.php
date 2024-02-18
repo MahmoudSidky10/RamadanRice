@@ -43,6 +43,7 @@ class Controller extends BaseController
         $sender = env("SMS_SENDER");
         if ($body && $recipients) {
             $taqnyt->sendMsg($body, $recipients, $sender);
+            dd($taqnyt);
         }
         return true;
     }

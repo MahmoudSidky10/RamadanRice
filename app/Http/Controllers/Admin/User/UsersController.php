@@ -149,7 +149,6 @@ class UsersController extends Controller
         $order->status_updated_at = Carbon::now();
         $order->save();
 
-        dd($order->status);
         if ($order->status == 3) {
             // Send sms to user
             $msg = $order->orderStatusSmsMessage();
