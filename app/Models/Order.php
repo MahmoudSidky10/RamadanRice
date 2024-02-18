@@ -140,4 +140,9 @@ class Order extends Model
         return Order::where("status", $orderStatus)->count();
     }
 
+    public function childrenCount()
+    {
+        return $this->childreen()->count();
+    }
+
 }

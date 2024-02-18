@@ -202,9 +202,13 @@ class UsersController extends Controller
             'mobile' => 'رقم الجوال',
             'mobile2' => 'رقم الجوال الاضافي',
             'created_at' => 'تاريخ الانشاء',
+            'childrenCount' => 'عدد الاطفال',
         ];
 
         $orders = Order::where('status', $status)->with(['user'])->get();
+        $orders->map(function ($orders) {
+            $orders['childrenCount'] = $orders->childrenCount();
+        });
 
         $csvExporter = new \Laracsv\Export();
         $csvExporter->build($orders, $fields);
