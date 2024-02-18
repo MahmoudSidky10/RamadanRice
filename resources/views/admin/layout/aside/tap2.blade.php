@@ -73,12 +73,11 @@
                 @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/users" , "title" => trans('language.users') , "icon" => "menu-icon flaticon-layers" ])
             </li>
 
-            <li class="menu-item @if(strpos(url()->current(), "orders" )) menu-item-active @endif  "
-                aria-haspopup="true"
+
+            <li class="menu-item @if(strpos(url()->current(), "orders" )) menu-item-active @endif  " aria-haspopup="true"
                 data-menu-toggle="hover">
                 @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders" , "title" => trans('language.orders') , "icon" => "menu-icon flaticon-layers" ])
             </li>
-
             <li class="menu-item @if(strpos(url()->current(), "orders/pending" )) menu-item-active @endif  "
                 aria-haspopup="true"
                 data-menu-toggle="hover">
@@ -87,7 +86,7 @@
             <li class="menu-item @if(strpos(url()->current(), "orders/accepted" )) menu-item-active @endif  "
                 aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/accepted" , "title" => trans('طلبات تمت الموافقة عليها') , "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/accepted" , "title" => trans('طلبات تمت الموافقة عليها') , "icon" => "menu-icon flaticon-layers" ])
             </li>
             <li class="menu-item @if(strpos(url()->current(), "orders/review" )) menu-item-active @endif  "
                 aria-haspopup="true"
@@ -102,7 +101,7 @@
             <li class="menu-item @if(strpos(url()->current(), "orders/reUpdated" )) menu-item-active @endif  "
                 aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/reUpdated" , "title" => trans('طلبات تم تحديثها بيانتها') , "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/reUpdated" , "title" => trans('طلبات تم تحديثها بيانتها') , "icon" => "menu-icon flaticon-layers" ])
             </li>
 
         </ul>
