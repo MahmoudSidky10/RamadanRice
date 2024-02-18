@@ -297,7 +297,7 @@
 
                                     <!--begin::Submit-->
                                     <button type="submit" class="btn btn-primary" id="kt_careers_submit_button">
-                                        تسجيل البيانات
+                                       التالي
                                     </button>
                                     <!--end::Submit-->
                                 </form>
