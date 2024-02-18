@@ -104,6 +104,10 @@ class Order extends Model
         if ($this->status == 4) {
             return " الطلب غير مكتمل الشروط";
         }
+
+        if ($this->status == 5) {
+            return "تم تحديث بيانات الطلب الغير مكتملة";
+        }
     }
 
     public function orderStatusSmsMessage()
