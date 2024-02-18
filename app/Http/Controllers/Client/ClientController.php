@@ -302,6 +302,7 @@ class ClientController extends Controller
         }
 
         $data['id_number'] = Auth::user()->id_number;
+        $data['mobile'] = Auth::user()->mobile;
         $data['user_id'] = Auth::id();
         $data['created_by'] = Auth::user()->created_by;
         $data['status'] = 1;

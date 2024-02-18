@@ -115,12 +115,18 @@ class UsersController extends Controller
     public function orders(Request $request)
     {
         $items = Order::query();
-        /*if (Auth::user()->user_type_id == 3) {
-            $items = $items->where("created_by", Auth::id());
-        }*/
+
 
         if ($request->id_number) {
             $items = $items->where("id_number", $request->id_number);
+        }
+
+        if (request()->start_at) {
+            $items = $items->whereDate('created_at', '>=', Carbon::parse(request()->start_at));
+        }
+
+        if (request()->end_at) {
+            $items = $items->whereDate('created_at', '<=', Carbon::parse(request()->end_at));
         }
 
         $result['items'] = $items->orderBy("id", "desc")->paginate(15);
@@ -139,6 +145,7 @@ class UsersController extends Controller
         $order = Order::find($orderId);
         $order->status = $request->status;
         $order->notes = $request->notes;
+        $order->created_by = Auth::id();
         $order->status_updated_at = Carbon::now();
         $order->save();
 

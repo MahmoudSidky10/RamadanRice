@@ -53,7 +53,7 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{old("parent_name")}}" required
+                                                   value="{{old("parent_name")}}"
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
@@ -66,7 +66,7 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{old("grandfather_name")}}" required
+                                                   value="{{old("grandfather_name")}}"
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
@@ -79,7 +79,7 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{old("family_name")}}"
+                                                   value="{{old("family_name")}}" required
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
@@ -119,7 +119,7 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{auth()->user()->id_number}}"
+                                                   value="{{auth()->user()->id_number}}" disabled
                                                    name="id_number">
                                             <!--end::Input-->
                                             <div
@@ -142,7 +142,8 @@
 
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
-                                            <label class=" fs-5 fw-semibold mb-2">تاريخ الميلاد ( ميلادي )</label>
+                                            <label class=" fs-5 required fw-semibold mb-2">تاريخ الميلاد ( ميلادي
+                                                )</label>
                                             <!--end::Label-->
 
                                             <!--end::Input-->
@@ -195,7 +196,7 @@
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input id="mobile" type="text" class="form-control " name="mobile"
+                                            <input id="mobile" type="text" class="form-control " name="mobile" disabled
                                                    placeholder="" value="{{Auth::user()->mobile}}">
                                             <!--end::Input-->
                                             <div

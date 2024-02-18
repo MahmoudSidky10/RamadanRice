@@ -13,6 +13,8 @@
         <th>{{trans('language.name')}}</th>
         <th>{{trans('language.id_number')}}</th>
         <th>{{trans('language.children_count')}}</th>
+        <th>{{trans('language.created_at')}}</th>
+        <th>{{trans('الموظف المسؤول')}}</th>
         <th>{{trans('language.status')}}</th>
         <th>{{trans('language.details')}}</th>
     </tr>
@@ -24,6 +26,10 @@
             <td>{{$item->first_name}} {{$item->parent_name}} </td>
             <td>{{$item->id_number}}</td>
             <td>{{count($item->childreen)}}</td>
+            <td>
+                {{$item->created_at->format("d-m-Y H:i A" )}}
+            </td>
+            <td> {{$item->employee->name}}  {{$item->status_updated_at ? '('. \Carbon\Carbon::parse($item->status_updated_at)->format('Y-m-d') .' )' : ''}} </td>
             <td>
                 <span style="font-weight: bolder">{{$item->orderStatusName()}} </span>
                 <hr width="70%">
@@ -62,6 +68,19 @@
                                value="{{request()->id_number}}"
                                placeholder="{{trans('language.id_number')}}">
                     </div>
+
+                    <div class="col-md-3">
+                        <span> {{trans('language.start_at')}} </span>
+                        <input type="date" class="form-control start_at" name="start_at" value="{{request()->start_at}}"
+                               placeholder="{{trans('language.start_at')}}">
+                    </div>
+
+                    <div class="col-md-3">
+                        <span> {{trans('language.end_at')}} </span>
+                        <input type="date" class="form-control end_at " name="end_at" value="{{request()->end_at}}"
+                               placeholder="{{trans('language.end_at')}}">
+                    </div>
+
                 </div>
                 <div class="row pt-4">
                     <div class="col-md-3">

@@ -61,12 +61,6 @@
                                         </p>
                                     @endif
 
-
-                                    @if($item->status == 3 && Auth::user()->isClient())
-                                        <a class="btn btn-primary" href="{{route('client.order.update')}}"> تحديث
-                                            البيانات </a>
-                                    @endif
-
                                     <!--begin:: Names inputs -->
                                     <div class="row mb-5">
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4 ">
@@ -222,46 +216,49 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 pt-4">
-                                            <label class=" ">{{__("نوع الإعاقة")}}</label>
-                                            <div class="">
-                                                <select style="height: 40px !important;" id="special_case_type" disabled
-                                                        class="form-control" name="special_case_type">
-                                                    <option>أختر نوع الإعاقة</option>
-                                                    <option @if($item->special_case_type == 1) selected
-                                                            @endif value="1"> إعاقة حركية
-                                                    </option>
-                                                    <option @if($item->special_case_type == 2) selected
-                                                            @endif value="2"> إعاقة سمعية
-                                                    </option>
-                                                    <option @if($item->special_case_type == 3) selected
-                                                            @endif value="3">إعاقة ذهنية
-                                                    </option>
-                                                    <option @if($item->special_case_type == 4) selected
-                                                            @endif value="4">إعاقة أخرى
-                                                    </option>
-                                                </select>
+                                        @if($item->is_special_case == 1)
+                                            <div class="col-md-6 pt-4">
+                                                <label class=" ">{{__("نوع الإعاقة")}}</label>
+                                                <div class="">
+                                                    <select style="height: 40px !important;" id="special_case_type"
+                                                            disabled
+                                                            class="form-control" name="special_case_type">
+                                                        <option>أختر نوع الإعاقة</option>
+                                                        <option @if($item->special_case_type == 1) selected
+                                                                @endif value="1"> إعاقة حركية
+                                                        </option>
+                                                        <option @if($item->special_case_type == 2) selected
+                                                                @endif value="2"> إعاقة سمعية
+                                                        </option>
+                                                        <option @if($item->special_case_type == 3) selected
+                                                                @endif value="3">إعاقة ذهنية
+                                                        </option>
+                                                        <option @if($item->special_case_type == 4) selected
+                                                                @endif value="4">إعاقة أخرى
+                                                        </option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
 
 
                                         <div class="col-md-12 pt-4 ">
                                             <div class="row">
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الهجران'),'name'=>'deed_ofـabandonment', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'required' => 'required' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6 id_number_image uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة صك الهجران'),'name'=>'deed_ofـabandonment', 'max'=>'5'  , 'class' => "col-md-6 deed_ofـabandonment uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6 divorce_deed uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6 husband_death_image uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6 prisoner_family_identification_facility uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6 attached_is_the_support_instrument uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6 absherFile"])
                                             </div>
                                         </div>
 
                                         <div class="col-md-12 pt-4 ">
                                             <div class="row">
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments', 'max'=>'5'  , 'class' => "col-md-4"])
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments1', 'max'=>'5'  , 'class' => "col-md-4"])
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments2', 'max'=>'5'  , 'class' => "col-md-4"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments', 'max'=>'5'  , 'class' => "col-md-4"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments1', 'max'=>'5'  , 'class' => "col-md-4"])
+                                                @includeIf('admin.components.form.edit.file', ['disabled' => 'disabled' ,'icon' => 'fa fa-check','label' => trans('مرفقات أخرى'),'name'=>'other_attachments2', 'max'=>'5'  , 'class' => "col-md-4"])
                                             </div>
                                         </div>
 
@@ -281,6 +278,11 @@
                                            title="{{trans('تحديث الحالة')}}">
                                             تحديث الحالة
                                         </a>
+                                    @endif
+
+                                    @if($item->status == 3 && Auth::user()->isClient())
+                                        <a class="btn btn-primary" href="{{route('client.order.update')}}"> تحديث
+                                            البيانات </a>
                                     @endif
 
 
@@ -314,7 +316,7 @@
                                     <div class="col-lg-12 col-xl-12 stretch-card mb-8 ">
                                         <div class="card">
                                             <div class="card-body">
-                                                @if(Auth::user()->id == $item->user_id)
+                                                @if($item->status == 3 && Auth::user()->isClient())
                                                     <a href="{{route("client.order.child.create")}}"
                                                        class="btn btn-info ">
                                                         أضافه معال</a>
@@ -364,15 +366,66 @@
                 </div>
             </div>
         </div>
+    </div>
+@endsection
+@section("js")
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        })
+    </script>
 
-        @endsection
-        @section("js")
-            <script>
-                lightbox.option({
-                    'resizeDuration': 200,
-                    'wrapAround': true
-                })
-            </script>
+    <script>
+        // hide all files ...
+        $(".uploadFiles").addClass("hide");
+        var social_situation_id = "{{$item->social_situation_id}}"
+
+        if (social_situation_id == 1) {
+            // رب اسره
+            $('.id_number_image').removeClass("hide");
+        }
+
+        if (social_situation_id == 2) {
+            // أرمله
+            $('.id_number_image').removeClass("hide");
+            $('.husband_death_image').removeClass("hide");
+        }
+
+        if (social_situation_id == 3) {
+            // مطلقة
+            $('.id_number_image').removeClass("hide");
+            $('.divorce_deed').removeClass("hide");
+        }
+
+        if (social_situation_id == 4) {
+            // مهجورة
+            $('.id_number_image').removeClass("hide");
+            $('.deed_ofـabandonment').removeClass("hide");
+        }
+
+        if (social_situation_id == 5) {
+            // اسره سجين
+            $('.id_number_image').removeClass("hide");
+            $('.prisoner_family_identification_facility').removeClass("hide");
+        }
+
+        if (social_situation_id == 5) {
+            // كبير في السن
+            $('.id_number_image').removeClass("hide");
+        }
+
+
+        var nationality_id = {{$item->nationality_id}};
+        if (nationality_id == 1) {
+            $('.absherFile').addClass("hide");
+        } else {
+            $('.absherFile').removeClass("hide");
+        }
+
+
+    </script>
+
 @endsection
 
 

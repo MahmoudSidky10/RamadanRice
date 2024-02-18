@@ -17,7 +17,7 @@
                                     <p class="card-title">تفاصيل الطلب
                                         (
                                         <span
-                                                style="font-weight: normal; color: #0a6aa1;margin: 0 5px"> {{$item->orderStatusSmsMessage()}} </span>
+                                            style="font-weight: normal; color: #0a6aa1;margin: 0 5px"> {{$item->orderStatusSmsMessage()}} </span>
                                         )
                                     </p>
                                     <a style="padding-top:25px" class="" data-toggle="collapse"
@@ -98,12 +98,6 @@
                                       method="post" id="kt_careers_form">
                                     @csrf
 
-
-                                    <p class="alert alert-danger" style=" font-weight: bolder;font-size: 18px">
-                                        <i class="fa fa-info"></i>
-                                        - {{$item->notes}})
-                                    </p>
-
                                     <!--begin:: Names inputs -->
                                     <div class="row mb-5">
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4 ">
@@ -112,12 +106,12 @@
                                             <!--end::Label-->
 
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control "  placeholder=""
+                                            <input type="text" class="form-control " placeholder=""
                                                    value="{{$item->first_name}}"
                                                    name="first_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -130,7 +124,7 @@
                                                    name="parent_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -143,7 +137,7 @@
                                                    name="grandfather_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
                                             <!--end::Label-->
@@ -152,11 +146,11 @@
 
                                             <!--end::Input-->
                                             <input type="text" class="form-control " placeholder=""
-                                                   value="{{$item->family_name}}"
+                                                   value="{{$item->family_name}}" required
                                                    name="family_name">
                                             <!--end::Input-->
                                             <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("الحالة الإجتماعية")}}</label>
@@ -219,7 +213,7 @@
                                         <div class="col-md-6 pt-4">
                                             <label class="required">{{__("المدينه")}}</label>
                                             <div class="">
-                                                <select style="height: 40px !important;" id="city"  required
+                                                <select style="height: 40px !important;" id="city" required
                                                         class="form-control " name="city">
                                                     @foreach(\App\Models\City::all() as $city)
                                                         <option @if($item->city == $city->id) selected
@@ -240,10 +234,10 @@
 
                                         <div class="col-md-6 pt-4">
                                             <label
-                                                    class="required">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
+                                                class="required">{{__("هل أنت من ذوي الإحتياجات الخاصة")}}</label>
                                             <div class="">
                                                 <select style="height: 40px !important;" id="is_special_case"
-                                                         class="form-control" name="is_special_case">
+                                                        class="form-control" name="is_special_case">
                                                     <option @if($item->is_special_case == 0) selected
                                                             @endif  value="0">
                                                         لا
@@ -280,14 +274,13 @@
 
                                         <div class="col-md-12 pt-4 ">
                                             <div class="row">
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الهجران'),'name'=>'deed_ofـabandonment', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6"])
-                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6"])
-
+                                                @includeIf('admin.components.form.edit.file', ['required' => 'required' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6 id_number_image uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الهجران'),'name'=>'deed_ofـabandonment', 'max'=>'5'  , 'class' => "col-md-6 deed_ofـabandonment uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الطلاق'),'name'=>'divorce_deed', 'max'=>'5'  , 'class' => "col-md-6 divorce_deed uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('شهادة وفاة الزوج'),'name'=>'husband_death_image', 'max'=>'5'  , 'class' => "col-md-6 husband_death_image uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('اثبات اسرة سجين'),'name'=>'prisoner_family_identification_facility', 'max'=>'5'  , 'class' => "col-md-6 prisoner_family_identification_facility uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الاعاقة'),'name'=>'attached_is_the_support_instrument', 'max'=>'5'  , 'class' => "col-md-6 attached_is_the_support_instrument uploadFiles"])
+                                                @includeIf('admin.components.form.edit.file', ['icon' => 'fa fa-check','label' => trans('برنت ابشر - لغير السعوديين -'),'name'=>'absher_facility', 'max'=>'5'  , 'class' => "col-md-6 absherFile"])
                                             </div>
                                         </div>
 
@@ -343,15 +336,66 @@
                 </div>
             </div>
         </div>
+    </div>
+@endsection
+@section("js")
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        })
+    </script>
 
-        @endsection
-        @section("js")
-            <script>
-                lightbox.option({
-                    'resizeDuration': 200,
-                    'wrapAround': true
-                })
-            </script>
+    <script>
+        // hide all files ...
+        $(".uploadFiles").addClass("hide");
+        var social_situation_id = "{{$item->social_situation_id}}"
+
+        if (social_situation_id == 1) {
+            // رب اسره
+            $('.id_number_image').removeClass("hide");
+        }
+
+        if (social_situation_id == 2) {
+            // أرمله
+            $('.id_number_image').removeClass("hide");
+            $('.husband_death_image').removeClass("hide");
+        }
+
+        if (social_situation_id == 3) {
+            // مطلقة
+            $('.id_number_image').removeClass("hide");
+            $('.divorce_deed').removeClass("hide");
+        }
+
+        if (social_situation_id == 4) {
+            // مهجورة
+            $('.id_number_image').removeClass("hide");
+            $('.deed_ofـabandonment').removeClass("hide");
+        }
+
+        if (social_situation_id == 5) {
+            // اسره سجين
+            $('.id_number_image').removeClass("hide");
+            $('.prisoner_family_identification_facility').removeClass("hide");
+        }
+
+        if (social_situation_id == 5) {
+            // كبير في السن
+            $('.id_number_image').removeClass("hide");
+        }
+
+
+        var nationality_id = {{$item->nationality_id}};
+        if (nationality_id == 1) {
+            $('.absherFile').addClass("hide");
+        } else {
+            $('.absherFile').removeClass("hide");
+        }
+
+
+    </script>
+
 @endsection
 
 

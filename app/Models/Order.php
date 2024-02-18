@@ -128,6 +128,10 @@ class Order extends Model
             return "تم رفض الطلب لعدم تحقيق شروط القبول";
         }
 
+        if ($this->status == 5) {
+            return "تم تحديث بيانات الطلب الغير مكتملة";
+        }
+
     }
 
     public static function getOdersCount($orderStatus)
