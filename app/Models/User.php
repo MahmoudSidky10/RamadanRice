@@ -23,6 +23,7 @@ class User extends Authenticatable
         'id_number',
         'register_number', // random number from 6 numbers unique for user account
         'created_by',  // id for creator
+        'printed_by',  // id for creator
     ];
 
     protected $with = ['createdBy'];

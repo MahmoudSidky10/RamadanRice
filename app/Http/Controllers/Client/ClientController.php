@@ -145,6 +145,10 @@ class ClientController extends Controller
         }
         $order->update($data);
 
+
+        $order->status = Order::REUPDATED;
+        $order->save();
+
         toast('تم عمل التحديثات بنجاح وجاري مراجعة البيانات', 'success');
         return redirect()->route('client.order.details');
 

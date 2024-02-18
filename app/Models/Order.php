@@ -14,6 +14,7 @@ class Order extends Model
     const MISSING = 3;
 
     const REJECTED = 4;
+    const REUPDATED = 5;
 
     protected $fillable = [
         'status', // 1- pending , 2- accepted , 3- missing 4- rejected

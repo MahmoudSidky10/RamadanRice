@@ -46,6 +46,14 @@ class UsersController extends Controller
             $items = $items->where("register_number", $request->register_number);
         }
 
+        if ($request->print_status) {
+            if ($request->print_status == 1) {
+                $items = $items->where("printed_by", '!=', null);
+            } else {
+                $items = $items->where("printed_by", '=', null);
+            }
+        }
+
         $items = $items->orderBy("id", "desc")->paginate(15);
         return $items;
     }
@@ -156,6 +164,14 @@ class UsersController extends Controller
         return view('admin.users.print', ["user" => $user]);
     }
 
+    public function usersFromPrint($userId)
+    {
+        $user = User::find($userId);
+        $user->printed_by = Auth::id();
+        $user->save();
+        return redirect()->route("users.index");
+    }
+
     public function export($status)
     {
 
@@ -189,5 +205,37 @@ class UsersController extends Controller
         $csvExporter->build($orders, $fields);
         $csvExporter->download(__("orders") . "-" . Carbon::today()->format('y-m-d') . ".xls");
     }
+
+
+    public function pendingOrders()
+    {
+        $result['items'] = Order::where('status', Order::PENDING)->orderBy("id", "desc")->paginate(15);
+        return view('admin.users.orders')->with($result);
+    }
+
+    public function acceptedOrders()
+    {
+        $result['items'] = Order::where('status', Order::ACCEPTED)->orderBy("id", "desc")->paginate(15);
+        return view('admin.users.orders')->with($result);
+    }
+
+    public function reviewOrders()
+    {
+        $result['items'] = Order::where('status', Order::MISSING)->orderBy("id", "desc")->paginate(15);
+        return view('admin.users.orders')->with($result);
+    }
+
+    public function rejectedOrders()
+    {
+        $result['items'] = Order::where('status', Order::REJECTED)->orderBy("id", "desc")->paginate(15);
+        return view('admin.users.orders')->with($result);
+    }
+
+    public function reUpdatedOrders()
+    {
+        $result['items'] = Order::where('status', Order::REUPDATED)->orderBy("id", "desc")->paginate(15);
+        return view('admin.users.orders')->with($result);
+    }
+
 
 }

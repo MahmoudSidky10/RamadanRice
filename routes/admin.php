@@ -21,10 +21,18 @@ Route::resource('employees', EmployeesController::class);
 
 Route::resource('users', UsersController::class);
 Route::get('users/{id}/print', [UsersController::class, 'print'])->name('admin.users.print');
+Route::get('users-from-print/{id}', [UsersController::class, 'usersFromPrint'])->name('admin.users.usersFromPrint');
 Route::get('orders/export/{status}', [UsersController::class, 'export'])->name('admin.order.export');
 
 Route::get('/orders', [UsersController::class, 'orders']);
 Route::get('/orders/details/{id}', [UsersController::class, 'orderDetails'])->name('admin.order.details');
 Route::post('/orders/{id}/updateStatus', [UsersController::class, 'updateStatus'])->name('admin.order.updateStatus');
+
+// orders by status
+Route::get('/orders/pending', [UsersController::class, 'pendingOrders'])->name('admin.order.pendingOrders');
+Route::get('/orders/accepted', [UsersController::class, 'acceptedOrders'])->name('admin.order.acceptedOrders');
+Route::get('/orders/review', [UsersController::class, 'reviewOrders'])->name('admin.order.reviewOrders');
+Route::get('/orders/rejected', [UsersController::class, 'rejectedOrders'])->name('admin.order.rejectedOrders');
+Route::get('/orders/reUpdated', [UsersController::class, 'reUpdatedOrders'])->name('admin.order.reUpdatedOrders');
 
 Route::resource('socialSituations', SocialSituationController::class);

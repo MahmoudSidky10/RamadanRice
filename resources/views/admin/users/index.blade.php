@@ -48,8 +48,13 @@
                 @endif
             </td>
             <td>
-                <a href="{{route("admin.users.print",$item->id)}}"
-                   class="btn btn-success"> {{trans('طباعة')}} </a>
+
+                @if($item->printed_by)
+                    <a href="{{route("admin.users.print",$item->id)}}" class="btn btn-info"> {{trans('طباعة مجددا')}} </a>
+                @else
+                    <a href="{{route("admin.users.print",$item->id)}}" class="btn btn-success"> {{trans('طباعة')}} </a>
+                @endif
+
             </td>
             <td>
                 @includeIf("admin.components.buttons.edit" , ["href" => "users/$item->id/edit"])
@@ -66,16 +71,25 @@
             <div class="col-md-12">
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <input type="text" class="form-control mobile_input mt-6" name="id_number"
                                value="{{request()->id_number}}"
                                placeholder="{{trans('language.id_number')}}">
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <input type="text" class="form-control email_input mt-6" name="register_number"
                                value="{{request()->register_number}}"
                                placeholder="{{trans('language.register_number')}}">
+                    </div>
+
+                    <div class="col-md-2">
+                        <span> {{trans('حاله الطباعة')}} </span>
+                        <select class="form-control sorter select2 " name="print_status">
+                            <option @if(request()->print_status == 0 ) selected @endif value="0"> الكل</option>
+                            <option @if(request()->print_status == 1 ) selected @endif  value="1"> مطبوع</option>
+                            <option @if(request()->print_status == 2 ) selected @endif  value="2"> غير مطبوع</option>
+                        </select>
                     </div>
 
                     <div class="col-md-3">

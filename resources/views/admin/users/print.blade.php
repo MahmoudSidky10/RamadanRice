@@ -28,7 +28,7 @@
                 <button onclick="window.print()"><i class="fa-solid fa-print"></i>طباعه</button>
                 او الضغط علي <span>(CTRL+P)</span> من لوحه المفاتيح
             </p>
-            <a class="print_head btn btn-dark p-md-2" style="padding-bottom: 10px" href="{{url("/admin/users")}}">
+            <a class="print_head btn btn-dark p-md-2" style="padding-bottom: 10px" href="{{url("/admin/users-from-print/$user->id")}}">
                 <i class="fa-solid fa-arrow-left"> عودة لقائمه المستفيدين  </i>
             </a>
         </div>

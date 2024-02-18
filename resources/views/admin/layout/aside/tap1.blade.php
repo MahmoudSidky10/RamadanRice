@@ -70,6 +70,7 @@
         <span class="menu-text">{{trans('language.user_section')}}</span><i class="menu-arrow"></i></a>
     <div class="menu-submenu "
          @if(strpos(url()->current(), "users" ))  style="display: block;" @endif
+         @if(strpos(url()->current(), "orders" ))  style="display: block;" @endif
          kt-hidden-height="200"><i
             class="menu-arrow"></i>
         <ul class="menu-subnav">
@@ -84,6 +85,32 @@
                 data-menu-toggle="hover">
                 @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders" , "title" => trans('language.orders') , "icon" => "menu-icon flaticon-layers" ])
             </li>
+            <li class="menu-item @if(strpos(url()->current(), "orders/pending" )) menu-item-active @endif  "
+                aria-haspopup="true"
+                data-menu-toggle="hover">
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/pending" , "title" => trans('طلبات قيد المراجعة') , "icon" => "menu-icon flaticon-layers" ])
+            </li>
+            <li class="menu-item @if(strpos(url()->current(), "orders/accepted" )) menu-item-active @endif  "
+                aria-haspopup="true"
+                data-menu-toggle="hover">
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/accepted" , "title" => trans('طلبات تمت الموافقة عليها') , "icon" => "menu-icon flaticon-layers" ])
+            </li>
+            <li class="menu-item @if(strpos(url()->current(), "orders/review" )) menu-item-active @endif  "
+                aria-haspopup="true"
+                data-menu-toggle="hover">
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/review" , "title" => trans('طلبات غير مكتملة البيانات') , "icon" => "menu-icon flaticon-layers" ])
+            </li>
+            <li class="menu-item @if(strpos(url()->current(), "orders/rejected" )) menu-item-active @endif  "
+                aria-haspopup="true"
+                data-menu-toggle="hover">
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/rejected" , "title" => trans('طلبات غير مكتملة الشروط') , "icon" => "menu-icon flaticon-layers" ])
+            </li>
+            <li class="menu-item @if(strpos(url()->current(), "orders/reUpdated" )) menu-item-active @endif  "
+                aria-haspopup="true"
+                data-menu-toggle="hover">
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/reUpdated" , "title" => trans('طلبات تم تحديثها بيانتها') , "icon" => "menu-icon flaticon-layers" ])
+            </li>
+
 
         </ul>
     </div>
@@ -159,6 +186,7 @@
                 data-menu-toggle="hover">
                 @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/settings" , "title" => trans('language.settings') , "icon" => "menu-icon flaticon-layers" ])
             </li>
+
 
         </ul>
     </div>
