@@ -410,7 +410,7 @@
             $('.prisoner_family_identification_facility').removeClass("hide");
         }
 
-        if (social_situation_id == 5) {
+        if (social_situation_id == 6) {
             // كبير في السن
             $('.id_number_image').removeClass("hide");
         }
