@@ -61,6 +61,11 @@
                                         </p>
                                     @endif
 
+                                        @if($item->status == 3 && Auth::user()->isClient())
+                                            <a class="btn btn-primary" href="{{route('client.order.update')}}"> تحديث
+                                                البيانات </a>
+                                        @endif
+
                                     <!--begin:: Names inputs -->
                                     <div class="row mb-5">
                                         <div class="col-md-6 fv-row fv-plugins-icon-container pt-4 ">
@@ -279,10 +284,7 @@
                                         </a>
                                     @endif
 
-                                    @if($item->status == 3 && Auth::user()->isClient())
-                                        <a class="btn btn-primary" href="{{route('client.order.update')}}"> تحديث
-                                            البيانات </a>
-                                    @endif
+
 
 
 
