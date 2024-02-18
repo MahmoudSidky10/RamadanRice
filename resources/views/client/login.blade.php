@@ -1507,7 +1507,7 @@
                             </div>
                             <div class="">
                                 <div class="tacbox" dir="rtl">
-                                    <input id="checkbox" required name="checkbox" value="" type="checkbox"/>
+                                    <input id="checkbox" required name="checkTerms" value="" type="checkbox"/>
                                     <label for="checkbox"> موافقة علي <a href="#" data-toggle="modal"
                                                                          data-target="#exampleModal"> شروط
                                             الاستخدام </a>.</label>

@@ -196,7 +196,9 @@ class ClientController extends Controller
             "id_number" => "required",
             "register_number" => "required",
             "mobile" => "required|min:10|max:10",
+            "checkbox" => "required",
         ], [
+            'checkTerms.required' => "لابد من الموافقة علي الشروط و الاحكام",
             'id_number.required' => "رقم الهوية مطلوب",
             'register_number.required' => "رقم العشوائي مطلوب",
             'mobile.required' => "رقم الجوال مطلوب",
