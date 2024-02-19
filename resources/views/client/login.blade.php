@@ -1459,7 +1459,7 @@
                 </div>
                 <div class="col-lg-6 d-flex align-items-center">
                     <div class="login-form login-signin">
-                        <form class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate"
+                        <form class="form w-xxl-550px rounded-lg p-20"
                               method="POST" action="{{route('client-login')}}">
                             @csrf
 
@@ -1487,7 +1487,7 @@
                             <div class="form-group">
                                 <label
                                     class="font-size-h6 font-weight-bolder text-dark">{{__("رقم الهوية")}}</label>
-                                <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
+                                <input required class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
                                        name="id_number" autocomplete="off"/>
                             </div>
                             <div class="form-group">
@@ -1495,19 +1495,19 @@
                                     <label
                                         class="font-size-h6 font-weight-bolder text-dark pt-5">{{__("رمز الدخول")}}</label>
                                 </div>
-                                <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
+                                <input required class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
                                        name="register_number" autocomplete="off"/>
                             </div>
 
                             <div class="form-group">
                                 <label
                                     class="font-size-h6 font-weight-bolder text-dark">{{__("رقم الجوال")}}</label>
-                                <input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
+                                <input required class="form-control form-control-solid h-auto p-6 rounded-lg" type="text"
                                        name="mobile" placeholder="05XXXXXXXX" autocomplete="off"/>
                             </div>
                             <div class="">
                                 <div class="tacbox" dir="rtl">
-                                    <input id="checkbox" required name="checkTerms" value="" type="checkbox"/>
+                                    <input id="checkbox" required name="checkTerms" type="checkbox"/>
                                     <label for="checkbox"> موافقة علي <a href="#" data-toggle="modal"
                                                                          data-target="#exampleModal"> شروط
                                             الاستخدام </a>.</label>

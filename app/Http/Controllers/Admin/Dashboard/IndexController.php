@@ -30,9 +30,11 @@ class IndexController extends Controller
 
     public function reports()
     {
+        $result['pendingOrdersCount'] = Order::getOdersCount(1);
         $result['doneOrdersCount'] = Order::getOdersCount(2);
         $result['missingOrdersCount'] = Order::getOdersCount(3);
         $result['rejectedOrdersCount'] = Order::getOdersCount(4);
+        $result['reUpdatedOrdersCount'] = Order::getOdersCount(5);
         return view('admin.dashboard.reports')->with($result);
     }
 
@@ -63,7 +65,7 @@ class IndexController extends Controller
 
         $item->update($data);
 
-        toast('تم تحديث البيانات بنجاح','success');
+        toast('تم تحديث البيانات بنجاح', 'success');
         return redirect()->back()->with('success', __('admin.done'));
     }
 
@@ -81,7 +83,7 @@ class IndexController extends Controller
 
         $item->update($data);
         Auth::login($item);
-        toast('تم تحديث البيانات بنجاح','success');
+        toast('تم تحديث البيانات بنجاح', 'success');
         return back();
     }
 
