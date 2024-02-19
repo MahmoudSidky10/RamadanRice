@@ -74,34 +74,44 @@
             </li>
 
 
-            <li class="menu-item @if(strpos(url()->current(), "orders" )) menu-item-active @endif  " aria-haspopup="true"
+            @php
+                $allOrdersCount         = \App\Models\Order::count();
+                $pendingOrdersCount     = \App\Models\Order::getOdersCount(1);
+                $doneOrdersCount        = \App\Models\Order::getOdersCount(2);
+                $missingOrdersCount     = \App\Models\Order::getOdersCount(3);
+                $rejectedOrdersCount    = \App\Models\Order::getOdersCount(4);
+                $reUpdatedOrdersCount   = \App\Models\Order::getOdersCount(5);
+            @endphp
+
+            <li class="menu-item @if(strpos(url()->current(), "orders" )) menu-item-active @endif  "
+                aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders" , "title" => trans('language.orders') , "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders" , "title" => trans('language.orders')  . " ( $allOrdersCount )" , "icon" => "menu-icon flaticon-layers" ])
             </li>
             <li class="menu-item @if(strpos(url()->current(), "orders/pending" )) menu-item-active @endif  "
                 aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/pending" , "title" => trans('طلبات قيد المراجعة') , "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/pending" , "title" => trans('طلبات قيد المراجعة') . " ( $pendingOrdersCount )" , "icon" => "menu-icon flaticon-layers" ])
             </li>
             <li class="menu-item @if(strpos(url()->current(), "orders/accepted" )) menu-item-active @endif  "
                 aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/accepted" , "title" => trans('طلبات تمت الموافقة عليها') , "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/accepted" , "title" => trans('طلبات موافق عليها') . " ( $doneOrdersCount )" , "icon" => "menu-icon flaticon-layers" ])
             </li>
             <li class="menu-item @if(strpos(url()->current(), "orders/review" )) menu-item-active @endif  "
                 aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/review" , "title" => trans('طلبات غير مكتملة البيانات') , "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/review" , "title" => trans('طلبات غير مكتملة البيانات') . " ( $missingOrdersCount )", "icon" => "menu-icon flaticon-layers" ])
             </li>
             <li class="menu-item @if(strpos(url()->current(), "orders/rejected" )) menu-item-active @endif  "
                 aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/rejected" , "title" => trans('طلبات غير مكتملة الشروط') , "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/rejected" , "title" => trans('طلبات غير مكتملة الشروط') . " ( $rejectedOrdersCount )", "icon" => "menu-icon flaticon-layers" ])
             </li>
             <li class="menu-item @if(strpos(url()->current(), "orders/reUpdated" )) menu-item-active @endif  "
                 aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/reUpdated" , "title" => trans('طلبات تم تحديثها بيانتها') , "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/reUpdated" , "title" => trans('طلبات تم تحديثها بيانتها') . " ( $reUpdatedOrdersCount )", "icon" => "menu-icon flaticon-layers" ])
             </li>
 
         </ul>
