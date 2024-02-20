@@ -12,6 +12,7 @@
         <th>#</th>
         <th>{{trans('language.name')}}</th>
         <th>{{trans('language.id_number')}}</th>
+        <th>{{trans('language.mobile')}}</th>
         <th>{{trans('language.children_count')}}</th>
         <th>{{trans('language.created_at')}}</th>
         <th>{{trans('الموظف المسؤول')}}</th>
@@ -25,6 +26,7 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{$item->first_name}} {{$item->parent_name}} </td>
             <td>{{$item->id_number}}</td>
+            <td>{{$item->mobile}}</td>
             <td>{{count($item->childreen)}}</td>
             <td>
                 {{$item->created_at->format("d-m-Y H:i A" )}}

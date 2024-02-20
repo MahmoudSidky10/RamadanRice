@@ -20,6 +20,7 @@
         <th>#</th>
         <th>{{trans('language.id_number')}}</th>
         <th>{{trans('language.register_number')}}</th>
+        <th>{{trans('language.mobile')}}</th>
         @if(Auth::user()->isAdmin())
             <th>{{trans('language.created_by')}}</th>
         @endif
@@ -34,6 +35,7 @@
         <tr class="text-center">
             <td>{{ $loop->iteration }}</td>
             <td>{{$item->id_number}}</td>
+            <td>{{$item->mobile}}</td>
             <td>{{$item->register_number}}</td>
             @if(Auth::user()->isAdmin())
                 <td>{{@$item->createdBy->name ?? @$item->createdBy->user_name }}</td>
