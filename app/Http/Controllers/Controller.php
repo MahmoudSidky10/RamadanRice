@@ -32,12 +32,11 @@ class Controller extends BaseController
 
     protected function storeImage($file, $file_name = "images")
     {
-        if ($file->isValid()) {
-            $file->store($file_name, 'public');
-            $path = "storage/" . $file_name . "/" . time() . '-' . rand(1111111111, 9999999999) . '.' . $file_name->getClientOriginalExtension();
-            return url("/") . "/" . $path;
-        }
+        $file->store($file_name, 'public');
+        $path = "storage/" . $file_name . "/" . $file->hashName();
+        return url("/") . "/" . $path;
     }
+
 
     public function sendSms($body, $recipients)
     {
