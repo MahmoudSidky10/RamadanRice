@@ -269,6 +269,15 @@
                                         </div>
 
                                         <div class="col-md-12 pt-4 ">
+
+                                            <div class="mt-4">
+                                                <p style="font-weight: bolder !important;  font-size: 14px; color: red" class="paper_content">#   لمستخدمي الآيفون الرجاء رفع الصورة من الاستديو وليس من الكاميرا مباشر !</p>
+                                                <p style="font-weight: bolder !important;  font-size: 14px; color: red" class="paper_content">#
+                                                    في حالة وجود معالين إرفاق بطاقة العائلة للسعوديين وهويات افراد الاسرة للمقيمين وتكون الصوره في صفحة واحدة
+                                                </p>
+                                            </div>
+
+
                                             <div class="row">
                                                 @includeIf('admin.components.form.add.file', ['required' => 'required' ,'icon' => 'fa fa-check','label' => trans('صورة الهوية'),'name'=>'id_number_image', 'max'=>'5'  , 'class' => "col-md-6 id_number_image uploadFiles"])
                                                 @includeIf('admin.components.form.add.file', ['icon' => 'fa fa-check','label' => trans('صورة صك الهجران'),'name'=>'deed_ofـabandonment', 'max'=>'5'  , 'class' => "col-md-6 deed_ofـabandonment uploadFiles"])

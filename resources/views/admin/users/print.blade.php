@@ -70,6 +70,7 @@
             <p class="paper_content"> الضغط على كلمة إرسال </p>
             <p class="paper_content"> في حالة استيفائكم للشروط وبعد التحقق من طلبكم ستصلكم رسالة نصية لزيارة أي فرع من
                 فروع متجر الدكان</p>
+            <p style="font-weight: bolder !important;  font-size: 20px" class="paper_content">  لمستخدمي الآيفون الرجاء رفع الصورة من الاستديو وليس من الكاميرا مباشر </p>
 
             <p class="Randome_number"> رمز الدخول : {{$user->register_number}} </p>
 
