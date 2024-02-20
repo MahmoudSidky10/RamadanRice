@@ -35,8 +35,8 @@ class Controller extends BaseController
         if ($file->isValid()) {
             $file->store($file_name, 'public');
             $path = "storage/" . $file_name . "/" . time() . '-' . rand(1111111111, 9999999999) . '.' . $file_name->getClientOriginalExtension();
+            return url("/") . "/" . $path;
         }
-        return url("/") . "/" . $path;
     }
 
     public function sendSms($body, $recipients)
