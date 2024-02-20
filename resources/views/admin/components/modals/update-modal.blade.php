@@ -16,7 +16,7 @@
                                 <select style="height: 40px !important;" required class="form-control" name="status">
                                     <option value="2"> الطلب مقبول</option>
                                     <option value="3"> الطلب غير كامل البيانات</option>
-                                    <option value="3"> الطلب غير مكتمل الشروط</option>
+                                    <option value="4"> الطلب غير مكتمل الشروط</option>
                                 </select>
                             </div>
                         </div>

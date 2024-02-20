@@ -158,6 +158,13 @@ class UsersController extends Controller
 
     public function updateStatus($orderId, Request $request)
     {
+
+        if ($request->status != 2 && $request->notes == null) {
+            session()->flash("danger", "يجب عليك كتابة الملاحظات");
+            toast('يجب عليك كتابة الملاحظات', 'error');
+            return back();
+        }
+
         $order = Order::find($orderId);
         $order->status = $request->status;
         $order->notes = $request->notes;
