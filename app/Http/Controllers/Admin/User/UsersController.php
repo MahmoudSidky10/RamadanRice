@@ -40,6 +40,10 @@ class UsersController extends Controller
             $items = $items->where("id_number", $request->id_number);
         }
 
+        if ($request->mobile) {
+            $items = $items->where("mobile", $request->mobile);
+        }
+
         if ($request->register_number) {
             $items = $items->where("register_number", $request->register_number);
         }
@@ -127,6 +131,10 @@ class UsersController extends Controller
 
         if ($request->id_number) {
             $items = $items->where("id_number", $request->id_number);
+        }
+
+        if ($request->mobile) {
+            $items = $items->where("mobile", $request->mobile);
         }
 
         if (request()->start_at) {
@@ -226,7 +234,7 @@ class UsersController extends Controller
 
     public function pendingOrders()
     {
-        $result['items'] = Order::where('status', Order::PENDING)->orderBy("id", "desc")->paginate(15);
+        $result['items'] = Order::where('status', Order::PENDING)->orderBy("id", "asc")->paginate(15);
         return view('admin.users.orders')->with($result);
     }
 

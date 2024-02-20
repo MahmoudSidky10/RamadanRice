@@ -73,7 +73,7 @@
             <div class="col-md-12">
 
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <input type="text" class="form-control mobile_input mt-6" name="id_number"
                                value="{{request()->id_number}}"
                                placeholder="{{trans('language.id_number')}}">
@@ -85,7 +85,13 @@
                                placeholder="{{trans('language.register_number')}}">
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control email_input mt-6" name="mobile"
+                               value="{{request()->mobile}}"
+                               placeholder="{{trans('language.mobile')}}">
+                    </div>
+
+                    <div class="col-md-3">
                         <span> {{trans('حاله الطباعة')}} </span>
                         <select class="form-control sorter select2 " name="print_status">
                             <option @if(request()->print_status == 0 ) selected @endif value="0"> الكل</option>
@@ -94,13 +100,13 @@
                         </select>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <span> {{trans('language.start_at')}} </span>
                         <input type="date" class="form-control start_at" name="start_at" value="{{request()->start_at}}"
                                placeholder="{{trans('language.start_at')}}">
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <span> {{trans('language.end_at')}} </span>
                         <input type="date" class="form-control end_at " name="end_at" value="{{request()->end_at}}"
                                placeholder="{{trans('language.end_at')}}">

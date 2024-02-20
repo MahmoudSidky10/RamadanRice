@@ -72,6 +72,13 @@
                     </div>
 
                     <div class="col-md-3">
+                        <input type="text" class="form-control email_input mt-6" name="mobile"
+                               value="{{request()->mobile}}"
+                               placeholder="{{trans('language.mobile')}}">
+                    </div>
+
+
+                    <div class="col-md-3">
                         <span> {{trans('language.start_at')}} </span>
                         <input type="date" class="form-control start_at" name="start_at" value="{{request()->start_at}}"
                                placeholder="{{trans('language.start_at')}}">
