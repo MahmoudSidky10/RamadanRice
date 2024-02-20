@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use TaqnyatSms;
 
@@ -31,8 +32,10 @@ class Controller extends BaseController
 
     protected function storeImage($file, $file_name = "images")
     {
-        $file->store($file_name, 'public');
-        $path = "storage/" . $file_name . "/" . $file->hashName();
+        if ($file->isValid()) {
+            $file->store($file_name, 'public');
+            $path = "storage/" . $file_name . "/" . time() . '-' . rand(1111111111, 9999999999) . '.' . $file_name->getClientOriginalExtension();
+        }
         return url("/") . "/" . $path;
     }
 
