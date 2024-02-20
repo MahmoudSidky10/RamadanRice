@@ -101,7 +101,7 @@
             <li class="menu-item @if(strpos(url()->current(), "orders/review" )) menu-item-active @endif  "
                 aria-haspopup="true"
                 data-menu-toggle="hover">
-                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/review" , "title" => trans('طلبات غير مكتملة البيانات') . " ( $missingOrdersCount )", "icon" => "menu-icon flaticon-layers" ])
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/review" , "title" => trans('طلبات غير مكتملة') . " ( $missingOrdersCount )", "icon" => "menu-icon flaticon-layers" ])
             </li>
             <li class="menu-item @if(strpos(url()->current(), "orders/rejected" )) menu-item-active @endif  "
                 aria-haspopup="true"
