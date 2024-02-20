@@ -96,14 +96,22 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'id_number' => 'required'
+            'id_number' => 'required',
+            'mobile' => 'required',
         ]);
 
         $user = User::find($id);
         // check if id number exists return error
         $userExist = User::where('id', "!=", $user->id)->where("id_number", $request->id_number)->first();
         if ($userExist) {
-            session()->flash('danger', trans('رقم الهوية موجود مسبقا , يرجي التاكد من البيانات مره اخري'));
+            toast('رقم الهوية موجود مسبقا , يرجي التاكد من البيانات مره اخري', 'error');
+            return back();
+        }
+
+        $userExistMobile = User::where("mobile", $request->mobile)->first();
+        if ($userExistMobile) {
+            toast('رقم الجوال موجود مسبقا , يرجي التاكد من البيانات مره اخري', 'error');
+            return back();
         }
 
 

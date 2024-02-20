@@ -16,6 +16,7 @@
 @section('form-groups')
 
     @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('language.id_number'),'name'=>'id_number', 'placeholder'=>trans('language.id_number' ),'valid'=>trans('language.vaildation')])
+    @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('language.mobile'),'name'=>'mobile', 'placeholder'=>trans('language.mobile' ),'valid'=>trans('language.vaildation')])
 
 @endsection
 @section('submit-button-title' , trans("language.edit"))
