@@ -35,8 +35,8 @@
         <tr class="text-center">
             <td>{{ $loop->iteration }}</td>
             <td>{{$item->id_number}}</td>
-            <td>{{$item->mobile}}</td>
             <td>{{$item->register_number}}</td>
+            <td>{{$item->mobile}}</td>
             @if(Auth::user()->isAdmin())
                 <td>{{@$item->createdBy->name ?? @$item->createdBy->user_name }}</td>
             @endif
