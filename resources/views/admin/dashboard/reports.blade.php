@@ -19,6 +19,38 @@
                                                 <!--begin::Number-->
                                                 <span
                                                         class="fw-semibold fs-3x text-gray-800 "> <h1
+                                                            style="font-weight: 700 !important;font-size: 70px">   {{number_format($allOrders)}}  </h1></span>
+                                                <!--end::Number-->
+
+                                                <!--begin::Follower-->
+                                                <div class="m-0">
+                                                <span class="fw-semibold fs-6 text-gray-400 "
+                                                      style="color: #686872  !important;">{{__("جميع الطلبات")}}</span>
+
+                                                </div>
+                                                <!--end::Follower-->
+                                            </div>
+
+                                            <div class="pt-6">
+                                                @if($allOrders > 0 )
+                                                    <a class="btn btn-dark" href="{{route("admin.order.export",1)}}">استخراج
+                                                        التقرير </a>
+                                                @endif
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- ../ card end -->
+                                <!-- card start -->
+                                <div style=" margin: 0 15px; height: 250px !important;" class="col-md-3 card h-lg-300">
+                                    <a style="color: #0c0e18 !important;">
+                                        <div class="card-body   flex-column">
+                                            <!--begin::Section-->
+                                            <div class="d-flex flex-column " style="margin-top: 30px">
+                                                <!--begin::Number-->
+                                                <span
+                                                        class="fw-semibold fs-3x text-gray-800 "> <h1
                                                             style="font-weight: 700 !important;font-size: 70px">   {{number_format($pendingOrdersCount)}}  </h1></span>
                                                 <!--end::Number-->
 
@@ -77,8 +109,8 @@
                                 <!-- ../ card end -->
 
                                 <!-- card start -->
-                                <div style=" margin:  0 15px; height: 250px !important;" class="col-md-4 card h-lg-300">
-                                    <a style="color: #0c0e18 !important;">
+                                <div style="  margin:  0 15px; height: 250px !important;"
+                                     class="col-md-3 card h-lg-300 mt-3">
                                         <div class="card-body   flex-column">
                                             <!--begin::Section-->
                                             <div class="d-flex flex-column " style="margin-top: 30px">

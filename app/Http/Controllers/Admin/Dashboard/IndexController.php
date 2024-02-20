@@ -30,6 +30,7 @@ class IndexController extends Controller
 
     public function reports()
     {
+        $result['allOrders'] = Order::query()->count();
         $result['pendingOrdersCount'] = Order::getOdersCount(1);
         $result['doneOrdersCount'] = Order::getOdersCount(2);
         $result['missingOrdersCount'] = Order::getOdersCount(3);
