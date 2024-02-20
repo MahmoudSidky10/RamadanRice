@@ -175,18 +175,20 @@ class ClientController extends Controller
     {
         $order = Order::where("user_id", Auth::id())->first();
         $data = $request->all();
-        for ($i = 0; $i < count($data['name']); $i++) {
-            $child['name'] = $data['name'][$i];
-            $child['relative_relation'] = $data['relative_relation'][$i];
-            $child['id_number'] = $data['id_number'][$i];
-            $child['birth_date'] = $data['birth_date'][$i];
-            $child['salary'] = $data['salary'][$i];
-            $child['is_orphan'] = $data['is_orphan'][$i];
-            $child['order_id'] = $order->id;
-            $child['user_id'] = Auth::id();
-            OrderChildreen::create($child);
+        if (isset($data['name']) && count($data['name']) < 0) {
+            for ($i = 0; $i < count($data['name']); $i++) {
+                $child['name'] = $data['name'][$i];
+                $child['relative_relation'] = $data['relative_relation'][$i];
+                $child['id_number'] = $data['id_number'][$i];
+                $child['birth_date'] = $data['birth_date'][$i];
+                $child['salary'] = $data['salary'][$i];
+                $child['is_orphan'] = $data['is_orphan'][$i];
+                $child['order_id'] = $order->id;
+                $child['user_id'] = Auth::id();
+                OrderChildreen::create($child);
+            }
+            toast('تم اضافة المعال بنجاح', 'success');
         }
-        toast('تم اضافة المعال بنجاح', 'success');
         return redirect()->route("client.order.details");
     }
 
