@@ -222,7 +222,12 @@ class UsersController extends Controller
             'orderStatus' => 'حالة الطلب',
         ];
 
-        $orders = Order::where('status', $status)->with(['user'])->get();
+        if ($status == 0) {
+            $orders = Order::query()->with(['user'])->get();
+        } else {
+            $orders = Order::where('status', $status)->with(['user'])->get();
+        }
+
         $orders->map(function ($orders) {
             $orders['childrenCount'] = $orders->childrenCount();
             $orders['orderStatus'] = $orders->orderStatusName();

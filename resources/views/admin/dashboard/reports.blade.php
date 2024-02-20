@@ -33,7 +33,7 @@
 
                                             <div class="pt-6">
                                                 @if($allOrders > 0 )
-                                                    <a class="btn btn-dark" href="{{route("admin.order.export",1)}}">استخراج
+                                                    <a class="btn btn-dark" href="{{route("admin.order.export",0)}}">استخراج
                                                         التقرير </a>
                                                 @endif
                                             </div>
