@@ -228,7 +228,7 @@ class UsersController extends Controller
 
         $csvExporter = new \Laracsv\Export();
         $csvExporter->build($orders, $fields);
-        $csvExporter->download(__("orders") . "_" .  time() . ".xlsx");
+        $csvExporter->download(__("orders") . "-" . Carbon::today()->format('y-m-d') . ".xls");
     }
 
 
