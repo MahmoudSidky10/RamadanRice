@@ -65,9 +65,16 @@
         </div>
         <div class="login-body d-flex flex-column-fluid align-items-stretch justify-content-center">
             <div class="container row">
-                <div
-                    class="col-lg-6 bgi-size-contain bgi-no-repeat bgi-position-y-center bgi-position-x-center min-h-150px mt-10 m-md-0">
-                    <svg style="margin-top: 250px" class="animated" id="freepik_stories-humanitarian-help"
+                <div class="col-lg-7 bgi-size-contain bgi-no-repeat bgi-position-y-center bgi-position-x-center min-h-150px mt-10 m-md-0">
+
+                    <p style="font-weight: bolder;font-size: 20px">
+                        <span style="color: red"> تنويه </span>
+                        : مؤسسة اقرأ الإنسانية لا تطلب أرقام حسابات بنكية ولا تتحصل على أي رسوم أو مبالغ مالية، ونحذر من التعامل مع منتحلي الشخصية، كما نخلي مسؤوليتنا عن أي إجراء خارج نطاق المؤسسة وموقعها الإلكتروني وأرقام التواصل الرسمية للمؤسسة، ولتقديم طلب سلة غذائية في رمضان يمكنكم التوجه إلى مقر مؤسسة اقرأ الإنسانية مباشرة لخدمتكم.
+                        في حالة الإشتباه يمكنكم التواصل على الجوال رقم <span style="color: #92ad38"> 0505655344 </span> أو على بريد المؤسسة الإلكتروني
+                        <span style="color: #92ad38"> info@iqraa.org.sa </span>
+                    </p>
+
+                    <svg style="margin-top: 0px" class="animated" id="freepik_stories-humanitarian-help"
                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500" version="1.1"
                          xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
                         <style>svg#freepik_stories-humanitarian-help:not(.animated) .animable {
@@ -1457,7 +1464,7 @@
                         </defs>
                     </svg>
                 </div>
-                <div class="col-lg-6 d-flex align-items-center">
+                <div class="col-lg-3 d-flex align-items-center">
                     <div class="login-form login-signin">
                         <form class="form w-xxl-550px rounded-lg p-20"
                               method="POST" action="{{route('client-login')}}">
