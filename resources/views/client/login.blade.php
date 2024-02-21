@@ -1457,7 +1457,7 @@
                         </defs>
                     </svg>
 
-                    <p style="font-weight: bolder;font-size: 17px;text-align: justify !important;float: right" >
+                    <p style="font-weight: bolder;font-size: 18px;text-align: justify !important;float: right" >
                         <span style="color: red"> تنويه </span>
                         : مؤسسة اقرأ الإنسانية لا تطلب أرقام حسابات بنكية ولا تتحصل على أي رسوم أو مبالغ مالية، ونحذر من التعامل مع منتحلي الشخصية، كما نخلي مسؤوليتنا عن أي إجراء خارج نطاق المؤسسة وموقعها الإلكتروني وأرقام التواصل الرسمية للمؤسسة، ولتقديم طلب سلة غذائية في رمضان يمكنكم التوجه إلى مقر مؤسسة اقرأ الإنسانية مباشرة لخدمتكم.
                         في حالة الإشتباه يمكنكم التواصل على
