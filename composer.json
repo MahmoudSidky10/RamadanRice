@@ -10,9 +10,9 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "maatwebsite/excel": "^3.1",
         "realrashid/sweet-alert": "^7.1",
-        "taqnyat/php": "^1.0",
-        "usmanhalalit/laracsv": "^2.1"
+        "taqnyat/php": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

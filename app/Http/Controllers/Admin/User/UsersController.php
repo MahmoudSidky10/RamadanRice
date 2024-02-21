@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin\User;
 
-use App\Helpers\ExportHelper;
+use App\Exports\OrdersExport;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
@@ -202,47 +203,7 @@ class UsersController extends Controller
 
     public function export($status)
     {
-
-        $fields = [
-            'id' => '#',
-            'id_number' => 'رقم الهوية',
-            'id_number_expiration_date' => 'تاريخ انتهاء صلاحية الهوية',
-
-            'first_name' => 'الاسم الاول',
-            'parent_name' => 'اسم الاب',
-            'grandfather_name' => 'اسم الجد',
-            'family_name' => 'اسم العائلة',
-
-            'employee.name' => 'اسم الموظف',
-
-            'social_situation.name_ar' => 'الحالة الاجتماعية',
-            'birth_date' => 'تاريخ الميلاد',
-            'age' => 'العمر',
-            'salary' => 'الراتب',
-            'nationality.name_ar' => 'الجنسية',
-            'cityName.name' => 'المدينة',
-            'district' => 'الحي',
-            'mobile' => 'رقم الجوال',
-            'mobile2' => 'رقم الجوال الاضافي',
-            'created_at' => 'تاريخ الانشاء',
-            'childrenCount' => 'عدد الاطفال',
-            'orderStatus' => 'حالة الطلب',
-        ];
-
-        if ($status == 0) {
-            $orders = Order::query()->with(['user'])->get();
-        } else {
-            $orders = Order::where('status', $status)->with(['user'])->get();
-        }
-
-        $orders->map(function ($orders) {
-            $orders['childrenCount'] = $orders->childrenCount();
-            $orders['orderStatus'] = $orders->orderStatusName();
-        });
-
-        $csvExporter = new \Laracsv\Export();
-        $csvExporter->build($orders, $fields);
-        $csvExporter->download(__("orders") . "-" . Carbon::today()->format('y-m-d') . ".xlsx");
+        return Excel::download(new OrdersExport($status), __("orders") . "-" . Carbon::today()->format('y-m-d') . ".xlsx");
     }
 
 
