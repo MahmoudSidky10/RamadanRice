@@ -65,7 +65,7 @@
         </div>
         <div class="login-body d-flex flex-column-fluid align-items-stretch justify-content-center">
             <div class="container row">
-                <div class="col-lg-7 bgi-size-contain bgi-no-repeat bgi-position-y-center bgi-position-x-center min-h-150px mt-0 m-md-0">
+                <div class="col-md-6 bgi-size-contain bgi-no-repeat bgi-position-y-center bgi-position-x-center min-h-150px mt-0 m-md-0">
 
                     <svg style="margin-top: 0px" class="animated" id="freepik_stories-humanitarian-help"
                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500" version="1.1"
@@ -1464,7 +1464,7 @@
                         <span style="color: #92ad38"> info@iqraa.org.sa </span>
                     </p>
                 </div>
-                <div class="col-lg-3 d-flex align-items-center">
+                <div class="col-md-6 d-flex align-items-center">
                     <div class="login-form login-signin">
                         <form class="form w-xxl-550px rounded-lg p-20"
                               method="POST" action="{{route('client-login')}}">
