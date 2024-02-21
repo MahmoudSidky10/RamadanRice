@@ -175,7 +175,7 @@ class ClientController extends Controller
     {
         $order = Order::where("user_id", Auth::id())->first();
         $data = $request->all();
-        if (isset($data['name']) && count($data['name']) < 0) {
+        if (isset($data['name']) && count($data['name']) > 0) {
             for ($i = 0; $i < count($data['name']); $i++) {
                 $child['name'] = $data['name'][$i];
                 $child['relative_relation'] = $data['relative_relation'][$i];
