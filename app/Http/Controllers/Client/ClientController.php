@@ -175,6 +175,24 @@ class ClientController extends Controller
     {
         $order = Order::where("user_id", Auth::id())->first();
         $data = $request->all();
+        $errorStatus = false;
+
+        // check first if the name is not empty
+        if (isset($data['name']) && count($data['name']) > 0) {
+            for ($i = 0; $i < count($data['name']); $i++) {
+                if ($data['name'][$i] == null) {
+                    $errorStatus = true;
+                    break;
+                }
+            }
+        }
+
+        if ($errorStatus == true) {
+            toast('يجب عليك تعبئة جميع الحقول', 'error');
+            return redirect()->back();
+        }
+
+
         if (isset($data['name']) && count($data['name']) > 0) {
             for ($i = 0; $i < count($data['name']); $i++) {
                 $child['name'] = $data['name'][$i];
