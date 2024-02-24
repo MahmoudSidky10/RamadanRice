@@ -26,6 +26,10 @@ Route::get('/client/order/child/create', [ClientController::class, 'orderChildCr
 Route::get('/client/order/child/create/newRecord', [ClientController::class, 'orderChildCreateRecord'])->name('client.order.child.newRecord');
 Route::post('/client/order/child/store', [ClientController::class, 'orderChildStore'])->name('client.order.child.store');
 
+Route::get('/client/order/child/delete/{id}', [ClientController::class, 'orderChildDelete'])->name('client.order.child.delete');
+Route::get('/client/order/child/edit/{id}', [ClientController::class, 'orderChildEdit'])->name('client.order.child.edit');
+Route::post('/client/order/child/update/{id}', [ClientController::class, 'orderChildUpdate'])->name('client.order.child.update');
+
 
 // Admin Routes :-
 Route::get('/login', [LoginController::class, 'index']);

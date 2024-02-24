@@ -180,9 +180,6 @@ class ClientController extends Controller
                 $child['name'] = $data['name'][$i];
                 $child['relative_relation'] = $data['relative_relation'][$i];
                 $child['id_number'] = $data['id_number'][$i];
-                $child['birth_date'] = $data['birth_date'][$i];
-                $child['salary'] = $data['salary'][$i];
-                $child['is_orphan'] = $data['is_orphan'][$i];
                 $child['order_id'] = $order->id;
                 $child['user_id'] = Auth::id();
                 OrderChildreen::create($child);
@@ -190,6 +187,29 @@ class ClientController extends Controller
             toast('تم اضافة المعال بنجاح', 'success');
         }
         return redirect()->route("client.order.details");
+    }
+
+    public function orderChildDelete($childId)
+    {
+        $child = OrderChildreen::find($childId);
+        $child->delete();
+        toast('تم تحديث المعلومات بنجاح', 'success');
+        return redirect()->route("client.order.update");
+    }
+
+    public function orderChildEdit($childId)
+    {
+        $child = OrderChildreen::find($childId);
+        return view('client.dashboard.child-edit', ["item" => $child]);
+    }
+
+    function orderChildUpdate(Request $request, $childId)
+    {
+        $child = OrderChildreen::find($childId);
+        $data = $request->all();
+        $child->update($data);
+        toast('تم تحديث المعلومات بنجاح', 'success');
+        return redirect()->route("client.order.update");
     }
 
     public function login(Request $request)
@@ -309,7 +329,15 @@ class ClientController extends Controller
         $data['created_by'] = Auth::user()->created_by;
         $data['status'] = 1;
 
-        Order::create($data);
+
+        // check if user has existing order
+        $order = Order::where('user_id', Auth::id())->first();
+        if ($order) {
+            $order->update($data);
+        } else {
+            Order::create($data);
+        }
+
         // $msg = "تم أستلام طلبك بنجاح";
         // $this->sendSms($msg, [$order->user->mobile]);
         return redirect()->route('client.order.child.create');

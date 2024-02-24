@@ -61,10 +61,10 @@
                                         </p>
                                     @endif
 
-                                        @if($item->status == 3 && Auth::user()->isClient())
-                                            <a class="btn btn-primary" href="{{route('client.order.update')}}"> تحديث
-                                                البيانات </a>
-                                        @endif
+                                    @if($item->status == 3 && Auth::user()->isClient())
+                                        <a class="btn btn-primary" href="{{route('client.order.update')}}"> تحديث
+                                            البيانات </a>
+                                    @endif
 
                                     <!--begin:: Names inputs -->
                                     <div class="row mb-5">
@@ -143,7 +143,8 @@
                                                             @endif value="5">أسرة سجين
                                                     </option>
                                                     <option @if($item->social_situation_id == 6) selected
-                                                            @endif value="6">كبير في السن +٦٥</option>
+                                                            @endif value="6">كبير في السن +٦٥
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -330,9 +331,6 @@
                                                             <th>{{trans('language.name')}}</th>
                                                             <th>{{trans('language.relative_relation')}}</th>
                                                             <th>{{trans('language.id_number')}}</th>
-                                                            <th>{{trans('language.birthday')}}</th>
-                                                            <th>{{trans('language.salary')}}</th>
-                                                            <th>{{trans('language.is_orphan')}}</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -342,9 +340,6 @@
                                                                 <td>{{$child->name}}</td>
                                                                 <td>{{$child->relative_relation}}</td>
                                                                 <td>{{$child->id_number}}</td>
-                                                                <td>{{$child->birth_date}}</td>
-                                                                <td>{{$child->salary}}</td>
-                                                                <td>{{$child->is_orphan == 1 ? 'نعم' : 'لا'}}</td>
                                                             </tr>
                                                         @endforeach
                                                         </tbody>

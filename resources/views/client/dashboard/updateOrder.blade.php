@@ -45,7 +45,7 @@
 
                                 </div>
                             </div>
-                            <section class="collapse " id="collapseExample2">
+                            <section class=" " id="collapseExample2">
                                 <div class="row">
                                     <div class="col-lg-12 col-xl-12 stretch-card mb-8 ">
                                         <div class="card">
@@ -63,9 +63,7 @@
                                                             <th>{{trans('language.name')}}</th>
                                                             <th>{{trans('language.relative_relation')}}</th>
                                                             <th>{{trans('language.id_number')}}</th>
-                                                            <th>{{trans('language.birthday')}}</th>
-                                                            <th>{{trans('language.salary')}}</th>
-                                                            <th>{{trans('language.is_orphan')}}</th>
+                                                            <th>{{trans('language.settings')}}</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -75,9 +73,15 @@
                                                                 <td>{{$child->name}}</td>
                                                                 <td>{{$child->relative_relation}}</td>
                                                                 <td>{{$child->id_number}}</td>
-                                                                <td>{{$child->birth_date}}</td>
-                                                                <td>{{$child->salary}}</td>
-                                                                <td>{{$child->salary ? 1 : 'نعم' ,'لا'}}</td>
+                                                                <td>
+                                                                    <a style="margin: 0px  10px" href="{{route("client.order.child.edit",$child->id)}}">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </a>
+
+                                                                    <a href="{{route("client.order.child.delete",$child->id)}}">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </a>
+                                                                </td>
                                                             </tr>
                                                         @endforeach
                                                         </tbody>
@@ -175,7 +179,8 @@
                                                             @endif value="5">أسرة سجين
                                                     </option>
                                                     <option @if($item->social_situation_id == 6) selected
-                                                            @endif value="6">كبير في السن +٦٥</option>
+                                                            @endif value="6">كبير في السن +٦٥
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
