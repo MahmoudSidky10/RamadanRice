@@ -104,7 +104,7 @@
                                             <!--end::Label-->
 
                                             <!--end::Input-->
-                                            <input type="text" class="form-control "
+                                            <input type="number" class="form-control "
                                                    placeholder=" الراتب أو حساب المواطن أو الضمان الإجتماعي أو التأهيل الشامل أو غيرها من مصادر الدخل"
                                                    value="" name="salary">
                                             <!--end::Input-->

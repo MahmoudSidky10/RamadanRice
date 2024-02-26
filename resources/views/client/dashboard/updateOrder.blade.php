@@ -74,7 +74,8 @@
                                                                 <td>{{$child->relative_relation}}</td>
                                                                 <td>{{$child->id_number}}</td>
                                                                 <td>
-                                                                    <a style="margin: 0px  10px" href="{{route("client.order.child.edit",$child->id)}}">
+                                                                    <a style="margin: 0px  10px"
+                                                                       href="{{route("client.order.child.edit",$child->id)}}">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
 
@@ -199,19 +200,42 @@
                                         </div>
 
                                         <div class="col-md-6 pt-6">
-                                            @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('إجمالي الدخل الشهري'),'name'=>'salary', 'placeholder'=>trans('إجمالي الدخل الشهري' ),'valid'=>trans('language.vaildation')])
+                                            @includeIf('admin.components.form.edit.number', ['icon' => 'fa fa-user','label' => trans('إجمالي الدخل الشهري'),'name'=>'salary', 'placeholder'=>trans('إجمالي الدخل الشهري' ),'valid'=>trans('language.vaildation')])
                                         </div>
 
                                         <div class="col-md-6 pt-4">
                                             @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('تاريخ انتهاء الهوية'),'name'=>'id_number_expiration_date', 'placeholder'=>trans('تاريخ انتهاء الهوية' ),'valid'=>trans('language.vaildation')])
                                         </div>
 
-                                        <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.date', ['icon' => 'fa fa-user','label' => trans('تاريخ الميلاد'),'name'=>'birth_date', 'placeholder'=>trans('تاريخ الميلاد' ),'valid'=>trans('language.vaildation')])
+
+                                        <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
+                                            <!--end::Label-->
+                                            <label class=" fs-5 required fw-semibold mb-2">تاريخ الميلاد ( ميلادي
+                                                )</label>
+                                            <!--end::Label-->
+
+                                            <!--end::Input-->
+                                            <input type="date" onchange="updateAgeValue()" class="form-control "
+                                                   placeholder="" value="{{$item->birth_date}}" id="birthDayValue"
+                                                   name="birth_date">
+                                            <!--end::Input-->
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
-                                        <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('العمر'),'name'=>'age', 'placeholder'=>trans('العمر' ),'valid'=>trans('language.vaildation')])
+                                        <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
+                                            <!--end::Label-->
+                                            <label class=" fs-5 fw-semibold mb-2">العمر</label>
+                                            <!--end::Label-->
+
+                                            <!--end::Input-->
+                                            <input id="age" type="text" class="form-control ageValue " placeholder=""
+                                                   disabled value="">
+                                            <input id="age" type="text" name="age" class="form-control hide ageValue "
+                                                   placeholder="" value="{{$item->age}}">
+                                            <!--end::Input-->
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
                                         <div class="col-md-6 pt-4">
@@ -348,6 +372,30 @@
             'resizeDuration': 200,
             'wrapAround': true
         })
+    </script>
+
+    <script>
+        function updateAgeValue() {
+            let days = daysdifference($("#birthDayValue").val())
+
+            $(".ageValue").val(days)
+        }
+
+        function daysdifference(date) {
+            var startDay = new Date();
+            var endDay = new Date(date);
+
+            // Determine the time difference between two dates
+            var millisBetween = startDay.getTime() - endDay.getTime();
+
+            // Determine the number of days between two dates
+            var days = millisBetween / (1000 * 3600 * 24);
+
+            days = days / 365;
+
+            // Show the final number of days between dates
+            return Math.round(Math.abs(days));
+        }
     </script>
 
     <script>

@@ -163,7 +163,7 @@
                                         </div>
 
                                         <div class="col-md-4 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('إجمالي الدخل الشهري'),'name'=>'salary', 'placeholder'=>trans('إجمالي الدخل الشهري' ),'valid'=>trans('language.vaildation')])
+                                            @includeIf('admin.components.form.edit.number', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('إجمالي الدخل الشهري'),'name'=>'salary', 'placeholder'=>trans('إجمالي الدخل الشهري' ),'valid'=>trans('language.vaildation')])
                                         </div>
                                         <div class="col-md-4 pt-4">
                                             @includeIf('admin.components.form.edit.text', ['disabled' => 'disabled' ,'icon' => 'fa fa-user','label' => trans('رقم الهوية'),'name'=>'id_number', 'placeholder'=>trans('رقم الهوية' ),'valid'=>trans('language.vaildation')])
