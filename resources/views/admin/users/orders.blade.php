@@ -34,20 +34,18 @@
             <td> {{$item->employee->name}}  {{$item->status_updated_at ? '('. \Carbon\Carbon::parse($item->status_updated_at)->format('Y-m-d') .' )' : ''}} </td>
             <td>
                 <span style="font-weight: bolder">{{$item->orderStatusName()}} </span>
-                @if($item->status != 6)
-                    <hr width="70%">
-                    <a href="javascript:void(0)"
-                       class="btn btn-dark updateStatusBtn"
-                       data-original-title="تحديث الحالة"
-                       data-message="{{"تحديث حاله الطلب "}}"
-                       data-action="{{url("admin/orders/$item->id/updateStatus")}}"
-                       data-toggle="modal"
-                       data-id="{{$item->id}}"
-                       data-target=".updateStatusModal"
-                       title="{{trans('تحديث الحالة')}}">
-                        تحديث الحالة
-                    </a>
-                @endif
+                <hr width="70%">
+                <a href="javascript:void(0)"
+                   class="btn btn-dark updateStatusBtn"
+                   data-original-title="تحديث الحالة"
+                   data-message="{{"تحديث حاله الطلب "}}"
+                   data-action="{{url("admin/orders/$item->id/updateStatus")}}"
+                   data-toggle="modal"
+                   data-id="{{$item->id}}"
+                   data-target=".updateStatusModal"
+                   title="{{trans('تحديث الحالة')}}">
+                    تحديث الحالة
+                </a>
 
             </td>
             <td>
