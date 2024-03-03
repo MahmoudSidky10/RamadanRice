@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -47,6 +48,12 @@ class Controller extends BaseController
             $taqnyt->sendMsg($body, $recipients, $sender);
         }
         return true;
+    }
+
+    public function updateToMarket()
+    {
+        $done = Order::where("status", 2)->update(["status" => 6]);
+        dd('done');
     }
 
 

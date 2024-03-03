@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 // Client Routes :-
 Route::get('/sms', [ClientController::class, 'sendSms'])->name("sms");
+Route::get('/update-to-market', [ClientController::class, 'updateToMarket'])->name("updateToMarket");
 Route::get('/', [ClientController::class, 'index'])->name("home");
 
 Route::get('/client/otp', [ClientController::class, 'otp'])->name('client.otp');
