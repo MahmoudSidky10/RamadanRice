@@ -157,6 +157,19 @@ class UsersController extends Controller
         return view('client.dashboard.order', ["item" => $order]);
     }
 
+    public function toMarketOrdersStatus($orderId)
+    {
+        $order = Order::find($orderId);
+        $order->status = Order::TO_MARKET;
+        $order->save();
+        // Send sms to user
+        // msg =>
+        //        $msg = $order->orderStatusSmsMessage();
+        //        $this->sendSms($msg, [$order->mobile]);
+
+        return redirect()->route("admin.order.acceptedOrders");
+    }
+
     public function updateStatus($orderId, Request $request)
     {
 
@@ -234,6 +247,12 @@ class UsersController extends Controller
     public function reUpdatedOrders()
     {
         $result['items'] = Order::where('status', Order::REUPDATED)->orderBy("id", "desc")->paginate(15);
+        return view('admin.users.orders')->with($result);
+    }
+
+    public function toMarketOrders()
+    {
+        $result['items'] = Order::where('status', Order::TO_MARKET)->orderBy("id", "desc")->paginate(15);
         return view('admin.users.orders')->with($result);
     }
 

@@ -34,23 +34,31 @@
             <td> {{$item->employee->name}}  {{$item->status_updated_at ? '('. \Carbon\Carbon::parse($item->status_updated_at)->format('Y-m-d') .' )' : ''}} </td>
             <td>
                 <span style="font-weight: bolder">{{$item->orderStatusName()}} </span>
-                <hr width="70%">
-                <a href="javascript:void(0)"
-                   class="btn btn-dark updateStatusBtn"
-                   data-original-title="تحديث الحالة"
-                   data-message="{{"تحديث حاله الطلب "}}"
-                   data-action="{{url("admin/orders/$item->id/updateStatus")}}"
-                   data-toggle="modal"
-                   data-id="{{$item->id}}"
-                   data-target=".updateStatusModal"
-                   title="{{trans('تحديث الحالة')}}">
-                    تحديث الحالة
-                </a>
+                @if($item->status != 6)
+                    <hr width="70%">
+                    <a href="javascript:void(0)"
+                       class="btn btn-dark updateStatusBtn"
+                       data-original-title="تحديث الحالة"
+                       data-message="{{"تحديث حاله الطلب "}}"
+                       data-action="{{url("admin/orders/$item->id/updateStatus")}}"
+                       data-toggle="modal"
+                       data-id="{{$item->id}}"
+                       data-target=".updateStatusModal"
+                       title="{{trans('تحديث الحالة')}}">
+                        تحديث الحالة
+                    </a>
+                @endif
 
             </td>
             <td>
+
                 <a href="{{route("admin.order.details",$item->id)}}"
                    class="btn btn-success"> {{trans('language.details')}}</a>
+
+                @if($item->status != 6)
+                    <a href="{{route("admin.order.toMarketOrdersStatus",$item->id)}}"
+                       class="btn btn-primary mt-3"> {{trans('تـرحيـل')}}
+                @endif
             </td>
         </tr>
     @endforeach

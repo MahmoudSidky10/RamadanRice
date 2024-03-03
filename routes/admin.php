@@ -26,6 +26,7 @@ Route::get('orders/export/{status}', [UsersController::class, 'export'])->name('
 
 Route::get('/orders', [UsersController::class, 'orders']);
 Route::get('/orders/details/{id}', [UsersController::class, 'orderDetails'])->name('admin.order.details');
+Route::get('/orders/{id}/toMarketOrdersStatus', [UsersController::class, 'toMarketOrdersStatus'])->name('admin.order.toMarketOrdersStatus');
 Route::post('/orders/{id}/updateStatus', [UsersController::class, 'updateStatus'])->name('admin.order.updateStatus');
 
 // orders by status
@@ -34,5 +35,6 @@ Route::get('/orders/accepted', [UsersController::class, 'acceptedOrders'])->name
 Route::get('/orders/review', [UsersController::class, 'reviewOrders'])->name('admin.order.reviewOrders');
 Route::get('/orders/rejected', [UsersController::class, 'rejectedOrders'])->name('admin.order.rejectedOrders');
 Route::get('/orders/reUpdated', [UsersController::class, 'reUpdatedOrders'])->name('admin.order.reUpdatedOrders');
+Route::get('/orders/toMarket', [UsersController::class, 'toMarketOrders'])->name('admin.order.toMarket');
 
 Route::resource('socialSituations', SocialSituationController::class);
