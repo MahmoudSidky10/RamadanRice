@@ -204,7 +204,14 @@ class ClientController extends Controller
             }
             toast('تم اضافة المعال بنجاح', 'success');
         }
-        return redirect()->route("client.order.details");
+
+        if ($order->status != Order::PENDING) {
+            return redirect()->route("client.order.update");
+        } else {
+            return redirect()->route("client.order.details");
+        }
+
+
     }
 
     public function orderChildDelete($childId)
