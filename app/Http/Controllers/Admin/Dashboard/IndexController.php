@@ -36,6 +36,7 @@ class IndexController extends Controller
         $result['missingOrdersCount'] = Order::getOdersCount(3);
         $result['rejectedOrdersCount'] = Order::getOdersCount(4);
         $result['reUpdatedOrdersCount'] = Order::getOdersCount(5);
+        $result['marketOrdersCount'] = Order::getOdersCount(6);
         return view('admin.dashboard.reports')->with($result);
     }
 
