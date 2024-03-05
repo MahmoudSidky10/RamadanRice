@@ -229,6 +229,20 @@ class UsersController extends Controller
         return redirect()->route("admin.order.acceptedOrders");
     }
 
+    public function toNotificationOrdersStatus($orderId)
+    {
+        $order = Order::find($orderId);
+        $order->status = Order::notificationOrders;
+        $order->save();
+        // Send sms to user
+        // msg =>
+        //        $msg = $order->orderStatusSmsMessage();
+        //        $this->sendSms($msg, [$order->mobile]);
+
+        return redirect()->route("admin.order.notificationOrders");
+    }
+
+
     public function updateStatus($orderId, Request $request)
     {
 
@@ -312,6 +326,12 @@ class UsersController extends Controller
     public function toMarketOrders()
     {
         $result['items'] = Order::where('status', Order::TO_MARKET)->orderBy("id", "desc")->paginate(15);
+        return view('admin.users.orders')->with($result);
+    }
+
+    public function notificationOrders()
+    {
+        $result['items'] = Order::where('status', Order::notificationOrders)->orderBy("id", "desc")->paginate(15);
         return view('admin.users.orders')->with($result);
     }
 

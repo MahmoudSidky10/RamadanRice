@@ -30,6 +30,7 @@ Route::get('/orders/edit/{id}', [UsersController::class, 'orderEdit'])->name('ad
 Route::post('/orders/update/{id}', [UsersController::class, 'orderUpdate'])->name('admin.order.orderUpdate');
 
 Route::get('/orders/{id}/toMarketOrdersStatus', [UsersController::class, 'toMarketOrdersStatus'])->name('admin.order.toMarketOrdersStatus');
+Route::get('/orders/{id}/toNotificationOrdersStatus', [UsersController::class, 'toNotificationOrdersStatus'])->name('admin.order.toNotificationOrdersStatus');
 Route::post('/orders/{id}/updateStatus', [UsersController::class, 'updateStatus'])->name('admin.order.updateStatus');
 
 // orders by status
@@ -39,5 +40,6 @@ Route::get('/orders/review', [UsersController::class, 'reviewOrders'])->name('ad
 Route::get('/orders/rejected', [UsersController::class, 'rejectedOrders'])->name('admin.order.rejectedOrders');
 Route::get('/orders/reUpdated', [UsersController::class, 'reUpdatedOrders'])->name('admin.order.reUpdatedOrders');
 Route::get('/orders/toMarket', [UsersController::class, 'toMarketOrders'])->name('admin.order.toMarket');
+Route::get('/orders/notificationOrders', [UsersController::class, 'notificationOrders'])->name('admin.order.notificationOrders');
 
 Route::resource('socialSituations', SocialSituationController::class);

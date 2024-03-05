@@ -63,6 +63,12 @@
                     <a href="{{route("admin.order.toMarketOrdersStatus",$item->id)}}"
                        class="btn btn-primary mt-3"> {{trans('تـرحيـل')}}
                 @endif
+
+                @if($item->status == 6)
+                            <a href="{{route("admin.order.toNotificationOrdersStatus",$item->id)}}"
+                               class="btn btn-primary mt-3"> {{trans('اشعار المستفيد')}}
+                @endif
+
             </td>
         </tr>
     @endforeach

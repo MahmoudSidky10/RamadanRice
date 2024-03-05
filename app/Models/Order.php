@@ -17,6 +17,7 @@ class Order extends Model
     const REJECTED = 4;
     const REUPDATED = 5;
     const TO_MARKET = 6;
+    const notificationOrders = 7;
 
     protected $fillable = [
         'status', // 1- pending , 2- accepted , 3- missing 4- rejected
@@ -115,6 +116,10 @@ class Order extends Model
             return "جاري مراجعة الطلب مع المتجر";
         }
 
+        if ($this->status == 7) {
+            return "تم اشعار العميل";
+        }
+
     }
 
     public function orderStatusSmsMessage()
@@ -141,6 +146,10 @@ class Order extends Model
 
         if ($this->status == 6) {
             return "جاري مراجعة الطلب مع المتجر";
+        }
+
+        if ($this->status == 7) {
+            return "تم اشعار العميل";
         }
 
     }

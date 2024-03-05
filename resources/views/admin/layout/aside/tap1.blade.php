@@ -90,6 +90,7 @@
                 $rejectedOrdersCount    = \App\Models\Order::getOdersCount(4);
                 $reUpdatedOrdersCount   = \App\Models\Order::getOdersCount(5);
                 $toMarketOrdersCount  = \App\Models\Order::getOdersCount(6);
+                $notificationOrders  = \App\Models\Order::getOdersCount(7);
             @endphp
 
             <li class="menu-item @if(strpos(url()->current(), "orders" )) menu-item-active @endif  "
@@ -126,6 +127,11 @@
                 aria-haspopup="true"
                 data-menu-toggle="hover">
                 @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/toMarket" , "title" => trans('طلبات تم ترحيلها للدكان') . " ( $toMarketOrdersCount )", "icon" => "menu-icon flaticon-layers" ])
+            </li>
+            <li class="menu-item @if(strpos(url()->current(), "orders/notificationOrders" )) menu-item-active @endif  "
+                aria-haspopup="true"
+                data-menu-toggle="hover">
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/notificationOrders" , "title" => trans('طلبات تم اشعار مستفيدينها') . " ( $notificationOrders )", "icon" => "menu-icon flaticon-layers" ])
             </li>
 
 
