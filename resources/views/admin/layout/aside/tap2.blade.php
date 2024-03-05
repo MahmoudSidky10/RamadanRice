@@ -119,6 +119,11 @@
                 data-menu-toggle="hover">
                 @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/toMarket" , "title" => trans('طلبات تم ترحيلها للدكان') . " ( $toMarketOrdersCount )", "icon" => "menu-icon flaticon-layers" ])
             </li>
+            <li class="menu-item @if(strpos(url()->current(), "orders/notificationOrders" )) menu-item-active @endif  "
+                aria-haspopup="true"
+                data-menu-toggle="hover">
+                @includeIf("admin.layout.aside.main-item" ,["href"=>"/admin/orders/notificationOrders" , "title" => trans('طلبات تم اشعار مستفيدينها') . " ( $notificationOrders )", "icon" => "menu-icon flaticon-layers" ])
+            </li>
 
 
         </ul>
