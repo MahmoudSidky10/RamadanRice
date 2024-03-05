@@ -56,7 +56,7 @@
                 @endif
 
                 <a href="{{route("admin.order.details",$item->id)}}"
-                   class="btn btn-success"> {{trans('language.details')}}</a>
+                   class="btn btn-success pt-3"> {{trans('language.details')}}</a>
 
                 @if($item->status == 2)
                     <a href="{{route("admin.order.toMarketOrdersStatus",$item->id)}}"
