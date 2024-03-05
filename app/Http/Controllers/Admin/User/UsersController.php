@@ -157,6 +157,65 @@ class UsersController extends Controller
         return view('client.dashboard.order', ["item" => $order]);
     }
 
+    public function orderEdit($orderId)
+    {
+        $order = Order::find($orderId);
+        return view('admin.users.orderEdit', ["item" => $order]);
+    }
+
+    public function orderUpdate(Request $request, $id)
+    {
+        $order = Order::where("id", $id)->first();
+
+        $data = $request->all();
+
+        if ($request->id_number_image) {
+            $data['id_number_image'] = $this->storeImage($request->id_number_image, 'images');
+        }
+
+        if ($request->divorce_deed) {
+            $data['divorce_deed'] = $this->storeImage($request->divorce_deed, 'images');
+        }
+
+        if ($request->husband_death_image) {
+            $data['husband_death_image'] = $this->storeImage($request->husband_death_image, 'images');
+        }
+
+        if ($request->prisoner_family_identification_facility) {
+            $data['prisoner_family_identification_facility'] = $this->storeImage($request->prisoner_family_identification_facility, 'images');
+        }
+
+        if ($request->attached_is_the_support_instrument) {
+            $data['attached_is_the_support_instrument'] = $this->storeImage($request->attached_is_the_support_instrument, 'images');
+        }
+
+        if ($request->absher_facility) {
+            $data['absher_facility'] = $this->storeImage($request->absher_facility, 'images');
+        }
+
+        if ($request->deed_ofـabandonment) {
+            $data['deed_ofـabandonment'] = $this->storeImage($request->deed_ofـabandonment, 'images');
+        }
+
+        if ($request->other_attachments) {
+            $data['other_attachments'] = $this->storeImage($request->other_attachments, 'images');
+        }
+        if ($request->other_attachments1) {
+            $data['other_attachments1'] = $this->storeImage($request->other_attachments1, 'images');
+        }
+        if ($request->other_attachments2) {
+            $data['other_attachments2'] = $this->storeImage($request->other_attachments2, 'images');
+        }
+        $order->update($data);
+
+
+        $order->status = Order::REUPDATED;
+        $order->save();
+
+        toast('تم عمل التحديثات بنجاح وجاري مراجعة البيانات', 'success');
+        return redirect()->route('admin.order.details', $id);
+    }
+
     public function toMarketOrdersStatus($orderId)
     {
         $order = Order::find($orderId);

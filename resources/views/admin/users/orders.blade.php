@@ -50,6 +50,11 @@
             </td>
             <td>
 
+                @if($item->status == 3)
+                    <a href="{{route("admin.order.orderEdit",$item->id)}}"
+                       class="btn btn-primary mt-3"> {{trans('تعديل')}}
+                @endif
+
                 <a href="{{route("admin.order.details",$item->id)}}"
                    class="btn btn-success"> {{trans('language.details')}}</a>
 

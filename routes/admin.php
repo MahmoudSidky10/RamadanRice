@@ -26,6 +26,9 @@ Route::get('orders/export/{status}', [UsersController::class, 'export'])->name('
 
 Route::get('/orders', [UsersController::class, 'orders']);
 Route::get('/orders/details/{id}', [UsersController::class, 'orderDetails'])->name('admin.order.details');
+Route::get('/orders/edit/{id}', [UsersController::class, 'orderEdit'])->name('admin.order.orderEdit');
+Route::post('/orders/update/{id}', [UsersController::class, 'orderUpdate'])->name('admin.order.orderUpdate');
+
 Route::get('/orders/{id}/toMarketOrdersStatus', [UsersController::class, 'toMarketOrdersStatus'])->name('admin.order.toMarketOrdersStatus');
 Route::post('/orders/{id}/updateStatus', [UsersController::class, 'updateStatus'])->name('admin.order.updateStatus');
 
