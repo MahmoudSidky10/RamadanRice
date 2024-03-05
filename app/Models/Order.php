@@ -112,7 +112,7 @@ class Order extends Model
         }
 
         if ($this->status == 6) {
-            return "تم ترحيل الطلب الي الدكان";
+            return "جاري مراجعة الطلب مع المتجر";
         }
 
     }
@@ -140,7 +140,7 @@ class Order extends Model
         }
 
         if ($this->status == 6) {
-            return "تم ترحيل الطلب الي الدكان";
+            return "جاري مراجعة الطلب مع المتجر";
         }
 
     }
