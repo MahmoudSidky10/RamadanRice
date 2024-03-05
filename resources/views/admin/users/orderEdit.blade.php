@@ -204,8 +204,19 @@
                                             @includeIf('admin.components.form.edit.number', ['icon' => 'fa fa-user','label' => trans('إجمالي الدخل الشهري'),'name'=>'salary', 'placeholder'=>trans('إجمالي الدخل الشهري' ),'valid'=>trans('language.vaildation')])
                                         </div>
 
-                                        <div class="col-md-6 pt-4">
-                                            @includeIf('admin.components.form.edit.text', ['icon' => 'fa fa-user','label' => trans('تاريخ انتهاء الهوية'),'name'=>'id_number_expiration_date', 'placeholder'=>trans('تاريخ انتهاء الهوية' ),'valid'=>trans('language.vaildation')])
+
+                                        <div class="col-md-6 fv-row fv-plugins-icon-container pt-4">
+                                            <!--end::Label-->
+                                            <label class="required fs-5 fw-semibold mb-2">تاريخ انتهاء الهوية</label>
+                                            <!--end::Label-->
+
+                                            <!--end::Input-->
+                                            <input id="txtHijriDate" name="id_number_expiration_date" type="text"
+                                                   value="{{$item->id_number_expiration_date}}" required
+                                                   class="form-control"/>
+                                            <!--end::Input-->
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
 
 
@@ -351,6 +362,27 @@
     </div>
 @endsection
 @section("js")
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment-hijri@2.1.0/moment-hijri.js"></script>
+    <script src="{{asset("/assets/admin/js/bootstrap-hijri-datetimepicker.js")}}"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $("#special_case_type_section").hide()
+
+            var date = new Date();
+            date.setDate(date.getDate() + 1);
+            $('#txtHijriDate').hijriDatePicker({
+                minDate: date,
+                showClear: true
+            });
+
+        });
+    </script>
+
     <script>
         lightbox.option({
             'resizeDuration': 200,
