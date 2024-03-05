@@ -82,6 +82,7 @@
                 $rejectedOrdersCount    = \App\Models\Order::getOdersCount(4);
                 $reUpdatedOrdersCount   = \App\Models\Order::getOdersCount(5);
                 $toMarketOrdersCount  = \App\Models\Order::getOdersCount(6);
+                $notificationOrders  = \App\Models\Order::getOdersCount(7);
             @endphp
 
             <li class="menu-item @if(strpos(url()->current(), "orders" )) menu-item-active @endif  "
