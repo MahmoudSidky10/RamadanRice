@@ -234,6 +234,11 @@ class ClientController extends Controller
         $data = $request->all();
         $child->update($data);
         toast('تم تحديث المعلومات بنجاح', 'success');
+
+        if (!Auth::user()->isClient()) {
+            return redirect()->route("admin.order.orderEdit", $child->order_id);
+        }
+
         return redirect()->route("client.order.update");
     }
 
